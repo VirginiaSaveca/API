@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('holidays', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('employee_id')->constrained();
+            $table->string('name')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('year');
             $table->timestamps();
         });
     }

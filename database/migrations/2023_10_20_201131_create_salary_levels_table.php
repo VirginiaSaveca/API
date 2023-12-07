@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('salary_levels', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
+            $table->integer('level');
             $table->timestamps();
         });
     }

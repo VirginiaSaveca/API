@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('internal_transfers', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('employee_id')->constrained();
             $table->foreignId('branch_id')->constrained();
             $table->foreignId('branch_organic_unit_id')->constrained(table: 'branch_organic_unit');
             $table->foreignId('branch_department_id')->constrained(table: 'branch_department');
             $table->foreignId('branch_partition_id')->constrained(table: 'branch_partition');
+            $table->string('obs')->nullable;
             $table->timestamps();
         });
     }

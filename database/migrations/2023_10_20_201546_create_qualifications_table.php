@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('employee_id')->constrained();
+            $table->string('training_area');
+            $table->string('level');
+            $table->integer('year');
+            $table->string('place');
+            $table->string('obs');
             $table->timestamps();
         });
     }

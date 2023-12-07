@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('administrative_acts', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('employee_id')->constrained();
+            $table->string('name');
+            $table->date('appointment_date');
+            $table->date('visa_date')->nullable;
+            $table->string('visa_nr')->nullable;
             $table->timestamps();
         });
     }

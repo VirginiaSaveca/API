@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('employee_id')->constrained();
+            $table->string('to');
+            $table->date('date');
             $table->timestamps();
         });
     }

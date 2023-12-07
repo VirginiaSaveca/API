@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('organic_unit_id')->constrained();
             $table->string('name');
+            $table->string('address');
             $table->timestamps();
         });
     }

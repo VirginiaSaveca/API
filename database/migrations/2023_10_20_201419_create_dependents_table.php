@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('dependents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained();
+            $table->string('name');
+            $table->date('birthdate');
+            $table->string('relation_type');
+
+
             $table->timestamps();
         });
     }

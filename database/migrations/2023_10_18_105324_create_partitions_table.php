@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('partitions', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
+            $table->foreignId('branch_id')->constrained();
             $table->foreignId('department_id')->constrained();
             $table->string('name');
             $table->timestamps();

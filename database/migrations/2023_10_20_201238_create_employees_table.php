@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->foreignId('branch_id')->constrained();
             $table->foreignId('branch_organic_unit_id')->constrained(table: 'branch_organic_unit');
             $table->foreignId('branch_department_id')->constrained(table: 'branch_department');
@@ -21,6 +22,18 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->foreignId('level_id')->constrained();
             $table->foreignId('salary_level_id')->constrained();
+            $table->string('name');
+            $table->date('birthdate');
+            $table->integer('contact');
+            $table->string('nationality')->nullable;
+            $table->string('naturality')->nullable;
+            $table->string('email');
+            $table->string('father_name')->nullable;
+            $table->string('mother_name')->nullable;
+            $table->string('bi_nr');
+            $table->date('bi_validate');
+            $table->integer('nuit');
+            
             $table->timestamps();
         });
     }
