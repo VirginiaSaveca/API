@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Branch\Index;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,7 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::get('/branch', Index::class)->name('branch');
 
 require __DIR__.'/auth.php';
