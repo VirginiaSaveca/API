@@ -18,7 +18,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <x-toast/>
+        <x-dialog /> 
+        {{-- <x-toast /> --}}
 <div class="min-h-screen h-screen flex flex-col bg-gray-50">
 
         <header class="p-2 bg-white">
