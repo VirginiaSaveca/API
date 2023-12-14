@@ -64,11 +64,11 @@
                                         <div class="lg:flex justify-center items-center gap-1 hidden">
 
                                             {{-- @if(Auth::user()->can($title.'.edit')) --}}
-                                            <x-button sm wire:click='edit({{ $value->id }})' icon="pencil-square" color="blue"/>
+                                            <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square" color="blue"/>
                                             {{-- @endif --}}
 
                                             {{-- @if(Auth::user()->can($title.'.destroy')) --}}
-                                            <x-button sm wire:click='deleteConfirm({{ $value->id }})' icon="trash" color="red"/>
+                                            <x-button md wire:click='deleteConfirm({{ $value->id }})' icon="trash" color="red"/>
                                             {{-- @endif --}}
 
                                         </div>

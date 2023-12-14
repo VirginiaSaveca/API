@@ -7,6 +7,8 @@ use Livewire\Component;
 use Livewire\Attributes\Rule;
 use TallStackUi\Traits\Interactions;
 
+use function Livewire\Volt\rules;
+
 class Index extends Component
 {
     use Interactions;
@@ -17,16 +19,19 @@ class Index extends Component
     public string $title = "branch";
     public string $titlept = "Extensão";
 
-    #[Rule('required', as: '"Nome"')]
+    // #[Rule('required', as: '"Nome"')]
     public $name;
 
     #[Rule('required', as: '"Endereço"')]
     public $address;
 
-    public function create()
+    protected function rules()
     {
-       
+        $rules = [
+            'name' => 'required|unique:branches,name,' . $this->id,
+        ];
 
+        return $rules;
     }
 
     public function store()
@@ -40,6 +45,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        $this->resetValidation();
         $query                          = Branch::findOrFail($id);
         $this->id                       = $id;
         $this->name                     = $query->name;
