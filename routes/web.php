@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Branch\Index;
+use App\Livewire\Branch;
+use App\Livewire\OrganicUnit;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('/branch', Index::class)->name('branch');
+Route::get('/branch', Branch\Index::class)->name('branch');
+Route::get('/organic_unit', OrganicUnit\Index::class)->name('oragnic_unit');
 
 require __DIR__.'/auth.php';

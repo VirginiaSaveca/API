@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('organic_units', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->foreignId('branch_id')->constrained();
             $table->string('name');
-            $table->string('address');
             $table->timestamps();
         });
     }
