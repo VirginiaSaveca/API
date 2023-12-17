@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Branch;
 use App\Livewire\OrganicUnit;
+use App\Livewire\Department;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::view('profile', 'profile')
 
 Route::get('/branch', Branch\Index::class)->name('branch');
 Route::get('/organic_unit', OrganicUnit\Index::class)->name('oragnic_unit');
+Route::get('/department', Department\Index::class)->name('department');
 
 require __DIR__.'/auth.php';

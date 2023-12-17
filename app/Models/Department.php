@@ -26,8 +26,8 @@ class Department extends Model
         return $this->belongsTo(OrganicUnit::class);
     }
 
-    public function partitions(){
-        return $this->hasMany(Partition::class);
-    }
+    // public function partitions(){
+    //     return $this->hasMany(Partition::class);
+    // }
 
 }

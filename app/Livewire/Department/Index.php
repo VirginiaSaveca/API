@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\OrganicUnit;
+namespace App\Livewire\Department;
 
-
-use App\Models\OrganicUnit;
+use App\Models\Department;
 use Livewire\Component;
+use App\Models\OrganicUnit;
 use Livewire\Attributes\Rule;
 use TallStackUi\Traits\Interactions;
 
@@ -17,16 +17,20 @@ class Index extends Component
     public $id;
     public $isUpdate = 0;
     public $isDelete = 0;
-    public string $title = "organic-unit";
-    public string $titlept = "Unidade Orgânica";
+    public string $title = "department";
+    public string $titlept = "Departamento";
 
     // #[Rule('required', as: '"Nome"')]
     public $name;
+    public $organic_unit_id;
+    public $address;
 
     protected function rules()
     {
         $rules = [
-            'name' => 'required|unique:branches,name,' . $this->id,
+            'name' => 'required|unique:departments,name,' . $this->id,
+            'organic_unit_id' => 'required|numeric',
+            'address' => 'required',
         ];
 
         return $rules;
@@ -35,7 +39,7 @@ class Index extends Component
     public function store()
     {
         $validated = $this->validate();
-        OrganicUnit::create($validated);
+        Department::create($validated);
         $this->reset();
         $this->resetValidation();
 		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
@@ -44,9 +48,11 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = OrganicUnit::findOrFail($id);
+        $query                          = Department::findOrFail($id);
         $this->id                       = $id;
         $this->name                     = $query->name;
+        $this->organic_unit_id          = $query->organic_unit_id;
+        $this->address                  = $query->address;
     }
 
     public function update()
@@ -54,7 +60,7 @@ class Index extends Component
         $validated = $this->validate();
         if ($this->id)
         {
-            $query = OrganicUnit::findOrFail($this->id);
+            $query = Department::findOrFail($this->id);
             $query->update($validated);
             $this->reset();
             $this->resetValidation();
@@ -82,7 +88,7 @@ class Index extends Component
 
     public function delete()
     {
-        $query = OrganicUnit::where('id',$this->id)->first();
+        $query = Department::where('id',$this->id)->first();
         $query->delete();
         $this->reset();
         $this->resetValidation();
@@ -94,9 +100,11 @@ class Index extends Component
         $this->resetValidation();
     }
 
-    public function render()
+        public function render()
     {
-        $query = OrganicUnit::all();
-        return view('livewire.organic-unit.index', compact('query'));
+        $query = Department::all();
+        $organicUnits = OrganicUnit::pluck( 'id')->toArray();
+        return view('livewire.department.index', compact('query', 'organicUnits'));
     }
+
 }

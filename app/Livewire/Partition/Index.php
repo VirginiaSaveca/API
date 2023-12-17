@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Livewire\OrganicUnit;
+namespace App\Livewire\Partition;
 
 
 use App\Models\OrganicUnit;
+use App\Models\Partition;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use TallStackUi\Traits\Interactions;
@@ -17,8 +18,8 @@ class Index extends Component
     public $id;
     public $isUpdate = 0;
     public $isDelete = 0;
-    public string $title = "organic-unit";
-    public string $titlept = "Unidade Orgânica";
+    public string $title = "Partition";
+    public string $titlept = "Partição";
 
     // #[Rule('required', as: '"Nome"')]
     public $name;
@@ -96,7 +97,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = OrganicUnit::all();
-        return view('livewire.organic-unit.index', compact('query'));
+        $query = Partition::all();
+        return view('livewire.partition.index', compact('query'));
     }
 }

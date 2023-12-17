@@ -8,6 +8,11 @@
                 <form wire:submit="{{ $id ? 'update' : 'store' }}">
                                 <div class="grid lg:grid-cols-3 gap-6">
                                     <x-input wire:model="name" label="Nome *" />
+                                    <x-select.native wire:model="organic_unit_id" label="Unidade Orgânica *"
+                                      hint="Selecione uma opção" :options="$organicUnits"
+                                    />
+
+                                    <x-input wire:model="address" label="endereço123 *" />
 
 
                                     <div class="justify mt-6">
@@ -42,8 +47,10 @@
                         <table class="w-full shadow-md">
                             <thead class="bg-slate-300 bg-opacity-20 border-t dark:bg-slate-800 divide-gray-300 dark:border-gray-700">
                             <tr>
-                                <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">...</th>
+                                <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Id</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Nome</th>
+								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Unidade Organica</th>
+								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Endereço</th>
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
                                     <div class="hidden lg:inline-block">Ações</div>
                                 </th>
@@ -56,6 +63,9 @@
                                 <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">{{ $count++ }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->name }}</td>
+                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->organic_unit_id }}</td>
+                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->address }}</td>
+
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
                                         <!-- Actions Desktop -->
                                         <div class="lg:flex justify-center items-center gap-1 hidden">
