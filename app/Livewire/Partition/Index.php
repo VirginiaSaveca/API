@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Partition;
 
-
-use App\Models\OrganicUnit;
-use App\Models\Partition;
+use App\Models\Branch;
+use App\Models\Department;
 use Livewire\Component;
+use App\Models\Partition;
 use Livewire\Attributes\Rule;
 use TallStackUi\Traits\Interactions;
 
@@ -18,16 +18,20 @@ class Index extends Component
     public $id;
     public $isUpdate = 0;
     public $isDelete = 0;
-    public string $title = "Partition";
+    public string $title = "partition";
     public string $titlept = "Partição";
 
     // #[Rule('required', as: '"Nome"')]
     public $name;
+    public $department_id;
+    public $branch_id;
 
     protected function rules()
     {
         $rules = [
-            'name' => 'required|unique:branches,name,' . $this->id,
+            'name' => 'required|unique:partitions,name,' . $this->id,
+            'branch_id' => 'required|numeric',
+            'department_id' => 'required|numeric',
         ];
 
         return $rules;
@@ -36,7 +40,7 @@ class Index extends Component
     public function store()
     {
         $validated = $this->validate();
-        OrganicUnit::create($validated);
+        Partition::create($validated);
         $this->reset();
         $this->resetValidation();
 		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
@@ -45,9 +49,11 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = OrganicUnit::findOrFail($id);
+        $query                          = Partition::findOrFail($id);
         $this->id                       = $id;
         $this->name                     = $query->name;
+        $this->department_id            = $query->department_id;
+        $this->branch_id                = $query->branch_id;
     }
 
     public function update()
@@ -55,7 +61,7 @@ class Index extends Component
         $validated = $this->validate();
         if ($this->id)
         {
-            $query = OrganicUnit::findOrFail($this->id);
+            $query = Partition::findOrFail($this->id);
             $query->update($validated);
             $this->reset();
             $this->resetValidation();
@@ -83,7 +89,7 @@ class Index extends Component
 
     public function delete()
     {
-        $query = OrganicUnit::where('id',$this->id)->first();
+        $query = Partition::where('id',$this->id)->first();
         $query->delete();
         $this->reset();
         $this->resetValidation();
@@ -95,9 +101,12 @@ class Index extends Component
         $this->resetValidation();
     }
 
-    public function render()
+        public function render()
     {
         $query = Partition::all();
-        return view('livewire.partition.index', compact('query'));
+        $branch = Branch::pluck( 'id')->toArray();
+        $department = Department::pluck( 'id')->toArray();
+        return view('livewire.partition.index', compact('query', 'branch', 'department'));
     }
+
 }
