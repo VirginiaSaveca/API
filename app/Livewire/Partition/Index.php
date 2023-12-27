@@ -9,8 +9,6 @@ use App\Models\Partition;
 use Livewire\Attributes\Rule;
 use TallStackUi\Traits\Interactions;
 
-use function Livewire\Volt\rules;
-
 class Index extends Component
 {
     use Interactions;
@@ -21,7 +19,6 @@ class Index extends Component
     public string $title = "partition";
     public string $titlept = "Partição";
 
-    // #[Rule('required', as: '"Nome"')]
     public $name;
     public $department_id;
     public $branch_id;
@@ -30,8 +27,8 @@ class Index extends Component
     {
         $rules = [
             'name' => 'required|unique:partitions,name,' . $this->id,
-            'branch_id' => 'required|numeric',
-            'department_id' => 'required|numeric',
+            'branch_id' => 'required',
+            'department_id' => 'required',
         ];
 
         return $rules;
@@ -39,33 +36,48 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate();
+        $validated = $this->validate([
+            'name' => 'required|unique:partitions,name,' . $this->id,
+            'branch_id' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
+        $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
+
         Partition::create($validated);
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
+        $this->dialog()->success('Sucesso', 'Adicionado com Sucesso.');
     }
 
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = Partition::findOrFail($id);
-        $this->id                       = $id;
-        $this->name                     = $query->name;
-        $this->department_id            = $query->department_id;
-        $this->branch_id                = $query->branch_id;
+        $query = Partition::findOrFail($id);
+        $this->id = $id;
+        $this->name = $query->name;
+        $this->department_id = $query->department->name;
+        $this->branch_id = $query->branch->name;
     }
 
     public function update()
     {
-        $validated = $this->validate();
-        if ($this->id)
-        {
+        $validated = $this->validate([
+            'name' => 'required|unique:partitions,name,' . $this->id,
+            'branch_id' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
+        $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
+
+        if ($this->id) {
             $query = Partition::findOrFail($this->id);
             $query->update($validated);
             $this->reset();
             $this->resetValidation();
-			$this->dialog()->success('Successo', 'Editado com Sucesso.');
+            $this->dialog()->success('Sucesso', 'Editado com Sucesso.');
         }
     }
 
@@ -76,37 +88,37 @@ class Index extends Component
             'confirm' => [
                 'text' => 'Confirmar',
                 'method' => 'delete',
-                // 'params' => 'Confirmed Successfully' // Can be a string or array
             ],
-            /* Cancel is optional */
             'cancel' => [
                 'text' => 'Cancelar',
                 'method' => 'cancel',
-                // 'params' => 'Cancelled Successfully' // Can be a string or array
             ]
         ]);
     }
 
     public function delete()
     {
-        $query = Partition::where('id',$this->id)->first();
+        $query = Partition::where('id', $this->id)->first();
         $query->delete();
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Eliminado com Sucesso.');
+        $this->dialog()->success('Sucesso', 'Eliminado com Sucesso.');
     }
+
     public function cancel()
     {
         $this->reset();
         $this->resetValidation();
     }
 
-        public function render()
+    public function render()
     {
         $query = Partition::all();
-        $branch = Branch::pluck( 'id')->toArray();
-        $department = Department::pluck( 'id')->toArray();
+        $branch = Branch::pluck('name', 'id')->toArray();
+        $branch = ['' => '--selecionar--'] + $branch;
+        $department = Department::pluck('name', 'id')->toArray();
+        $department = ['' => '--selecionar--'] + Department::pluck('name', 'id')->toArray();
+
         return view('livewire.partition.index', compact('query', 'branch', 'department'));
     }
-
 }

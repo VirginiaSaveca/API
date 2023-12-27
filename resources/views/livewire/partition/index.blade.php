@@ -8,15 +8,26 @@
                 <form wire:submit="{{ $id ? 'update' : 'store' }}">
                                 <div class="grid lg:grid-cols-3 gap-6">
                                     <x-input wire:model="name" label="Nome *" />
-                                    <x-select.native wire:model="branch_id" label="Extensão *"
-                                      hint="Selecione uma opção" :options="$branch"
+                                    <x-select.native 
+                                    wire:model="branch_id" 
+                                    label="Extensão *"
+                                      hint="Selecione uma opção" 
+                                      :options="$branch"
+                                      option-value="key" 
+                                      option-label="value"
                                     />
-                                    <x-select.native wire:model="department_id" label="Departamento *"
-                                      hint="Selecione uma opção" :options="$department"
+                                    
+                                    <x-select.native 
+                                        wire:model="department_id" 
+                                        label="Departamento *"
+                                         hint="Selecione uma opção" 
+                                        :options="$department" 
+                                        option-value="key" 
+                                        option-label="value"
                                     />
 
                                     <div class="justify mt-6">
-                                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" />
+                                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                                         <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
                                     </div>
                                 </div>
@@ -36,7 +47,7 @@
                     <div class="flex flex-wrap justify-between items-center gap-1">
                         <h4>...</h4>
                         <div class="flex flex-wrap gap-1">
-                            <x-button md icon="plus" text="Adicionar"/>
+                            <x-button md icon="plus" color="blue" text="Adicionar"/>
                         </div>
                     </div>
                 </x-slot:header>
@@ -63,8 +74,8 @@
                                 <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">{{ $count++ }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->name }}</td>
-                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->branch_id }}</td>
-                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->department_id }}</td>
+                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->branch->name }}</td>
+                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->department->name}}</td>
 
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
                                         <!-- Actions Desktop -->

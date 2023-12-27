@@ -26,7 +26,7 @@ class Index extends Component
     public $address;
     public $selectedOrganicUnitName;
 
-    protected function rules()
+    protected function rules() 
     {
         $rules = [
             'name' => 'required|unique:departments,name,' . $this->id,
@@ -45,7 +45,6 @@ class Index extends Component
             'address' => 'required',
         ]);
     
-        // Substitua o nome da unidade orgânica pelo ID correspondente
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
     
         Department::create($validated);
