@@ -7,6 +7,7 @@ use App\Livewire\Department;
 use App\Livewire\Partition;
 use App\Livewire\Career;
 use App\Livewire\Category;
+use App\Livewire\Level;
 
 Route::view('/', 'welcome');
 
@@ -24,6 +25,7 @@ Route::get('/department', Department\Index::class)->name('department');
 Route::get('/partition', Partition\Index::class)->name('partition');
 Route::get('/career', Career\Index::class)->name('career');
 Route::get('/category', Category\Index::class)->name('category');
+Route::get('/level', Level\Index::class)->name('level');
 
 
 require __DIR__.'/auth.php';
