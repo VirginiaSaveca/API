@@ -22,8 +22,9 @@ class Department extends Model
         return $this->belongsToMany(Branch::class);
     }
 
-    public function organic_unit(){
-        return $this->belongsTo(OrganicUnit::class);
+    public function organicUnit()
+    {
+        return $this->belongsTo(OrganicUnit::class, 'organic_unit_id');
     }
 
     // public function partitions(){

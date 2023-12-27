@@ -24,12 +24,13 @@ class Index extends Component
     public $name;
     public $organic_unit_id;
     public $address;
+    public $selectedOrganicUnitName;
 
     protected function rules()
     {
         $rules = [
             'name' => 'required|unique:departments,name,' . $this->id,
-            'organic_unit_id' => 'required|numeric',
+            'organic_unit_id' => 'required',
             'address' => 'required',
         ];
 
@@ -38,35 +39,52 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate();
+        $validated = $this->validate([
+            'name' => 'required|unique:departments,name',
+            'organic_unit_id' => 'required',
+            'address' => 'required',
+        ]);
+    
+        // Substitua o nome da unidade orgânica pelo ID correspondente
+        $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
+    
         Department::create($validated);
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
+        $this->dialog()->success('Sucesso', 'Adicionado com Sucesso.');
     }
-
+    
+    
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = Department::findOrFail($id);
-        $this->id                       = $id;
-        $this->name                     = $query->name;
-        $this->organic_unit_id          = $query->organic_unit_id;
-        $this->address                  = $query->address;
+        $query                            = Department::findOrFail($id);
+        $this->id                        = $id;
+        $this->name                      = $query->name;
+        $this->organic_unit_id           = $query->organicUnit->name; 
+        $this->address                   = $query->address;
     }
+    
 
     public function update()
-    {
-        $validated = $this->validate();
-        if ($this->id)
-        {
-            $query = Department::findOrFail($this->id);
-            $query->update($validated);
-            $this->reset();
-            $this->resetValidation();
-			$this->dialog()->success('Successo', 'Editado com Sucesso.');
-        }
+{
+    $validated = $this->validate([
+        'name' => 'required|unique:departments,name,' . $this->id,
+        'organic_unit_id' => 'required',
+        'address' => 'required',
+    ]);
+
+    $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
+
+    if ($this->id) {
+        $query = Department::findOrFail($this->id);
+        $query->update($validated);
+        $this->reset();
+        $this->resetValidation();
+        $this->dialog()->success('Sucesso', 'Editado com Sucesso.');
     }
+}
+
 
     public function deleteConfirm($id)
     {
@@ -100,11 +118,15 @@ class Index extends Component
         $this->resetValidation();
     }
 
-        public function render()
+    public function render()
     {
         $query = Department::all();
-        $organicUnits = OrganicUnit::pluck( 'id')->toArray();
+        $organicUnits = OrganicUnit::pluck('name', 'id')->toArray();
+        $organicUnits = ['' => '--selecionar--'] + $organicUnits;
+
         return view('livewire.department.index', compact('query', 'organicUnits'));
     }
+    
+    
 
 }

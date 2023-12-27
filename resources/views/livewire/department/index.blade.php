@@ -8,15 +8,15 @@
                 <form wire:submit="{{ $id ? 'update' : 'store' }}">
                                 <div class="grid lg:grid-cols-3 gap-6">
                                     <x-input wire:model="name" label="Nome *" />
-                                    <x-select.native wire:model="organic_unit_id" label="Unidade Orgânica *"
-                                      hint="Selecione uma opção" :options="$organicUnits"
+                                    <x-select.native wire:model="organic_unit_id" 
+                                        label="Unidade Orgânica *" hint="Selecione uma opção" 
+                                        :options="$organicUnits" option-value="key" option-label="value"
                                     />
 
+
                                     <x-input wire:model="address" label="endereço123 *" />
-
-
                                     <div class="justify mt-6">
-                                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" />
+                                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                                         <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
                                     </div>
                                 </div>
@@ -63,9 +63,8 @@
                                 <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">{{ $count++ }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->name }}</td>
-                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->organic_unit_id }}</td>
+                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->organicUnit->name }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->address }}</td>
-
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
                                         <!-- Actions Desktop -->
                                         <div class="lg:flex justify-center items-center gap-1 hidden">
