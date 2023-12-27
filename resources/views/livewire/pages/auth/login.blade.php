@@ -11,8 +11,8 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.guest')] class extends Component
 {
-    #[Rule(['required', 'string', 'email'])]
-    public string $email = '';Categoria
+    #[Rule(['required', 'string'])]
+    public string $email = '';
 
     #[Rule(['required', 'string'])]
     public string $password = '';

@@ -5,17 +5,9 @@ use App\Livewire\Branch;
 use App\Livewire\OrganicUnit;
 use App\Livewire\Department;
 use App\Livewire\Partition;
+use App\Livewire\Career;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::view('/', 'welcome');
 
@@ -31,5 +23,7 @@ Route::get('/branch', Branch\Index::class)->name('branch');
 Route::get('/organic_unit', OrganicUnit\Index::class)->name('oragnic_unit');
 Route::get('/department', Department\Index::class)->name('department');
 Route::get('/partition', Partition\Index::class)->name('partition');
+Route::get('/career', Career\Index::class)->name('career');
+
 
 require __DIR__.'/auth.php';
