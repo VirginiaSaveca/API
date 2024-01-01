@@ -8,6 +8,7 @@ use App\Livewire\Partition;
 use App\Livewire\Career;
 use App\Livewire\Category;
 use App\Livewire\Level;
+use App\Livewire\Position;
 
 Route::view('/', 'welcome');
 
@@ -26,6 +27,7 @@ Route::get('/partition', Partition\Index::class)->name('partition');
 Route::get('/career', Career\Index::class)->name('career');
 Route::get('/category', Category\Index::class)->name('category');
 Route::get('/level', Level\Index::class)->name('level');
+Route::get('/position', Position\Index::class)->name('position');
 
 
 require __DIR__.'/auth.php';
