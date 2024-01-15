@@ -25,7 +25,7 @@ class Index extends Component
     protected function rules()
     {
         $rules = [
-            'level' => 'required|unique:salary-levels,level,' . $this->id,
+            'level' => 'required|unique:salary_levels,level,' . $this->id,
         ];
 
         return $rules;
