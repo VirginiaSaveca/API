@@ -14,7 +14,6 @@
                                     />
 
 
-                                    <x-input wire:model="address" label="endereço123 *" />
                                     <div class="justify mt-6">
                                         <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                                         <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
@@ -50,7 +49,6 @@
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Id</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Nome</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Unidade Organica</th>
-								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Endereço</th>
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
                                     <div class="hidden lg:inline-block">Ações</div>
                                 </th>
@@ -64,7 +62,6 @@
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">{{ $count++ }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->name }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->organicUnit->name }}</td>
-                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->address }}</td>
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
                                         <!-- Actions Desktop -->
                                         <div class="lg:flex justify-center items-center gap-1 hidden">

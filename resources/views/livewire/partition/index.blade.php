@@ -8,14 +8,7 @@
                 <form wire:submit="{{ $id ? 'update' : 'store' }}">
                                 <div class="grid lg:grid-cols-3 gap-6">
                                     <x-input wire:model="name" label="Nome *" />
-                                    <x-select.native 
-                                    wire:model="branch_id" 
-                                    label="Extensão *"
-                                      hint="Selecione uma opção" 
-                                      :options="$branch"
-                                      option-value="key" 
-                                      option-label="value"
-                                    />
+                                   
                                     
                                     <x-select.native 
                                         wire:model="department_id" 
@@ -60,7 +53,6 @@
                             <tr>
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Id</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Nome</th>
-								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Extensão</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Departamento</th>
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
                                     <div class="hidden lg:inline-block">Ações</div>
@@ -74,7 +66,6 @@
                                 <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">{{ $count++ }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->name }}</td>
-                                    <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->branch->name }}</td>
                                     <td class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">{{ $value->department->name}}</td>
 
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">

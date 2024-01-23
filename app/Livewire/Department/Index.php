@@ -23,7 +23,6 @@ class Index extends Component
     // #[Rule('required', as: '"Nome"')]
     public $name;
     public $organic_unit_id;
-    public $address;
     public $selectedOrganicUnitName;
 
     protected function rules() 
@@ -31,7 +30,6 @@ class Index extends Component
         $rules = [
             'name' => 'required|unique:departments,name,' . $this->id,
             'organic_unit_id' => 'required',
-            'address' => 'required',
         ];
 
         return $rules;
@@ -42,7 +40,6 @@ class Index extends Component
         $validated = $this->validate([
             'name' => 'required|unique:departments,name',
             'organic_unit_id' => 'required',
-            'address' => 'required',
         ]);
     
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
@@ -61,7 +58,7 @@ class Index extends Component
         $this->id                        = $id;
         $this->name                      = $query->name;
         $this->organic_unit_id           = $query->organicUnit->name; 
-        $this->address                   = $query->address;
+        
     }
     
 
@@ -70,7 +67,7 @@ class Index extends Component
     $validated = $this->validate([
         'name' => 'required|unique:departments,name,' . $this->id,
         'organic_unit_id' => 'required',
-        'address' => 'required',
+        
     ]);
 
     $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');

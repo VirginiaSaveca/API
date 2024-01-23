@@ -38,11 +38,10 @@ class Index extends Component
     {
         $validated = $this->validate([
             'name' => 'required|unique:partitions,name,' . $this->id,
-            'branch_id' => 'required',
+            
             'department_id' => 'required',
         ]);
 
-        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
         Partition::create($validated);
@@ -58,18 +57,16 @@ class Index extends Component
         $this->id = $id;
         $this->name = $query->name;
         $this->department_id = $query->department->name;
-        $this->branch_id = $query->branch->name;
     }
 
     public function update()
     {
         $validated = $this->validate([
             'name' => 'required|unique:partitions,name,' . $this->id,
-            'branch_id' => 'required',
+         
             'department_id' => 'required',
         ]);
 
-        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
         if ($this->id) {
@@ -114,11 +111,9 @@ class Index extends Component
     public function render()
     {
         $query = Partition::all();
-        $branch = Branch::pluck('name', 'id')->toArray();
-        $branch = ['' => '--selecionar--'] + $branch;
         $department = Department::pluck('name', 'id')->toArray();
         $department = ['' => '--selecionar--'] + Department::pluck('name', 'id')->toArray();
 
-        return view('livewire.partition.index', compact('query', 'branch', 'department'));
+        return view('livewire.partition.index', compact('query','department'));
     }
 }
