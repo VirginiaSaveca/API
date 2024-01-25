@@ -1,40 +1,87 @@
 <div>
+@if ($showForm == true)
+  <form wire:submit="{{ $id ? 'update' : 'store' }}">
     <div class="flex flex-col gap-6">
         <x-card>
             <x-slot:header>
                 ...
             </x-slot:header>
             <div class="p-6">
-                <form wire:submit="{{ $id ? 'update' : 'store' }}">
-                                <div class="grid lg:grid-cols-3 gap-6">
-                                    <x-input wire:model="name" label="Nome *" />
 
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <x-input wire:model="name" label="Nome *" />
+					</div>
+								
+	        <br>
+			<x-card>
+            <x-slot:header>
+					<div>
+						Adicionar Extenssão
+					</div>			
+            </x-slot:header>
+			
+               <div class="p-6">
+			   <div class="justify text-left">
+				<x-button md wire:click.prevent='addRow' text="+" color="sky" />
+			   </div>
+						<div class="border-t-2 border-gray-400 h-1 dark:border-gray-500"></div>
 
-                                    <div class="justify mt-6">
-                                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" />
-                                        <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
+                            @foreach ($rows as $index => $row)
+
+                                <div class="flex py-2 border-b">
+                                    <div class="flex-1 px-1">
+                                        <div class="form-group col-sm-3 input-primary">
+                                            <div class="form-group">
+                                                <select
+                                                    name="exam_id"  wire:model="rows.{{ $index }}.branch_id" class="block w-full p-2 border rounded-md bg-white dark:bg-gray-800 text-black dark:text-white">
+                                                   <option value="">Seleccione</option>
+                                                    @foreach($query2 as $value)
+                                                        <option value="{{ $value->id }}" @if (isset($edit)){{ $edit->id == $value->branch_id ? 'selected' : '' }}@endif>{{ $value->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @error('branch_id')<p class="text-danger">{{ $message }} </p> @enderror
+                                        </div>
                                     </div>
+
+                                    <div class="px-1 w-20 text-right">
+										<x-button md wire:click.prevent='removeRow({{$index}})' text="-" color="red" />
+                                    </div>
+
                                 </div>
 
-                </form>
 
-            </div>
+                            @endforeach  
+			   
+               </div>
+			</x-card>							
+					
+		<div class="justify mt-6 text-right">
+            <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue"/>
+            <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
+        </div>
+					
         </x-card>
 
         <!-- end card -->
 
     </div>
+	
+    </div>
+
+</form>
+@endif
 
         <div class="flex flex-col gap-6 mt-6">
             <x-card>
                 <x-slot:header>
                     <div class="flex flex-wrap justify-between items-center gap-1">
                         <h4>...</h4>
-                        <div class="flex flex-wrap gap-1">
-                            <x-button md icon="plus" text="Adicionar"/>
-                        </div>
                     </div>
                 </x-slot:header>
+				    <div class="px-6 justify text-right">
+                            <x-button md wire:click="create" icon="plus" text="Adicionar" color="blue"/>
+                    </div>
                 <div class="p-6">
                     <div class="flex flex-wrap justify-between items-center py-2">
                     </div>
@@ -44,7 +91,7 @@
                             <tr>
                                 <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">...</th>
 								<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">Nome</th>
-                                <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
+                                <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell text-center">
                                     <div class="hidden lg:inline-block">Ações</div>
                                 </th>
                             </tr>

@@ -27,7 +27,7 @@ class Branch extends Model
         return $this->hasMany(Partition::class);
     }
     public function organic_units(){
-        return $this->belongsToMany(OrganicUnit::class);
+        return $this->belongsToMany(OrganicUnit::class, 'branch_organic_unit');      // PIVOT TABLE
     }
     public function internal_transfers(){
         return $this->hasMany(InternalTransfer::class);
