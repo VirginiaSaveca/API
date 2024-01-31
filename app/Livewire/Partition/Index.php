@@ -21,7 +21,12 @@ class Index extends Component
 
     public $name;
     public $department_id;
-    public $branch_id;
+	
+	public $rows 			= [];
+	public $branch_id 		= [];
+	
+		
+	public $showForm = 0;
 
     protected function rules()
     {
@@ -33,6 +38,24 @@ class Index extends Component
 
         return $rules;
     }
+	
+    public function addRow(){
+        $this->rows[] = [
+            'branch_id' 		=> '',
+        ];
+    }
+    public function removeRow($index)
+    {
+        unset($this->rows[$index]);
+        $this->rows = array_values($this->rows);
+    }
+
+	public function create()
+    {
+        $this->reset();
+        $this->showForm	= true;
+
+    }		
 
     public function store()
     {
@@ -44,10 +67,14 @@ class Index extends Component
 
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
-        Partition::create($validated);
+         $query = Partition::create($validated);
+		
+        foreach ($this->rows as $value) {
+            $query->branches()->attach($value['branch_id']);
+        }		
         $this->reset();
         $this->resetValidation();
-        $this->dialog()->success('Sucesso', 'Adicionado com Sucesso.');
+		$this->dialog()->success('Successo', 'Adicionado com Sucesso.')->send();
     }
 
     public function edit($id)
@@ -57,6 +84,16 @@ class Index extends Component
         $this->id = $id;
         $this->name = $query->name;
         $this->department_id = $query->department->name;
+        if($query) {
+            foreach ($query->branches as $value){
+                $this->rows[] = [
+                    'branch_id'       => $value->pivot->branch_id,
+                ];
+
+            }
+        }
+        $this->showForm                 = true;			
+        		
     }
 
     public function update()
@@ -70,36 +107,40 @@ class Index extends Component
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
         if ($this->id) {
-            $query = Partition::findOrFail($this->id);
-            $query->update($validated);
-            $this->reset();
-            $this->resetValidation();
-            $this->dialog()->success('Sucesso', 'Editado com Sucesso.');
+			$query = Partition::findOrFail($this->id);
+			$query->update($validated);
+			
+			$query->branches()->detach();
+	
+			foreach ($this->rows as $value) {
+				$query->branches()->attach($value['branch_id']);
+			}			
+			$this->reset();
+			$this->resetValidation();
+			$this->dialog()->success('Successo', 'Editado com Sucesso.')->send();
         }
     }
 
     public function deleteConfirm($id)
     {
         $this->id = $id;
-        $this->dialog()->confirm('Atenção!', 'Tem certeza que deseja eliminar?', [
-            'confirm' => [
-                'text' => 'Confirmar',
-                'method' => 'delete',
-            ],
-            'cancel' => [
-                'text' => 'Cancelar',
-                'method' => 'cancel',
-            ]
-        ]);
+		$this->dialog()
+			->question('Atenção!', 'Tem certeza que deseja eliminar?')
+			->confirm('Confirmar', 'delete')
+			->cancel('Cancelar', 'cancel')
+			->send();
     }
 
     public function delete()
     {
         $query = Partition::where('id', $this->id)->first();
+		if ($query && $query->branches()->exists()) {
+           return $this->dialog()->error('Erro ao Eliminar', 'Não pode ser eliminado pois está associado a outro registo.')->send();
+        }		
         $query->delete();
         $this->reset();
         $this->resetValidation();
-        $this->dialog()->success('Sucesso', 'Eliminado com Sucesso.');
+		$this->dialog()->success('Successo', 'Eliminado com Sucesso.')->send();
     }
 
     public function cancel()
@@ -112,8 +153,8 @@ class Index extends Component
     {
         $query = Partition::all();
         $department = Department::pluck('name', 'id')->toArray();
-        $department = ['' => '--selecionar--'] + Department::pluck('name', 'id')->toArray();
-
-        return view('livewire.partition.index', compact('query','department'));
+        //$department = ['' => '--selecionar--'] + Department::pluck('name', 'id')->toArray();
+		$query2 = Branch::all();
+        return view('livewire.partition.index', compact('query','department','query2'));
     }
 }

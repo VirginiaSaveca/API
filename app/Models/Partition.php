@@ -23,10 +23,9 @@ class Partition extends Model
 
     }
 
-    public function branch()
+    public function branches()
     {
-        return $this->belongsTo(Branch::class, 'branch_id');
-
+        return $this->belongsToMany(Branch::class);
     }
 
 }
