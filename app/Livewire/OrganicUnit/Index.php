@@ -98,7 +98,7 @@ class Index extends Component
             $query->branches()->detach();
 
             foreach ($this->rows as $value) {
-                $query->branches()->attach($value['toll_price_id']);
+                $query->branches()->attach($value['branch_id']);
             }			
             $this->reset();
             $this->resetValidation();
