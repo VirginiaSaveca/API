@@ -20,15 +20,15 @@ class Branch extends Model
     public function employees(){
         return $this->hasMany(Employee::class);
     }
-    public function departments(){
-        return $this->hasMany(Department::class);
-    }
     public function partitions(){
         return $this->hasMany(Partition::class);
     }
     public function organic_units(){
         return $this->belongsToMany(OrganicUnit::class, 'branch_organic_unit');      // PIVOT TABLE
     }
+    public function departments(){
+        return $this->belongsToMany(OrganicUnit::class, 'branch_department');      // PIVOT TABLE
+    }	
     public function internal_transfers(){
         return $this->hasMany(InternalTransfer::class);
     }
