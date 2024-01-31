@@ -21,13 +21,13 @@ class Branch extends Model
         return $this->hasMany(Employee::class);
     }
     public function partitions(){
-        return $this->hasMany(Partition::class);
+        return $this->belongsToMany(Partition::class, 'branch_partition');      // PIVOT TABLE);
     }
     public function organic_units(){
         return $this->belongsToMany(OrganicUnit::class, 'branch_organic_unit');      // PIVOT TABLE
     }
     public function departments(){
-        return $this->belongsToMany(OrganicUnit::class, 'branch_department');      // PIVOT TABLE
+        return $this->belongsToMany(Department::class, 'branch_department');      // PIVOT TABLE
     }	
     public function internal_transfers(){
         return $this->hasMany(InternalTransfer::class);

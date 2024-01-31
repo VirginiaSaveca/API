@@ -69,7 +69,7 @@ class Index extends Component
     
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
     
-        Department::create($validated);
+        $query = Department::create($validated);
 		
         foreach ($this->rows as $value) {
             $query->branches()->attach($value['branch_id']);
