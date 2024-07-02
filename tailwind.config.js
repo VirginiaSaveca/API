@@ -56,7 +56,7 @@ export default {
                     '950': '#202531',
                 }
             },
-            
+
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
