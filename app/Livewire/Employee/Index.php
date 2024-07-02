@@ -158,9 +158,9 @@ class Index extends Component
     public function delete()
     {
         $query = Partition::where('id', $this->id)->first();
-		if ($query && $query->branches()->exists()) {
-           return $this->dialog()->error('Erro ao Eliminar', 'Não pode ser eliminado pois está associado a outro registo.')->send();
-        }		
+		//if ($query && $query->branches()->exists()) {
+        //   return $this->dialog()->error('Erro ao Eliminar', 'Não pode ser eliminado pois está associado a outro registo.')->send();
+        //}		
         $query->delete();
         $this->reset();
         $this->resetValidation();
