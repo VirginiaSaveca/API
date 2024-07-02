@@ -86,6 +86,15 @@ class Index extends Component
     public function store()
     {
         $validated = $this->validate();
+        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
+        $validated['branch_organic_unit_id'] = OrganicUnit::where('name', $validated['branch_organic_unit_id'])->value('id');
+        $validated['branch_department_id'] = Department::where('name', $validated['branch_department_id'])->value('id');
+        $validated['branch_partition_id'] = Partition::where('name', $validated['branch_partition_id'])->value('id');
+        $validated['career_id'] = Career::where('name', $validated['career_id'])->value('id');
+        $validated['category_id'] = Category::where('name', $validated['category_id'])->value('id');
+        $validated['level_id'] = Level::where('name', $validated['level_id'])->value('id');
+        $validated['salary_level_id'] = SalaryLevel::where('level', $validated['salary_level_id'])->value('id');
+
         $query = Employee::create($validated);
 	
         $this->reset();
@@ -98,15 +107,15 @@ class Index extends Component
         $this->resetValidation();
         $query = Employee::findOrFail($id);
         $this->id = $id;
-		
-		$this->branch_id					= $query->branch_id;
+		// dd($query);
+		$this->branch_id					= $query->branch->name;
 		$this->branch_organic_unit_id		= $query->branch_organic_unit_id;
 		$this->branch_department_id			= $query->branch_department_id;
 		$this->branch_partition_id			= $query->branch_partition_id;
-		$this->career_id					= $query->career_id;
-		$this->category_id					= $query->category_id;
-		$this->level_id						= $query->level_id;
-		$this->salary_level_id				= $query->salary_level_id;
+		$this->career_id					= $query->career->name;
+		$this->category_id					= $query->category->name;
+		$this->level_id						= $query->level->name;
+		$this->salary_level_id				= $query->salary_level->level;
 		$this->name							= $query->name;
 		$this->birthdate					= $query->birthdate;
 		$this->contact						= $query->contact;
@@ -167,14 +176,14 @@ class Index extends Component
     public function render()
     {
         $query  = Employee::all();
-		$query2 = Branch::pluck('id')->toArray(); //pluck('name', 'id')->toArray();
-		$query3 = OrganicUnit::pluck('id')->toArray();
-		$query4 = Department::pluck('id')->toArray(); //Department::all();
-		$query5 = Partition::pluck('id')->toArray();
-		$query6 = Career::pluck('id')->toArray();
-		$query7 = Category::pluck('id')->toArray();
-		$query8 = Level::pluck('id')->toArray();
-		$query9 = SalaryLevel::pluck('id')->toArray();				
+		$query2 = Branch::pluck('name', 'id')->toArray(); //pluck('name', 'id')->toArray();
+		$query3 = OrganicUnit::pluck('name','id')->toArray();
+		$query4 = Department::pluck('name','id')->toArray(); //Department::all();
+		$query5 = Partition::pluck('name','id')->toArray();
+		$query6 = Career::pluck('name','id')->toArray();
+		$query7 = Category::pluck('name','id')->toArray();
+		$query8 = Level::pluck('name','id')->toArray();
+		$query9 = SalaryLevel::pluck('level','id')->toArray();				
         return view('livewire.employee.index', compact('query','query2','query3','query4','query5','query6','query7','query8','query9'));
     }
 }

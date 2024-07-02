@@ -48,7 +48,7 @@ class Employee extends Model
     {
         return $this->belongsTo(Career::class);
     }
-    public function salary_levels()
+    public function salary_level()
     {
         return $this->belongsTo(SalaryLevel::class);
     }
