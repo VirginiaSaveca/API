@@ -165,7 +165,9 @@
                                     <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
                                         <!-- Actions Desktop -->
                                         <div class="lg:flex justify-center items-center gap-1 hidden">
-
+											{{-- @if(Auth::user()->can($title.'.edit')) --}}
+                                            <x-button md wire:click='' icon="clipboard" color="yellow"/>
+                                            {{-- @endif --}}
                                             {{-- @if(Auth::user()->can($title.'.edit')) --}}
                                             <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square" color="blue"/>
                                             {{-- @endif --}}
