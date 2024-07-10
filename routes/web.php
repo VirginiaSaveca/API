@@ -9,6 +9,7 @@ use App\Livewire\Career;
 use App\Livewire\Category;
 use App\Livewire\Level;
 use App\Livewire\Position;
+use App\Livewire\Qualification;
 use App\Livewire\SalaryLevel;
 use App\Livewire\Employee;
 
@@ -32,6 +33,7 @@ Route::get('/level', Level\Index::class)->name('level');
 Route::get('/position', Position\Index::class)->name('position');
 Route::get('/salarylevel', SalaryLevel\Index::class)->name('salarylevel');
 Route::get('/employee', Employee\Index::class)->name('employee');
+Route::get('/qualification', Qualification\Index::class)->name('qualification');
 
 
 require __DIR__.'/auth.php';

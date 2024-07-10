@@ -69,9 +69,8 @@ class Index extends Component
             'confirm' => [
                 'text' => 'Confirmar',
                 'method' => 'delete',
-                // 'params' => 'Confirmed Successfully' // Can be a string or array
             ],
-            /* Cancel is optional */
+           
             'cancel' => [
                 'text' => 'Cancelar',
                 'method' => 'cancel',
