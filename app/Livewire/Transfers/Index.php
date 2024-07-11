@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Qualification;
+namespace App\Livewire\Transfers;
 
-use App\Models\Qualification;
+use App\Models\Transfer;
 use Livewire\Component;
 use App\Models\Employee;
 use Livewire\Attributes\Rule;
@@ -16,16 +16,14 @@ class Index extends Component
     public $id;
     public $isUpdate = 0;
     public $isDelete = 0;
-    public string $title = "Qualification";
-    public string $titlept = "Qualificações";
+    public string $title = "Transfers";
+    public string $titlept = "Transferencias";
 
     // #[Rule('required', as: '"Nome"')]
-    public $training_area;
+    public $to;
     public $employee_id;
-    public $level;
-    public $year;
-    public $place;
-    public $obs;
+    public $date;
+   
 
     public $rows             = [];
 
@@ -36,12 +34,10 @@ class Index extends Component
     protected function rules()
     {
         $rules = [
-            'training_area' => 'required',
-            'employee_id' => 'required',
-            'level' => 'required',
-            'year' => 'required',
-            'place' => 'required',
-            'obs' => 'required',
+         'to'             => 'required',
+         'employee_id'    => 'required',
+         'date'           => 'required',
+           
         ];
 
         return $rules;
@@ -60,7 +56,7 @@ class Index extends Component
             $validated = $this->validate();
         
             $validated['employee_id'] = Employee::where('name', $validated['employee_id'])->value('id');      
-             Qualification::create($validated);
+             Transfer::create($validated);
     
             $this->reset();
             $this->resetValidation();
@@ -72,15 +68,12 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query                           = Qualification::findOrFail($id);
+        $query                           = Transfer::findOrFail($id);
         $this->id                        = $id;
-        $this->training_area             = $query->training_area;
+        $this->to                        = $query->to;
         $this->employee_id               = $query->employee->name;
-        $this->level                     = $query->level;
-        $this->year                      = $query->year;
-        $this->place                     = $query->place;
-        $this->obs                       = $query->obs;
-
+        $this->date                      = $query->date;
+     
         $this->showForm                 = true;
     }
 
@@ -90,7 +83,7 @@ class Index extends Component
         $validated = $this->validate();
         $validated['employee_id'] = Employee::where('name', $validated['employee_id'])->value('id');
     
-            $query = Qualification::findOrFail($this->id);
+            $query = Transfer::findOrFail($this->id);
             $query->update($validated);
     
             $this->reset();
@@ -112,7 +105,7 @@ class Index extends Component
 
     public function delete()
     {
-        $query = Qualification::where('id', $this->id)->first();
+        $query = Transfer::where('id', $this->id)->first();
 
         $query->delete();
         $this->reset();
@@ -127,10 +120,13 @@ class Index extends Component
 
     public function render()
     {
-        $query = Qualification::all();
+        $query = Transfer::all();
         $query2 = Employee::pluck('name', 'id')->toArray();
-        //$organicUnits = ['' => '--selecionar--'] + $organicUnits;
-
-        return view('livewire.qualification.index', compact('query', 'query2'));
+       
+        return view('livewire.transfers.index', compact('query', 'query2'));
     }
 }
+
+
+
+

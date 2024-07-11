@@ -12,6 +12,7 @@ use App\Livewire\Position;
 use App\Livewire\Qualification;
 use App\Livewire\SalaryLevel;
 use App\Livewire\Employee;
+use App\Livewire\Transfers;
 
 Route::view('/', 'welcome');
 
@@ -34,6 +35,7 @@ Route::get('/position', Position\Index::class)->name('position');
 Route::get('/salarylevel', SalaryLevel\Index::class)->name('salarylevel');
 Route::get('/employee', Employee\Index::class)->name('employee');
 Route::get('/qualification', Qualification\Index::class)->name('qualification');
+Route::get('/transfer', Transfers\Index::class)->name('transfer');
 
 
 require __DIR__.'/auth.php';
