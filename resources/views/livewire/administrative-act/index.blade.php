@@ -15,17 +15,18 @@
                                         option-value="key" 
                                         option-label="value"
 										searchable
-            />
+                                    />
 
-                <x-input wire:model="name" label="Nome do Dependente *" />
-                <x-select.styled  wire:model="relation_type"
-                         label="Tipo de Relação *" hint="Selecione uma opção" :options="[
+                <x-select.styled  wire:model="name"
+                         label="Nome *" hint="Selecione uma opção" :options="[
                                 ['label' => 'Promoção',       'value' => 'Promoção', 'description' => ''],
                                 ['label' => 'Progressão',      'value' => 'Progressão', 'description' => ''],
                                 ['label' => 'Mudança de Carreira',    'value' => 'Mudança de Carreira', 'description' => ''],
                             ]"  
                 select="label:label|value:value" />
-                <x-input wire:model="birthdate" label="Data do Nascimento *" />          
+                <x-input wire:model="appointment_date" label="Data do Despacho *" />
+                <x-input wire:model="visa_date" label="Data do Visto *" />
+                <x-input wire:model="visa_nr" label="Número do Visto *" />               
 			</div>
             </div>
 	        <br>
