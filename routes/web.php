@@ -13,6 +13,7 @@ use App\Livewire\Qualification;
 use App\Livewire\SalaryLevel;
 use App\Livewire\Employee;
 use App\Livewire\Transfers;
+use App\Livewire\AdministrativeAct;
 
 Route::view('/', 'welcome');
 
@@ -36,6 +37,7 @@ Route::get('/salarylevel', SalaryLevel\Index::class)->name('salarylevel');
 Route::get('/employee', Employee\Index::class)->name('employee');
 Route::get('/qualification', Qualification\Index::class)->name('qualification');
 Route::get('/transfer', Transfers\Index::class)->name('transfer');
+Route::get('/adminacts', AdministrativeAct\Index::class)->name('adminacts');
 
 
 require __DIR__.'/auth.php';

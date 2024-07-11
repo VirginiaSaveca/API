@@ -70,6 +70,10 @@ class Employee extends Model
     {
         return $this->hasMany(Qualification::class);
     }
+    public function administrative_acts()
+    {
+        return $this->hasMany(AdministrativeAct::class);
+    }
     public function transfers()
     {
         return $this->hasMany(Transfer::class);

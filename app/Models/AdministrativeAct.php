@@ -41,10 +41,9 @@ class AdministrativeAct extends Model
         return Carbon::parse($value)->format('d/m/Y');
     }
 
-    public function employees()
+    public function employee()
     {
-    
-            return $this->belongsToMany(Employee::class);
+        return $this->belongsTo(Employee::class);
     }
 
 }
