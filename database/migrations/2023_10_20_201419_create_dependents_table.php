@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('relation_type');
 
-
             $table->timestamps();
         });
     }

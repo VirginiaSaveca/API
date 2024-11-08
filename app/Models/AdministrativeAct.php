@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdministrativeAct extends Model
 {
     use HasFactory, HasUuids;
-    
+
     protected $guarded = [];
 
     public function uniqueIds()
@@ -23,18 +23,15 @@ class AdministrativeAct extends Model
         $this->attributes['appointment_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 
-
     public function getAppointmentDateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
 
-    
     public function setVisaDateAttribute($value)
     {
         $this->attributes['visa_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
-
 
     public function getVisaDateAttribute($value)
     {
@@ -45,5 +42,4 @@ class AdministrativeAct extends Model
     {
         return $this->belongsTo(Employee::class);
     }
-
 }

@@ -10,7 +10,6 @@ class Level extends Model
 {
     use HasFactory, HasUuids;
 
-    
     protected $guarded = [];
 
     public function uniqueIds()
@@ -18,7 +17,8 @@ class Level extends Model
         return ['uuid'];
     }
 
-    public function employees(){
+    public function employees()
+    {
         return $this->hasMany(Employee::class);
     }
 }

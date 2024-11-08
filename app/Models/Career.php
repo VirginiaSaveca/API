@@ -16,8 +16,9 @@ class Career extends Model
     {
         return ['uuid'];
     }
-    
-    public function employees(){
+
+    public function employees()
+    {
         return $this->hasMany(Employee::class);
     }
 }

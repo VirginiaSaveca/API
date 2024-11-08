@@ -10,13 +10,13 @@ class OrganicUnit extends Model
 {
     use HasFactory, HasUuids;
 
-    
     protected $guarded = [];
 
     public function uniqueIds()
     {
         return ['uuid'];
     }
+
     public function departments()
     {
         return $this->hasMany(Department::class);
@@ -26,5 +26,4 @@ class OrganicUnit extends Model
     {
         return $this->belongsToMany(Branch::class);
     }
-    
 }

@@ -23,7 +23,6 @@ class Employee extends Model
         $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 
-
     public function getBirthdateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
@@ -34,7 +33,6 @@ class Employee extends Model
         $this->attributes['bi_validate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 
-
     public function getBiValidateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
@@ -44,10 +42,12 @@ class Employee extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+
     public function career()
     {
         return $this->belongsTo(Career::class);
     }
+
     public function salary_level()
     {
         return $this->belongsTo(SalaryLevel::class);
@@ -62,26 +62,32 @@ class Employee extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     public function internal_transfers()
     {
         return $this->hasMany(InternalTransfer::class);
     }
+
     public function qualifications()
     {
         return $this->hasMany(Qualification::class);
     }
+
     public function administrative_acts()
     {
         return $this->hasMany(AdministrativeAct::class);
     }
+
     public function transfers()
     {
         return $this->hasMany(Transfer::class);
     }
+
     public function dependents()
     {
         return $this->hasMany(Dependent::class);
     }
+
     public function holidays()
     {
         return $this->hasMany(Holiday::class);

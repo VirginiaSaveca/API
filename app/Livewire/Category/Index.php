@@ -1,23 +1,25 @@
 <?php
 
 namespace App\Livewire\Category;
+
 use App\Models\Category;
-
-use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Livewire\Component;
 use TallStackUi\Traits\Interactions;
-
-use function Livewire\Volt\rules;
 
 class Index extends Component
 {
     use Interactions;
 
     public $id;
+
     public $isUpdate = 0;
+
     public $isDelete = 0;
-    public string $title = "category";
-    public string $titlept = "Carreira";
+
+    public string $title = 'category';
+
+    public string $titlept = 'Carreira';
 
     // #[Rule('required', as: '"Nome"')]
     public $name;
@@ -25,7 +27,7 @@ class Index extends Component
     protected function rules()
     {
         $rules = [
-            'name' => 'required|unique:categories,name,' . $this->id,
+            'name' => 'required|unique:categories,name,'.$this->id,
         ];
 
         return $rules;
@@ -37,27 +39,26 @@ class Index extends Component
         Category::create($validated);
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
+        $this->dialog()->success('Successo', 'Adicionado com Sucesso.');
     }
 
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = Category::findOrFail($id);
-        $this->id                       = $id;
-        $this->name                     = $query->name;
+        $query = Category::findOrFail($id);
+        $this->id = $id;
+        $this->name = $query->name;
     }
 
     public function update()
     {
         $validated = $this->validate();
-        if ($this->id) 
-        {
+        if ($this->id) {
             $query = Category::findOrFail($this->id);
             $query->update($validated);
             $this->reset();
             $this->resetValidation();
-			$this->dialog()->success('Successo', 'Editado com Sucesso.');
+            $this->dialog()->success('Successo', 'Editado com Sucesso.');
         }
     }
 
@@ -75,18 +76,19 @@ class Index extends Component
                 'text' => 'Cancelar',
                 'method' => 'cancel',
                 // 'params' => 'Cancelled Successfully' // Can be a string or array
-            ]
+            ],
         ]);
     }
 
     public function delete()
     {
-        $query = Category::where('id',$this->id)->first();
+        $query = Category::where('id', $this->id)->first();
         $query->delete();
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Eliminado com Sucesso.');
+        $this->dialog()->success('Successo', 'Eliminado com Sucesso.');
     }
+
     public function cancel()
     {
         $this->reset();
@@ -96,7 +98,7 @@ class Index extends Component
     public function render()
     {
         $query = Category::all();
+
         return view('livewire.category.index', compact('query'));
     }
 }
-

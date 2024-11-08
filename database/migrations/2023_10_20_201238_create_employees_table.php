@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('bi_nr');
             $table->date('bi_validate');
             $table->integer('nuit');
-            
+
             $table->timestamps();
         });
     }

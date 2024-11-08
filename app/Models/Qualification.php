@@ -15,7 +15,7 @@ class Qualification extends Model
     public function uniqueIds()
     {
         return ['uuid'];
-    } 
+    }
 
     public function employee()
     {

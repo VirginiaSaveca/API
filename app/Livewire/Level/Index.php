@@ -3,22 +3,23 @@
 namespace App\Livewire\Level;
 
 use App\Models\Level;
-
-use Livewire\Component;
 use Livewire\Attributes\Rule;
+use Livewire\Component;
 use TallStackUi\Traits\Interactions;
-
-use function Livewire\Volt\rules;
 
 class Index extends Component
 {
     use Interactions;
 
     public $id;
+
     public $isUpdate = 0;
+
     public $isDelete = 0;
-    public string $title = "level";
-    public string $titlept = "Level";
+
+    public string $title = 'level';
+
+    public string $titlept = 'Level';
 
     // #[Rule('required', as: '"Nome"')]
     public $name;
@@ -26,7 +27,7 @@ class Index extends Component
     protected function rules()
     {
         $rules = [
-            'name' => 'required|unique:levels,name,' . $this->id,
+            'name' => 'required|unique:levels,name,'.$this->id,
         ];
 
         return $rules;
@@ -38,27 +39,26 @@ class Index extends Component
         Level::create($validated);
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Adicionado com Sucesso.');
+        $this->dialog()->success('Successo', 'Adicionado com Sucesso.');
     }
 
     public function edit($id)
     {
         $this->resetValidation();
-        $query                          = Level::findOrFail($id);
-        $this->id                       = $id;
-        $this->name                     = $query->name;
+        $query = Level::findOrFail($id);
+        $this->id = $id;
+        $this->name = $query->name;
     }
 
     public function update()
     {
         $validated = $this->validate();
-        if ($this->id) 
-        {
+        if ($this->id) {
             $query = Level::findOrFail($this->id);
             $query->update($validated);
             $this->reset();
             $this->resetValidation();
-			$this->dialog()->success('Successo', 'Editado com Sucesso.');
+            $this->dialog()->success('Successo', 'Editado com Sucesso.');
         }
     }
 
@@ -76,18 +76,19 @@ class Index extends Component
                 'text' => 'Cancelar',
                 'method' => 'cancel',
                 // 'params' => 'Cancelled Successfully' // Can be a string or array
-            ]
+            ],
         ]);
     }
 
     public function delete()
     {
-        $query = Level::where('id',$this->id)->first();
+        $query = Level::where('id', $this->id)->first();
         $query->delete();
         $this->reset();
         $this->resetValidation();
-		$this->dialog()->success('Successo', 'Eliminado com Sucesso.');
+        $this->dialog()->success('Successo', 'Eliminado com Sucesso.');
     }
+
     public function cancel()
     {
         $this->reset();
@@ -97,8 +98,7 @@ class Index extends Component
     public function render()
     {
         $query = Level::all();
+
         return view('livewire.level.index', compact('query'));
     }
 }
-
-

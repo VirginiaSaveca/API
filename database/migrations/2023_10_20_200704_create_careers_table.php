@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->string('name'); 
+            $table->string('name');
             $table->timestamps();
         });
     }

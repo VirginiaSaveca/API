@@ -27,5 +27,4 @@ class Partition extends Model
     {
         return $this->belongsToMany(Branch::class);
     }
-
 }

@@ -10,7 +10,6 @@ class InternalTransfer extends Model
 {
     use HasFactory, HasUuids;
 
-    
     protected $guarded = [];
 
     public function uniqueIds()
@@ -18,11 +17,13 @@ class InternalTransfer extends Model
         return ['uuid'];
     }
 
-    public function employee(){
+    public function employee()
+    {
         return $this->belongsTo(Employee::class);
     }
-    public function branch(){
+
+    public function branch()
+    {
         return $this->belongsTo(Branch::class);
     }
-    
 }

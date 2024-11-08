@@ -23,7 +23,6 @@ class Holiday extends Model
         $this->attributes['start_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 
-
     public function getStartDateAttribute($value)
     {
         return Carbon::parse($value)->format('d/m/Y');
@@ -33,7 +32,6 @@ class Holiday extends Model
     {
         $this->attributes['end_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
-
 
     public function getEndDateAttribute($value)
     {
