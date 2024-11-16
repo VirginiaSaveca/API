@@ -1,0 +1,24 @@
+meta {
+  name: register
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{url}}/api/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Test User 7",
+    "email": "test7@example.com",
+    "password": "password",
+    "device_name": "device_name"
+  }
+}
+
+vars:post-response {
+  token: res.body.token
+}

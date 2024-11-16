@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\LogoutController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', LoginController::class);
+Route::middleware('auth:sanctum')->get('/logout', LogoutController::class);
+Route::get('/register', RegisterController::class);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return UserResource::make($request->user());
 });

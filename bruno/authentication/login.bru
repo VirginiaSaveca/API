@@ -1,0 +1,23 @@
+meta {
+  name: login
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{url}}/api/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@example.com",
+    "password": "password",
+    "device_name": "device_name"
+  }
+}
+
+vars:post-response {
+  token: res.body.token
+}
