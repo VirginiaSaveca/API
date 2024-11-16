@@ -3,7 +3,7 @@
 namespace App\Livewire\Branch;
 
 use App\Models\Branch;
-use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
@@ -11,38 +11,50 @@ class Index extends Component
 {
     use Interactions;
 
-    public $id;
+    public $title = 'branch';
 
-    public $isUpdate = 0;
+    public $isUpdate = false;
 
-    public $isDelete = 0;
+    public $isDelete = false;
 
-    public string $title = 'branch';
+    #[Locked]
+    public $id = null;
 
-    public string $titlept = 'Extensão';
+    #[Locked]
+    public $name = null;
 
-    // #[Rule('required', as: '"Nome"')]
-    public $name;
+    #[Locked]
+    public $address = null;
 
-    #[Rule('required', as: '"Endereço"')]
-    public $address;
+    #[Locked]
+    public $showForm = false;
 
-    protected function rules()
+    public function create()
     {
-        $rules = [
-            'name' => 'required|unique:branches,name,'.$this->id,
-        ];
+        $this->reset();
+        $this->showForm = true;
 
-        return $rules;
     }
 
     public function store()
     {
-        $validated = $this->validate();
-        Branch::create($validated);
+        $validated = $this->validate(
+            rules: [
+                'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)],
+                'address' => ['required', 'string', 'max:255'],
+            ],
+            attributes: [
+                'name' => 'Nome',
+                'address' => 'Endereço',
+            ]);
+        Branch::create([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
+        ]);
         $this->reset();
         $this->resetValidation();
-        $this->dialog()->success('Successo', 'Adicionado com Sucesso.');
+        $this->dialog()->success('Successo', 'Adicionado com Sucesso.')->send();
+        $this->showForm = false;
     }
 
     public function edit($id)
@@ -52,36 +64,41 @@ class Index extends Component
         $this->id = $id;
         $this->name = $query->name;
         $this->address = $query->address;
+        $this->showForm = true;
     }
 
     public function update()
     {
-        $validated = $this->validate();
+        $validated = $this->validate(
+            rules: [
+                'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)->ignore($this->id)],
+                'address' => ['required', 'string', 'max:255'],
+            ],
+            attributes: [
+                'name' => 'Nome',
+                'address' => 'Endereço',
+            ]);
         if ($this->id) {
             $query = Branch::findOrFail($this->id);
-            $query->update($validated);
+            $query->update([
+                'name' => $validated['name'],
+                'address' => $validated['address'],
+            ]);
             $this->reset();
             $this->resetValidation();
             $this->dialog()->success('Successo', 'Editado com Sucesso.');
         }
+        $this->showForm = false;
     }
 
     public function deleteConfirm($id)
     {
         $this->id = $id;
-        $this->dialog()->confirm('Atenção!', 'Tem certeza que deseja eliminar?', [
-            'confirm' => [
-                'text' => 'Confirmar',
-                'method' => 'delete',
-                // 'params' => 'Confirmed Successfully' // Can be a string or array
-            ],
-            /* Cancel is optional */
-            'cancel' => [
-                'text' => 'Cancelar',
-                'method' => 'cancel',
-                // 'params' => 'Cancelled Successfully' // Can be a string or array
-            ],
-        ]);
+        $this->dialog()
+            ->question('Atenção!', 'Tem certeza que deseja eliminar?')
+            ->confirm('Confirmar', 'delete')
+            ->cancel('Cancelar', 'cancel')
+            ->send();
     }
 
     public function delete()

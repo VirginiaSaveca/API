@@ -1,48 +1,47 @@
 <div class="m-0">
-    <div class="flex flex-col gap-6">
-        <x-card>
-            <x-slot:header>
-                ...
-            </x-slot:header>
-            <div class="p-6">
-                <form wire:submit="{{ $id ? 'update' : 'store' }}">
-                    <div class="grid gap-6 lg:grid-cols-3">
-                        <x-input wire:model="name" label="Nome *" />
-                        <x-input wire:model="address" label="Endereço *" />
+    @if ($showForm)
+        <div class="flex flex-col gap-6">
+            <x-card>
+                <x-slot:header>
+                    {{ isset($id) ? 'Atualizar' : 'Adicionar' }}
+                </x-slot:header>
+                <div class="p-6">
+                    <form wire:submit="{{ isset($id) ? 'update' : 'store' }}">
+                        <div class="grid gap-6 lg:grid-cols-3">
+                            <x-input wire:model="name" label="Nome *" />
 
-                        <div class="mt-6 justify">
-                            <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}"
-                                class="text-white bg-blue-500 hover:bg-blue-700" />
-                            <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
+                            <x-input wire:model="address" label="Endereço *" />
+
+                            <div class="mt-6 justify">
+                                <x-button type="submit" md text="{{ $id ? 'Actualizar' : 'Salvar' }}"
+                                    class="text-white bg-blue-500 hover:bg-blue-700" />
+                                <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </x-card>
-    </div>
+                    </form>
+                </div>
+            </x-card>
+        </div>
+    @endif
+
 
     <div class="flex flex-col gap-6 mt-6">
         <x-card>
             <x-slot:header>
-                <div class="flex flex-wrap items-center justify-between gap-1">
-                    <h4>...</h4>
-                    <div class="flex flex-wrap gap-1">
-                        <x-button md icon="plus" text="Adicionar"
-                            class="text-white bg-green-500 hover:bg-green-700" />
-                    </div>
+                <div class="flex flex-wrap gap-1">
+                    <x-button md icon="plus" text="Adicionar" class="text-white bg-green-500 hover:bg-green-700"
+                        color="blue" wire:click="create" />
                 </div>
             </x-slot:header>
-            <div class="p-6">
-                <div class="flex flex-wrap items-center justify-between py-2">
-                </div>
 
+            <div class="">
                 <table class="w-full shadow-md">
                     <thead
                         class="border-t divide-gray-300 bg-slate-300 bg-opacity-20 dark:bg-slate-800 dark:border-gray-700">
                         <tr>
                             <th
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
-                                ...</th>
+                            </th>
                             <th
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
                                 Nome</th>
@@ -50,27 +49,24 @@
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
                                 Endereço</th>
                             <th
-                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
-                                <div class="hidden lg:inline-block">Ações</div>
+                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 lg:table-cell">
+                                Ações
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php $count = 1 @endphp
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td
-                                    class="hidden px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
-                                    {{ $count++ }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                    class="py-1 text-sm font-light text-center border x-2 dark:border-slate-400 lg:table-cell">
+                                    {{ $value->id }}</td>
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->name }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->address }}</td>
                                 <td class="px-1 py-3 text-sm font-light text-center border dark:border-slate-400">
                                     <!-- Actions Desktop -->
-                                    <div class="items-center justify-center hidden gap-1 lg:flex">
+                                    <div class="items-center justify-center gap-1 lg:flex">
                                         {{-- @if (Auth::user()->can($title . '.edit')) --}}
                                         <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square"
                                             color="blue" />
@@ -85,8 +81,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="px-3 py-4">
             </div>
         </x-card>
     </div>
