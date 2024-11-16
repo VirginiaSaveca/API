@@ -2,228 +2,467 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <style>
-        [x-cloak] {
-            display: none;
-        }
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="{{ asset('vendor/remix_icon/4.5.0/remixicon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/inter/4.0/inter.min.css') }}" />
 
-    <!-- Scripts -->
     <tallstackui:script />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/dashboard.css'])
+
 </head>
 
-<body class="text-gray-800 font-inter">
+<body class="text-gray-800 font-inter dark">
     <x-dialog />
-    {{-- <x-toast /> --}}
 
-
-    <!-- main container -->
-
-    {{-- sidebar --}}
-
-    <div class="fixed left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform">
-        <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
-            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
-            <span class="text-lg font-bold text-white ml-3">Logo</span>
-        </a>
-
-        <ul class="mt-4">
-            <li @class(['mb-1 group', 'active' => Route::is('dashboard')])>
-                <a href="{{ route('dashboard') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Dashboard</span>
+    <!-- start: Sidebar -->
+    <div class="fixed top-0 left-0 z-50 w-64 h-full max-h-screen transition-transform bg-gray-900 sidebar-menu">
+        <div class="flex flex-col h-full">
+            <div class="px-4">
+                <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
+                    <img src="https://placehold.co/32x32" alt="" class="object-cover w-8 h-8 rounded">
+                    <span class="ml-3 text-lg font-bold text-white">Logo</span>
                 </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('oragnic_unit')])>
-                <a href="{{ route('oragnic_unit') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Oragnic Unit</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('department')])>
-                <a href="{{ route('department') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Department</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('partition')])>
-                <a href="{{ route('partition') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Partition</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('career')])>
-                <a href="{{ route('career') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Career</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('category')])>
-                <a href="{{ route('category') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Category</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('level')])>
-                <a href="{{ route('level') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Level</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('position')])>
-                <a href="{{ route('position') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Position</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('salarylevel')])>
-                <a href="{{ route('salarylevel') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Salary Level</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('employee')])>
-                <a href="{{ route('employee') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Employee</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('qualification')])>
-                <a href="{{ route('qualification') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Qualification</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('transfer')])>
-                <a href="{{ route('transfer') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Transfer</span>
-                </a>
-            </li>
-
-            <li @class(['mb-1 group', 'active' => Route::is('adminacts')])>
-                <a href="{{ route('adminacts') }}"
-                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Adminacts</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
-    {{-- end sidebar --}}
-
-    {{-- content --}}
-    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
-        <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
-            <button type="button" class="text-lg text-gray-600 sidebar-toggle">
-                <i class="ri-menu-line"></i>
-            </button>
-            <ul class="flex items-center text-sm ml-4">
-                <li class="mr-2">
-                    <a href="#" class="text-gray-400 hover:text-gray-600 font-medium">Dashboard</a>
-                </li>
-                <li class="text-gray-600 mr-2 font-medium">/</li>
-                <li class="text-gray-600 mr-2 font-medium">Analytics</li>
-            </ul>
-            <ul class="ml-auto flex items-center">
-                <li class="mr-1 dropdown">
-                    <button type="button"
-                        class="dropdown-toggle text-gray-400 w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
-                        <i class="ri-search-line"></i>
-                    </button>
-                </li>
-                <li class="dropdown">
-                    <button type="button"
-                        class="dropdown-toggle text-gray-400 w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
-                        <i class="ri-notification-3-line"></i>
-                    </button>
-                </li>
-                <li class="dropdown ml-3">
-                    <button type="button" class="dropdown-toggle flex items-center">
-                        <img src="https://placehold.co/32x32" alt=""
-                            class="w-8 h-8 rounded block object-cover align-middle">
-                    </button>
-                </li>
-            </ul>
-        </div>
-
-
-        <!-- Breadcrumb -->
-        <div class="sm:px-6 lg:px-8 pt-4">
-            <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-                aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                    <li class="inline-flex items-center">
-                        <a href="#"
-                            class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
-                                </path>
-                            </svg>
-                            Home
+            </div>
+            <div class="flex-1 px-4 overflow-y-auto">
+                <ul class="p-0 m-0">
+                    <li @class(['mb-1 group', 'active' => Route::is('dashboard')])>
+                        <a href="{{ route('dashboard') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Dashboard</span>
                         </a>
                     </li>
 
-                </ol>
-            </nav>
+                    <li @class(['mb-1 group', 'active' => Route::is('branch')])>
+                        <a href="{{ route('branch') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Ramificação</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('oragnic_unit')])>
+                        <a href="{{ route('oragnic_unit') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Unidade Orgânica</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('department')])>
+                        <a href="{{ route('department') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Departamento</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('partition')])>
+                        <a href="{{ route('partition') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Partição</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('career')])>
+                        <a href="{{ route('career') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Carreira</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('category')])>
+                        <a href="{{ route('category') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Categoria</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('level')])>
+                        <a href="{{ route('level') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Nível</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('position')])>
+                        <a href="{{ route('position') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Posição</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('salarylevel')])>
+                        <a href="{{ route('salarylevel') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Nível salarial</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('employee')])>
+                        <a href="{{ route('employee') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Funcionário</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('qualification')])>
+                        <a href="{{ route('qualification') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Qualificação</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('transfer')])>
+                        <a href="{{ route('transfer') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Transferência</span>
+                        </a>
+                    </li>
+
+                    <li @class(['mb-1 group', 'active' => Route::is('adminacts')])>
+                        <a href="{{ route('adminacts') }}"
+                            class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <span class="text-sm">Atos administrativos</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="fixed top-0 left-0 z-40 w-full h-full bg-black/50 md:hidden sidebar-overlay"></div>
+    <!-- end: Sidebar -->
+
+    <!-- start: Main -->
+    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
+        <div class="sticky top-0 left-0 z-30 flex items-center px-6 py-2 bg-white shadow-md shadow-black/5">
+            <button type="button" class="text-lg text-gray-600 sidebar-toggle">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <ul class="flex items-center ml-auto">
+                <li class="mr-1 dropdown">
+                    <button type="button"
+                        class="flex items-center justify-center w-8 h-8 text-gray-400 rounded dropdown-toggle hover:bg-gray-50 hover:text-gray-600">
+                        <i class="ri-search-line"></i>
+                    </button>
+                    <div
+                        class="z-30 hidden w-full max-w-xs bg-white border border-gray-100 rounded-md shadow-md dropdown-menu shadow-black/5">
+                        <form action="" class="p-4 border-b border-b-gray-100">
+                            <div class="relative w-full">
+                                <input type="text"
+                                    class="w-full py-2 pl-10 pr-4 text-sm border border-gray-100 rounded-md outline-none bg-gray-50 focus:border-blue-500"
+                                    placeholder="Search...">
+                                <i class="absolute text-gray-400 -translate-y-1/2 ri-search-line top-1/2 left-4"></i>
+                            </div>
+                        </form>
+                        <div class="mt-3 mb-2">
+                            <div class="text-[13px] font-medium text-gray-400 ml-4 mb-2">Recently</div>
+                            <ul class="overflow-y-auto max-h-64">
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                Create landing page</div>
+                                            <div class="text-[11px] text-gray-400">$345</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <button type="button"
+                        class="flex items-center justify-center w-8 h-8 text-gray-400 rounded dropdown-toggle hover:bg-gray-50 hover:text-gray-600">
+                        <i class="ri-notification-3-line"></i>
+                    </button>
+                    <div
+                        class="z-30 hidden w-full max-w-xs bg-white border border-gray-100 rounded-md shadow-md dropdown-menu shadow-black/5">
+                        <div class="flex items-center px-4 pt-4 border-b border-b-gray-100 notification-tab">
+                            <button type="button" data-tab="notification" data-tab-page="notifications"
+                                class="text-gray-400 font-medium text-[13px] hover:text-gray-600 border-b-2 border-b-transparent mr-4 pb-1 active">Notifications</button>
+                            <button type="button" data-tab="notification" data-tab-page="messages"
+                                class="text-gray-400 font-medium text-[13px] hover:text-gray-600 border-b-2 border-b-transparent mr-4 pb-1">Messages</button>
+                        </div>
+                        <div class="my-2">
+                            <ul class="overflow-y-auto max-h-64" data-tab-for="notification"
+                                data-page="notifications">
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                New order</div>
+                                            <div class="text-[11px] text-gray-400">from a user</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                New order</div>
+                                            <div class="text-[11px] text-gray-400">from a user</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                New order</div>
+                                            <div class="text-[11px] text-gray-400">from a user</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                New order</div>
+                                            <div class="text-[11px] text-gray-400">from a user</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                New order</div>
+                                            <div class="text-[11px] text-gray-400">from a user</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="hidden overflow-y-auto max-h-64" data-tab-for="notification"
+                                data-page="messages">
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                John Doe</div>
+                                            <div class="text-[11px] text-gray-400">Hello there!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                John Doe</div>
+                                            <div class="text-[11px] text-gray-400">Hello there!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                John Doe</div>
+                                            <div class="text-[11px] text-gray-400">Hello there!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                John Doe</div>
+                                            <div class="text-[11px] text-gray-400">Hello there!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center px-4 py-2 hover:bg-gray-50 group">
+                                        <img src="https://placehold.co/32x32" alt=""
+                                            class="block object-cover w-8 h-8 align-middle rounded">
+                                        <div class="ml-2">
+                                            <div
+                                                class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">
+                                                John Doe</div>
+                                            <div class="text-[11px] text-gray-400">Hello there!</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="ml-3 dropdown">
+                    <button type="button" class="flex items-center dropdown-toggle">
+                        <span class="text-[13px]">
+                            {{ Auth::user()->name }}
+                        </span>
+                    </button>
+                    <ul
+                        class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
+                        <li>
+                            <a href="{{ route('profile') }}"
+                                class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
+                        </li>
+                        <li>
+                            <form action="" method="POST">
+                                @csrf
+
+                                <button type="submit"
+                                    class="w-full flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
-        <div class="bg-gray-50 h-screen mt-2 rounded">
+        @if (isset($header))
+            <div class="px-6 py-6 mx-auto lg:px-8 max-w-7xl">
+                {{ $header }}
+            </div>
+        @endif
+
+
+
+        <div class="px-6 py-6 mx-auto lg:px-8 max-w-7xl">
             {{ $slot }}
         </div>
-
-
     </main>
-    {{-- end content --}}
+    <!-- end: Main -->
 
-
-    </div>
-    <!-- end main container -->
-
-    {{-- <footer class="bg-indigo-50 border-t border-indigo-300 p-2">Footer</footer> --}}
+    <script src="{{ asset('vendor/popper.js/2.11.8/popper.min.js') }}"></script>
+    <script src="{{ asset('vendor/chart.js/4.4.6/chart.min.js') }}"></script>
+    @vite(['resources/js/dashboard.js'])
 
     @livewireScripts
-    @vite('resources/js/app.js')
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="dist/js/script.js"></script>
 </body>
 
 </html>

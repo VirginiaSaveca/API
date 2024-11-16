@@ -1,6 +1,6 @@
-<div class="px-2 sm:px-6 lg:px-8">
+<div class="m-0">
     @if ($showForm == true)
-        <form wire:submit="{{ $id ? 'update' : 'store' }}">
+        <form wire:submit="{{ $id ? 'update' : 'store' }}" class="mb-6">
             <div class="flex flex-col gap-6">
                 <x-card>
                     <x-slot:header>
@@ -8,7 +8,7 @@
                     </x-slot:header>
                     <div class="p-6">
 
-                        <div class="grid lg:grid-cols-3 gap-6">
+                        <div class="grid gap-6 lg:grid-cols-3">
                             <x-input wire:model="name" label="Nome *" />
 
 
@@ -24,10 +24,10 @@
                             </x-slot:header>
 
                             <div class="p-6">
-                                <div class="justify text-left">
+                                <div class="text-left justify">
                                     <x-button md wire:click.prevent='addRow' text="+" color="sky" />
                                 </div>
-                                <div class="border-t-2 border-gray-400 h-1 dark:border-gray-500"></div>
+                                <div class="h-1 border-t-2 border-gray-400 dark:border-gray-500"></div>
 
                                 @foreach ($rows as $index => $row)
                                     <div class="flex py-2 border-b">
@@ -36,7 +36,7 @@
                                                 <div class="form-group">
                                                     <select name="exam_id"
                                                         wire:model="rows.{{ $index }}.branch_id"
-                                                        class="block w-full p-2 border rounded-md bg-white dark:bg-gray-800 text-black dark:text-white">
+                                                        class="block w-full p-2 text-black bg-white border rounded-md dark:bg-gray-800 dark:text-white">
                                                         <option value="">Seleccione</option>
                                                         @foreach ($query2 as $value)
                                                             <option value="{{ $value->id }}"
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="px-1 w-20 text-right">
+                                        <div class="w-20 px-1 text-right">
                                             <x-button md wire:click.prevent='removeRow({{ $index }})'
                                                 text="-" color="red" />
                                         </div>
@@ -62,7 +62,7 @@
                             </div>
                         </x-card>
 
-                        <div class="justify mt-6 text-right">
+                        <div class="mt-6 text-right justify">
                             <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                             <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
                         </div>
@@ -77,24 +77,24 @@
         </form>
     @endif
 
-    <div class="flex flex-col gap-6 mt-6">
+    <div class="flex flex-col gap-6">
         <x-card>
             <x-slot:header>
-                <div class="flex flex-wrap justify-between items-center gap-1">
+                <div class="flex flex-wrap items-center justify-between gap-1">
                     <h4>...</h4>
                 </div>
             </x-slot:header>
-            <div class="px-6 justify text-right">
+            <div class="px-6 text-right justify">
                 <x-button md wire:click="create" icon="plus" text="Adicionar" color="blue" />
             </div>
 
             <div class="p-6">
-                <div class="flex flex-wrap justify-between items-center py-2">
+                <div class="flex flex-wrap items-center justify-between py-2">
                 </div>
 
                 <table class="w-full shadow-md">
                     <thead
-                        class="bg-slate-300 bg-opacity-20 border-t dark:bg-slate-800 divide-gray-300 dark:border-gray-700">
+                        class="border-t divide-gray-300 bg-slate-300 bg-opacity-20 dark:bg-slate-800 dark:border-gray-700">
                         <tr>
                             <th
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
@@ -116,18 +116,18 @@
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td
-                                    class="border dark:border-slate-400 py-1 px-2 font-light text-sm text-center hidden lg:table-cell">
+                                    class="hidden px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
                                     {{ $count++ }}</td>
                                 <td
-                                    class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">
+                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->name }}</td>
                                 <td
-                                    class="border dark:border-slate-400 py-1 px-2 font-light text-sm hidden lg:table-cell">
+                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->department->name }}</td>
 
-                                <td class="border dark:border-slate-400 py-3 px-1 font-light text-sm text-center">
+                                <td class="px-1 py-3 text-sm font-light text-center border dark:border-slate-400">
                                     <!-- Actions Desktop -->
-                                    <div class="lg:flex justify-center items-center gap-1 hidden">
+                                    <div class="items-center justify-center hidden gap-1 lg:flex">
 
                                         {{-- @if (Auth::user()->can($title . '.edit')) --}}
                                         <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square"
@@ -146,7 +146,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="py-4 px-3">
+            <div class="px-3 py-4">
             </div>
         </x-card>
 
