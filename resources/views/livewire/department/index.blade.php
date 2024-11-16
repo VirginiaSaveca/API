@@ -17,7 +17,7 @@
                         <x-card>
                             <x-slot:header>
                                 <div>
-                                    Adicionar Extenssão
+                                    Adicionar Extensão
                                 </div>
                             </x-slot:header>
 

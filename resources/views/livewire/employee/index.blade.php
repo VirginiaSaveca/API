@@ -9,8 +9,8 @@
                     <div class="p-6">
 
                         <div class="grid gap-6 lg:grid-cols-3">
-                            <x-select.styled wire:model="branch_id" label="Extenssão *" :options="$query2"
-                                option-value="key" option-label="value" searchable />
+                            <x-select.styled wire:model="branch_id" label="Extensão *" :options="$query2" option-value="key"
+                                option-label="value" searchable />
                             <x-select.styled wire:model="branch_organic_unit_id" label="Departamento *"
                                 :options="$query3" option-value="key" option-label="value" searchable />
                             <x-select.styled wire:model="branch_department_id" label="Departamento *" :options="$query4"

@@ -4,7 +4,7 @@ namespace App\Livewire\OrganicUnit;
 
 use App\Models\Branch;
 use App\Models\OrganicUnit;
-use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
@@ -29,16 +29,7 @@ class Index extends Component
 
     public $branch_id = [];
 
-    public $showForm = 0;
-
-    protected function rules()
-    {
-        $rules = [
-            'name' => 'required|unique:organic_units,name,'.$this->id,
-        ];
-
-        return $rules;
-    }
+    public $showForm = false;
 
     public function addRow()
     {
@@ -62,8 +53,19 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate();
-        $query = OrganicUnit::create($validated);
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
+
+        $validated = $this->validate(
+            rules: [
+                'name' => ['required', 'string', Rule::unique(OrganicUnit::class, 'name')],
+                'branch_id' => ['nullable', 'array'],
+                'branch_id.*' => ['required', 'numeric'],
+            ],
+            attributes: [
+                'name' => 'Nome', 'branch_id' => 'Extensão',
+            ]
+        );
+        $query = OrganicUnit::create(['name' => $validated['name']]);
 
         foreach ($this->rows as $value) {
             $query->branches()->attach($value['branch_id']);
@@ -93,10 +95,21 @@ class Index extends Component
 
     public function update()
     {
-        $validated = $this->validate();
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
+
+        $validated = $this->validate(
+            [
+                'name' => ['required', 'string', Rule::unique(OrganicUnit::class, 'name')->ignore($this->id)],
+                'branch_id' => ['nullable', 'array'],
+                'branch_id.*' => ['required', 'numeric'],
+            ],
+            attributes: [
+                'name' => 'Nome', 'branch_id' => 'Extensão',
+            ]
+        );
         if ($this->id) {
             $query = OrganicUnit::findOrFail($this->id);
-            $query->update($validated);
+            $query->update(['name' => $validated['name']]);
 
             $query->branches()->detach();
 
