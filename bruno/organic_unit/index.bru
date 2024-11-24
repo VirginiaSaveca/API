@@ -1,0 +1,15 @@
+meta {
+  name: index
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{url}}/api/organic_units
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

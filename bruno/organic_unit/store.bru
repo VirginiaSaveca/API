@@ -1,0 +1,22 @@
+meta {
+  name: store
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/api/organic_units
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Name b32bbeh2",
+    "branches": [2]
+  }
+}
