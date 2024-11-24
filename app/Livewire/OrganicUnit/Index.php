@@ -63,6 +63,7 @@ class Index extends Component
             ],
             attributes: [
                 'name' => 'Nome', 'branch_id' => 'Extensão',
+                'branch_id.*' => 'extensão',
             ]
         );
         $query = OrganicUnit::create(['name' => $validated['name']]);
@@ -105,6 +106,7 @@ class Index extends Component
             ],
             attributes: [
                 'name' => 'Nome', 'branch_id' => 'Extensão',
+                'branch_id.*' => 'extensão',
             ]
         );
         if ($this->id) {

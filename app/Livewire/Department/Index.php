@@ -5,7 +5,8 @@ namespace App\Livewire\Department;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\OrganicUnit;
-use Livewire\Attributes\Rule;
+// use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
@@ -36,16 +37,6 @@ class Index extends Component
 
     public $showForm = 0;
 
-    protected function rules()
-    {
-        $rules = [
-            'name' => 'required|unique:departments,name,'.$this->id,
-            'organic_unit_id' => 'required',
-        ];
-
-        return $rules;
-    }
-
     public function addRow()
     {
         $this->rows[] = [
@@ -68,14 +59,25 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate([
-            'name' => 'required|unique:departments,name',
-            'organic_unit_id' => 'required',
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
+
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Department::class, 'name')],
+            'organic_unit_id' => ['required', Rule::exists(OrganicUnit::class, 'name')],
+            'branch_id' => ['nullable', 'array'],
+            'branch_id.*' => ['required', 'numeric'],
+        ], attributes: [
+            'name' => 'nome',
+            'organic_unit_id' => 'unidade orgânica',
+            'branch_id.*' => 'extensão',
         ]);
 
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
 
-        $query = Department::create($validated);
+        $query = Department::create([
+            'name' => $validated['name'],
+            'organic_unit_id' => $validated['organic_unit_id'],
+        ]);
 
         foreach ($this->rows as $value) {
             $query->branches()->attach($value['branch_id']);
@@ -106,17 +108,28 @@ class Index extends Component
 
     public function update()
     {
-        $validated = $this->validate([
-            'name' => 'required|unique:departments,name,'.$this->id,
-            'organic_unit_id' => 'required',
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
 
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Department::class, 'name')->ignore($this->id)],
+            'organic_unit_id' => ['required', Rule::exists(OrganicUnit::class, 'name')],
+            'branch_id' => ['nullable', 'array'],
+            'branch_id.*' => ['required', 'numeric'],
+        ], attributes: [
+            'name' => 'nome',
+            'organic_unit_id' => 'unidade orgânica',
+            'branch_id.*' => 'extensão',
         ]);
 
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
 
         if ($this->id) {
             $query = Department::findOrFail($this->id);
-            $query->update($validated);
+            $query->update([
+                'name' => $validated['name'],
+                'organic_unit_id' => $validated['organic_unit_id'],
+            ]
+            );
 
             $query->branches()->detach();
 

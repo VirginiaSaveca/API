@@ -10,7 +10,8 @@
                         <div class="grid gap-6 lg:grid-cols-3">
                             <x-input wire:model="name" label="Nome *" />
                             <x-select.styled wire:model="organic_unit_id" label="Unidade Orgânica *"
-                                hint="Selecione uma opção" :options="$organicUnits" option-value="key" option-label="value" />
+                                hint="Selecione uma opção" :options="$organicUnits" option-value="name" option-label="key"
+                                select="key" />
                         </div>
 
                         <br>
@@ -43,9 +44,9 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                @error('branch_id')
-                                                    <p class="text-danger">{{ $message }} </p>
-                                                @enderror
+                                                @foreach ($errors->get("branch_id.$index") as $message)
+                                                    <div class="text-xs text-red-100">{{ $message }}</div>
+                                                @endforeach
                                             </div>
                                         </div>
 
@@ -62,7 +63,7 @@
 
 
                         <div class="mt-6 text-right justify">
-                            <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
+                            <x-button type="submit" md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                             <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
                         </div>
 
@@ -78,7 +79,7 @@
         <x-card>
             <x-slot:header>
                 <div class="flex flex-wrap items-center justify-between gap-1">
-                    <h4>...</h4>
+                    <h4>Departamento</h4>
                 </div>
             </x-slot:header>
             <div class="px-6 text-right justify">
@@ -102,8 +103,8 @@
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
                                 Unidade Organica</th>
                             <th
-                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
-                                <div class="hidden lg:inline-block">Ações</div>
+                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 lg:table-cell">
+                                <div class="lg:inline-block">Ações</div>
                             </th>
                         </tr>
                     </thead>
@@ -112,17 +113,15 @@
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td
-                                    class="hidden px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
-                                    {{ $count++ }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                    class="px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
+                                    {{ $value->id }}</td>
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->name }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->organicUnit->name }}</td>
                                 <td class="px-1 py-3 text-sm font-light text-center border dark:border-slate-400">
                                     <!-- Actions Desktop -->
-                                    <div class="items-center justify-center hidden gap-1 lg:flex">
+                                    <div class="items-center justify-center gap-1 lg:flex">
 
                                         {{-- @if (Auth::user()->can($title . '.edit')) --}}
                                         <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square"

@@ -28,13 +28,15 @@
     <div class="flex flex-col gap-6 mt-6">
         <x-card>
             <x-slot:header>
-                <div class="flex flex-wrap gap-1">
-                    <x-button md icon="plus" text="Adicionar" class="text-white bg-green-500 hover:bg-green-700"
-                        color="blue" wire:click="create" />
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                    <h4>Extensão</h4>
                 </div>
             </x-slot:header>
+            <div class="px-6 text-right justify">
+                <x-button md wire:click="create" icon="plus" text="Adicionar" color="blue" />
+            </div>
 
-            <div class="">
+            <div class="p-6">
                 <table class="w-full shadow-md">
                     <thead
                         class="border-t divide-gray-300 bg-slate-300 bg-opacity-20 dark:bg-slate-800 dark:border-gray-700">
