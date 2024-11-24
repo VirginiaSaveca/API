@@ -4,7 +4,7 @@
             <div class="flex flex-col gap-6">
                 <x-card>
                     <x-slot:header>
-                        ...
+                        {{ $id ? 'Atualizar' : 'Adicionar' }}
                     </x-slot:header>
                     <div class="p-6">
                         <div class="grid gap-6 lg:grid-cols-3">
@@ -21,15 +21,15 @@
                                         'description' => '',
                                     ],
                                 ]" select="label:label|value:value" />
-                            <x-input wire:model="appointment_date" label="Data do Despacho *" />
-                            <x-input wire:model="visa_date" label="Data do Visto *" />
+                            <x-input type="date" wire:model="appointment_date" label="Data do Despacho *" />
+                            <x-input type="date" wire:model="visa_date" label="Data do Visto *" />
                             <x-input wire:model="visa_nr" label="Número do Visto *" />
                         </div>
                     </div>
                     <br>
 
                     <div class="mt-6 text-right justify">
-                        <x-button md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
+                        <x-button type="submit" md text="{{ $id ? 'Actualizar' : 'Salvar' }}" color="blue" />
                         <x-button md wire:click="cancel" text="Cancelar" color="yellow" />
                     </div>
 
@@ -47,7 +47,7 @@
         <x-card>
             <x-slot:header>
                 <div class="flex flex-wrap items-center justify-between gap-1">
-                    <h4>...</h4>
+                    <h4>Atos administrativos</h4>
                 </div>
             </x-slot:header>
             <div class="px-6 text-right justify">
@@ -81,37 +81,31 @@
                                 Número de Visto</th>
 
                             <th
-                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 hidden lg:table-cell">
-                                <div class="hidden lg:inline-block">Ações</div>
+                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200  lg:table-cell">
+                                <div class=" lg:inline-block">Ações</div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php $count = 1 @endphp
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td
-                                    class="hidden px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
-                                    {{ $count++ }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                    class="px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
+                                    {{ $value->id }}</td>
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->employee->name }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->name }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->appointment_date }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->visa_date }}</td>
-                                <td
-                                    class="hidden px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->visa_nr }}</td>
 
                                 <td class="px-1 py-3 text-sm font-light text-center border dark:border-slate-400">
                                     <!-- Actions Desktop -->
-                                    <div class="items-center justify-center hidden gap-1 lg:flex">
+                                    <div class="items-center justify-center gap-1 lg:flex">
 
                                         {{-- @if (Auth::user()->can($title . '.edit')) --}}
                                         <x-button md wire:click='edit({{ $value->id }})' icon="pencil-square"
@@ -122,7 +116,6 @@
                                         <x-button md wire:click='deleteConfirm({{ $value->id }})' icon="trash"
                                             color="red" />
                                         {{-- @endif --}}
-
                                     </div>
                                 </td>
                             </tr>

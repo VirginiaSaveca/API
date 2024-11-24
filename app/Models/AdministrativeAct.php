@@ -18,25 +18,35 @@ class AdministrativeAct extends Model
         return ['uuid'];
     }
 
-    public function setAppointmentDateAttribute($value)
-    {
-        $this->attributes['appointment_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    // public function setAppointmentDateAttribute($value)
+    // {
+    //     $this->attributes['appointment_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    // }
 
-    public function getAppointmentDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getAppointmentDateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
 
-    public function setVisaDateAttribute($value)
-    {
-        $this->attributes['visa_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    // public function setVisaDateAttribute($value)
+    // {
+    //     $this->attributes['visa_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    // }
 
-    public function getVisaDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getVisaDateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'appointment_date' => 'datetime',
+        'visa_date' => 'datetime',
+    ];
 
     public function employee()
     {

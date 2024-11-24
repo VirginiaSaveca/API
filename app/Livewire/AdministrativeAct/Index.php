@@ -4,6 +4,7 @@ namespace App\Livewire\AdministrativeAct;
 
 use App\Models\AdministrativeAct;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
@@ -41,9 +42,9 @@ class Index extends Component
     {
         $rules = [
             'name' => 'required',
-            'employee_id' => 'required',
-            'appointment_date' => 'required',
-            'visa_date' => 'required',
+            'employee_id' => 'required|exists:employees,name',
+            'appointment_date' => 'required|date',
+            'visa_date' => 'required|date',
             'visa_nr' => 'required',
         ];
 
@@ -73,12 +74,12 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query = AdministrativeAct::findOrFail($id);
+        $query = AdministrativeAct::with('employee')->findOrFail($id);
         $this->id = $id;
         $this->name = $query->name;
         $this->employee_id = $query->employee->name;
-        $this->appointment_date = $query->appointment_date;
-        $this->visa_date = $query->visa_date;
+        $this->appointment_date = Carbon::make($query->appointment_date)->format('Y-m-d');
+        $this->visa_date = Carbon::make($query->visa_date)->format('Y-m-d');
         $this->visa_nr = $query->visa_nr;
 
         $this->showForm = true;
@@ -126,7 +127,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = AdministrativeAct::all();
+        $query = AdministrativeAct::query()->with('employee')->get();
         $query2 = Employee::pluck('name', 'id')->toArray();
         //$organicUnits = ['' => '--selecionar--'] + $organicUnits;
 
