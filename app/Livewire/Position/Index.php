@@ -3,13 +3,15 @@
 namespace App\Livewire\Position;
 
 use App\Models\Position;
-use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
 class Index extends Component
 {
     use Interactions;
+
+    public $showForm = false;
 
     public $id;
 
@@ -24,18 +26,20 @@ class Index extends Component
     // #[Rule('required', as: '"Nome"')]
     public $name;
 
-    protected function rules()
+    public function create()
     {
-        $rules = [
-            'name' => 'required|unique:categories,name,'.$this->id,
-        ];
+        $this->reset();
+        $this->showForm = true;
 
-        return $rules;
     }
 
     public function store()
     {
-        $validated = $this->validate();
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Position::class, 'name')],
+        ], attributes: [
+            'name' => 'nome',
+        ]);
         position::create($validated);
         $this->reset();
         $this->resetValidation();
@@ -48,11 +52,16 @@ class Index extends Component
         $query = position::findOrFail($id);
         $this->id = $id;
         $this->name = $query->name;
+        $this->showForm = true;
     }
 
     public function update()
     {
-        $validated = $this->validate();
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Position::class, 'name')->ignore($this->id)],
+        ], attributes: [
+            'name' => 'nome',
+        ]);
         if ($this->id) {
             $query = position::findOrFail($this->id);
             $query->update($validated);
@@ -65,18 +74,11 @@ class Index extends Component
     public function deleteConfirm($id)
     {
         $this->id = $id;
-        $this->dialog()->confirm('Atenção!', 'Tem certeza que deseja eliminar?', [
-            'confirm' => [
-                'text' => 'Confirmar',
-                'method' => 'delete',
-            ],
-
-            'cancel' => [
-                'text' => 'Cancelar',
-                'method' => 'cancel',
-                // 'params' => 'Cancelled Successfully' // Can be a string or array
-            ],
-        ]);
+        $this->dialog()
+            ->question('Atenção!', 'Tem certeza que deseja eliminar?')
+            ->confirm('Confirmar', 'delete')
+            ->cancel('Cancelar', 'cancel')
+            ->send();
     }
 
     public function delete()
@@ -85,7 +87,7 @@ class Index extends Component
         $query->delete();
         $this->reset();
         $this->resetValidation();
-        $this->dialog()->success('Successo', 'Eliminado com Sucesso.');
+        $this->dialog()->success('Successo', 'Eliminado com Sucesso.')->send();
     }
 
     public function cancel()
