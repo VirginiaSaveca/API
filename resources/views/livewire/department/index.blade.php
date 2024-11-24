@@ -109,7 +109,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $count = 1 @endphp
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td

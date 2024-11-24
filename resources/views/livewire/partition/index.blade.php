@@ -112,15 +112,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $count = 1 @endphp
                         @foreach ($query as $key => $value)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/70 dark:text-slate-300">
                                 <td
-                                    class="px-2 py-1 text-sm font-light text-center border  dark:border-slate-400 lg:table-cell">
+                                    class="px-2 py-1 text-sm font-light text-center border dark:border-slate-400 lg:table-cell">
                                     {{ $value->id }}</td>
-                                <td class="px-2 py-1 text-sm font-light border  dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->name }}</td>
-                                <td class="px-2 py-1 text-sm font-light border  dark:border-slate-400 lg:table-cell">
+                                <td class="px-2 py-1 text-sm font-light border dark:border-slate-400 lg:table-cell">
                                     {{ $value->department->name }}</td>
 
                                 <td class="px-1 py-3 text-sm font-light text-center border dark:border-slate-400">
