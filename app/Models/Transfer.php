@@ -18,15 +18,24 @@ class Transfer extends Model
         return ['uuid'];
     }
 
-    public function setDateAttribute($value)
-    {
-        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    // public function setDateAttribute($value)
+    // {
+    //     $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    // }
 
-    public function getDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getDateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     public function employee()
     {

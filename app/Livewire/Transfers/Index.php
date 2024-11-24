@@ -4,6 +4,7 @@ namespace App\Livewire\Transfers;
 
 use App\Models\Employee;
 use App\Models\Transfer;
+use Carbon\Carbon;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
@@ -38,7 +39,7 @@ class Index extends Component
         $rules = [
             'to' => 'required',
             'employee_id' => 'required',
-            'date' => 'required',
+            'date' => 'required|date',
 
         ];
 
@@ -68,11 +69,11 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query = Transfer::findOrFail($id);
+        $query = Transfer::with('employee:id,name')->findOrFail($id);
         $this->id = $id;
         $this->to = $query->to;
         $this->employee_id = $query->employee->name;
-        $this->date = $query->date;
+        $this->date = Carbon::make($query->date)->format('Y-m-d');
 
         $this->showForm = true;
     }
