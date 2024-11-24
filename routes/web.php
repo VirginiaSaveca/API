@@ -18,16 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', LogoutController::class)->name('logout');
+
+    Route::view('dashboard', 'dashboard')
+        ->name('dashboard');
+
+    Route::view('profile', 'profile')
+        ->name('profile');
 
     Route::get('/branch', Branch\Index::class)->name('branch');
     Route::get('/organic_unit', OrganicUnit\Index::class)->name('oragnic_unit');
