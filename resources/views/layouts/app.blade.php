@@ -35,7 +35,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('dashboard')])>
                         <a href="{{ route('dashboard') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-speed-up-line"></i>
                             <span class="text-sm">Dashboard</span>
                         </a>
                     </li>
@@ -51,7 +51,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('oragnic_unit')])>
                         <a href="{{ route('oragnic_unit') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-home-9-line"></i>
                             <span class="text-sm">Unidade Orgânica</span>
                         </a>
                     </li>
@@ -59,7 +59,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('department')])>
                         <a href="{{ route('department') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-dashboard-line"></i>
                             <span class="text-sm">Departamento</span>
                         </a>
                     </li>
@@ -67,7 +67,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('partition')])>
                         <a href="{{ route('partition') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-list-indefinite"></i>
                             <span class="text-sm">Partição</span>
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('career')])>
                         <a href="{{ route('career') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-empathize-line"></i>
                             <span class="text-sm">Carreira</span>
                         </a>
                     </li>
@@ -83,7 +83,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('category')])>
                         <a href="{{ route('category') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-book-shelf-line"></i>
                             <span class="text-sm">Categoria</span>
                         </a>
                     </li>
@@ -91,7 +91,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('level')])>
                         <a href="{{ route('level') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-stairs-line"></i>
                             <span class="text-sm">Nível</span>
                         </a>
                     </li>
@@ -99,7 +99,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('position')])>
                         <a href="{{ route('position') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-award-line"></i>
                             <span class="text-sm">Posição</span>
                         </a>
                     </li>
@@ -107,7 +107,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('salarylevel')])>
                         <a href="{{ route('salarylevel') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-money-dollar-box-line"></i>
                             <span class="text-sm">Nível salarial</span>
                         </a>
                     </li>
@@ -115,7 +115,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('employee')])>
                         <a href="{{ route('employee') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-id-card-line"></i>
                             <span class="text-sm">Funcionário</span>
                         </a>
                     </li>
@@ -123,7 +123,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('qualification')])>
                         <a href="{{ route('qualification') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-equal-line"></i>
                             <span class="text-sm">Qualificação</span>
                         </a>
                     </li>
@@ -131,7 +131,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('transfer')])>
                         <a href="{{ route('transfer') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-user-shared-line"></i>
                             <span class="text-sm">Transferência</span>
                         </a>
                     </li>
@@ -139,7 +139,7 @@
                     <li @class(['mb-1 group', 'active' => Route::is('adminacts')])>
                         <a href="{{ route('adminacts') }}"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                            <i class="mr-3 text-lg ri-home-2-line"></i>
+                            <i class="mr-3 text-lg ri-contacts-book-2-line"></i>
                             <span class="text-sm">Atos administrativos</span>
                         </a>
                     </li>
