@@ -18,29 +18,44 @@ class Employee extends Model
         return ['uuid'];
     }
 
-    public function setBirthdateAttribute($value)
-    {
-        $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    // public function setBirthdateAttribute($value)
+    // {
+    //     $this->attributes['birthdate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    // }
 
-    public function getBirthdateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getBirthdateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
 
-    public function setBiValidateAttribute($value)
-    {
-        $this->attributes['bi_validate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    }
+    // public function setBiValidateAttribute($value)
+    // {
+    //     $this->attributes['bi_validate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    // }
 
-    public function getBiValidateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getBiValidateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
 
     public function branch()
     {
         return $this->belongsTo(Branch::class);
+    }
+
+    public function organic_unit()
+    {
+        return $this->belongsTo(OrganicUnit::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function partition()
+    {
+        return $this->belongsTo(Partition::class);
     }
 
     public function career()

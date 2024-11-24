@@ -1,5 +1,13 @@
 <?php
 
+use App\Models\Branch;
+use App\Models\Career;
+use App\Models\Category;
+use App\Models\Department;
+use App\Models\Level;
+use App\Models\OrganicUnit;
+use App\Models\Partition;
+use App\Models\SalaryLevel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,22 +22,22 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->foreignId('branch_id')->constrained();
-            $table->foreignId('branch_organic_unit_id')->constrained(table: 'branch_organic_unit');
-            $table->foreignId('branch_department_id')->constrained(table: 'branch_department');
-            $table->foreignId('branch_partition_id')->constrained(table: 'branch_partition');
-            $table->foreignId('career_id')->constrained();
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('level_id')->constrained();
-            $table->foreignId('salary_level_id')->constrained();
+            $table->foreignIdFor(Branch::class)->constrained();
+            $table->foreignIdFor(OrganicUnit::class)->constrained();
+            $table->foreignIdFor(Department::class)->constrained();
+            $table->foreignIdFor(Partition::class)->constrained();
+            $table->foreignIdFor(Career::class)->constrained();
+            $table->foreignIdFor(Category::class)->constrained();
+            $table->foreignIdFor(Level::class)->constrained();
+            $table->foreignIdFor(SalaryLevel::class)->constrained();
             $table->string('name');
             $table->date('birthdate');
             $table->integer('contact');
-            $table->string('nationality')->nullable;
-            $table->string('naturality')->nullable;
+            $table->string('nationality')->nullable();
+            $table->string('naturality')->nullable();
             $table->string('email');
-            $table->string('father_name')->nullable;
-            $table->string('mother_name')->nullable;
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('bi_nr');
             $table->date('bi_validate');
             $table->integer('nuit');

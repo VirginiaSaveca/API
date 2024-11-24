@@ -11,6 +11,7 @@ use App\Models\Level;
 use App\Models\OrganicUnit;
 use App\Models\Partition;
 use App\Models\SalaryLevel;
+use Carbon\Carbon;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
@@ -30,11 +31,11 @@ class Index extends Component
 
     public $branch_id;
 
-    public $branch_organic_unit_id;
+    public $organic_unit_id;
 
-    public $branch_department_id;
+    public $department_id;
 
-    public $branch_partition_id;
+    public $partition_id;
 
     public $career_id;
 
@@ -71,16 +72,16 @@ class Index extends Component
     protected function rules()
     {
         $rules = [
-            'branch_id' => 'required',
-            'branch_organic_unit_id' => 'required',
-            'branch_department_id' => 'required',
-            'branch_partition_id' => 'required',
-            'career_id' => 'required',
-            'category_id' => 'required',
-            'level_id' => 'required',
-            'salary_level_id' => 'required',
+            'branch_id' => 'required|exists:branches,name',
+            'organic_unit_id' => 'required|exists:organic_units,name',
+            'department_id' => 'required|exists:departments,name',
+            'partition_id' => 'required|exists:partitions,name',
+            'career_id' => 'required|exists:careers,name',
+            'category_id' => 'required|exists:categories,name',
+            'level_id' => 'required|exists:levels,name',
+            'salary_level_id' => 'required|exists:salary_levels,level',
             'name' => 'required',
-            'birthdate' => 'required',
+            'birthdate' => 'required|date',
             'contact' => 'required|numeric|unique:employees,contact,'.$this->id,
             'nationality' => 'required',
             'naturality' => 'required',
@@ -88,7 +89,7 @@ class Index extends Component
             'father_name' => 'required',
             'mother_name' => 'required',
             'bi_nr' => 'required|unique:employees,bi_nr,'.$this->id,
-            'bi_validate' => 'required',
+            'bi_validate' => 'required|date',
             'nuit' => 'required|numeric|unique:employees,nuit,'.$this->id,
         ];
 
@@ -106,9 +107,9 @@ class Index extends Component
     {
         $validated = $this->validate();
         $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
-        $validated['branch_organic_unit_id'] = OrganicUnit::where('name', $validated['branch_organic_unit_id'])->value('id');
-        $validated['branch_department_id'] = Department::where('name', $validated['branch_department_id'])->value('id');
-        $validated['branch_partition_id'] = Partition::where('name', $validated['branch_partition_id'])->value('id');
+        $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
+        $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
+        $validated['partition_id'] = Partition::where('name', $validated['partition_id'])->value('id');
         $validated['career_id'] = Career::where('name', $validated['career_id'])->value('id');
         $validated['category_id'] = Category::where('name', $validated['category_id'])->value('id');
         $validated['level_id'] = Level::where('name', $validated['level_id'])->value('id');
@@ -124,19 +125,19 @@ class Index extends Component
     public function edit($id)
     {
         $this->resetValidation();
-        $query = Employee::findOrFail($id);
+        $query = Employee::with(['branch', 'organic_unit', 'department', 'partition', 'career', 'category', 'level', 'salary_level'])->findOrFail($id);
         $this->id = $id;
         // dd($query);
         $this->branch_id = $query->branch->name;
-        $this->branch_organic_unit_id = $query->branch_organic_unit_id;
-        $this->branch_department_id = $query->branch_department_id;
-        $this->branch_partition_id = $query->branch_partition_id;
+        $this->organic_unit_id = $query->organic_unit->name;
+        $this->department_id = $query->department->name;
+        $this->partition_id = $query->partition->name;
         $this->career_id = $query->career->name;
         $this->category_id = $query->category->name;
         $this->level_id = $query->level->name;
         $this->salary_level_id = $query->salary_level->level;
         $this->name = $query->name;
-        $this->birthdate = $query->birthdate;
+        $this->birthdate = Carbon::make($query->birthdate)->format('Y-m-d');
         $this->contact = $query->contact;
         $this->nationality = $query->nationality;
         $this->naturality = $query->naturality;
@@ -144,7 +145,7 @@ class Index extends Component
         $this->father_name = $query->father_name;
         $this->mother_name = $query->mother_name;
         $this->bi_nr = $query->bi_nr;
-        $this->bi_validate = $query->bi_validate;
+        $this->bi_validate = Carbon::make($query->bi_validate)->format('Y-m-d');
         $this->nuit = $query->nuit;
 
         $this->showForm = true;
@@ -154,6 +155,15 @@ class Index extends Component
     public function update()
     {
         $validated = $this->validate();
+        $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
+        $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
+        $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
+        $validated['partition_id'] = Partition::where('name', $validated['partition_id'])->value('id');
+        $validated['career_id'] = Career::where('name', $validated['career_id'])->value('id');
+        $validated['category_id'] = Category::where('name', $validated['category_id'])->value('id');
+        $validated['level_id'] = Level::where('name', $validated['level_id'])->value('id');
+        $validated['salary_level_id'] = SalaryLevel::where('level', $validated['salary_level_id'])->value('id');
+
         if ($this->id) {
             $query = Employee::findOrFail($this->id);
             $query->update($validated);
@@ -176,7 +186,7 @@ class Index extends Component
 
     public function delete()
     {
-        $query = Partition::where('id', $this->id)->first();
+        $query = Employee::where('id', $this->id)->first();
         //if ($query && $query->branches()->exists()) {
         //   return $this->dialog()->error('Erro ao Eliminar', 'Não pode ser eliminado pois está associado a outro registo.')->send();
         //}
