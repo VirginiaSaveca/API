@@ -43,6 +43,7 @@
                         <tr>
                             <th
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
+                                Id
                             </th>
                             <th
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 text-center">
