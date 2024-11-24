@@ -45,7 +45,7 @@ class Index extends Component
             'training_area' => 'required',
             'employee_id' => 'required',
             'level' => 'required',
-            'year' => 'required',
+            'year' => 'required|integer',
             'place' => 'required',
             'obs' => 'required',
         ];
