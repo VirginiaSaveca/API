@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\RegisterController;
@@ -22,6 +23,10 @@ Route::get('/login', LoginController::class);
 Route::middleware('auth:sanctum')->get('/logout', LogoutController::class);
 Route::get('/register', RegisterController::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return UserResource::make($request->user());
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return UserResource::make($request->user());
+    });
+
+    Route::apiResource('branches', BranchController::class);
 });
