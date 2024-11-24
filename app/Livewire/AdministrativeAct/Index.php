@@ -35,7 +35,7 @@ class Index extends Component
 
     public $rows = [];
 
-    public $showForm = 0;
+    public $showForm = false;
 
     protected function rules()
     {

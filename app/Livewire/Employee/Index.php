@@ -67,7 +67,7 @@ class Index extends Component
 
     public $nuit;
 
-    public $showForm = 0;
+    public $showForm = false;
 
     protected function rules()
     {

@@ -35,7 +35,7 @@ class Index extends Component
 
     public $branch_id = [];
 
-    public $showForm = 0;
+    public $showForm = false;
 
     public function addRow()
     {
