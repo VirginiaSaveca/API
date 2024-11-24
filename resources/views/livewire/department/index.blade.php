@@ -4,7 +4,7 @@
             <div class="flex flex-col gap-6">
                 <x-card>
                     <x-slot:header>
-                        ...
+                        {{ $id ? 'Atualizar' : 'Adicionar' }}
                     </x-slot:header>
                     <div class="p-6">
                         <div class="grid gap-6 lg:grid-cols-3">

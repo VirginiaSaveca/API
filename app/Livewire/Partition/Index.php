@@ -5,6 +5,7 @@ namespace App\Livewire\Partition;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Partition;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
@@ -32,17 +33,6 @@ class Index extends Component
 
     public $showForm = 0;
 
-    protected function rules()
-    {
-        $rules = [
-            'name' => 'required|unique:partitions,name,'.$this->id,
-            'branch_id' => 'required',
-            'department_id' => 'required',
-        ];
-
-        return $rules;
-    }
-
     public function addRow()
     {
         $this->rows[] = [
@@ -65,15 +55,25 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate([
-            'name' => 'required|unique:partitions,name,'.$this->id,
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
 
-            'department_id' => 'required',
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Partition::class, 'name')],
+            'department_id' => ['required', Rule::exists(Department::class, 'name')],
+            'branch_id' => ['nullable', 'array'],
+            'branch_id.*' => ['required', 'numeric'],
+        ], attributes: [
+            'name' => 'nome',
+            'department_id' => 'departamento',
+            'branch_id.*' => 'extensão',
         ]);
 
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
-        $query = Partition::create($validated);
+        $query = Partition::create([
+            'name' => $validated['name'],
+            'department_id' => $validated['department_id'],
+        ]);
 
         foreach ($this->rows as $value) {
             $query->branches()->attach($value['branch_id']);
@@ -104,17 +104,29 @@ class Index extends Component
 
     public function update()
     {
-        $validated = $this->validate([
-            'name' => 'required|unique:partitions,name,'.$this->id,
+        $this->branch_id = array_map(fn ($arr) => $arr['branch_id'], $this->rows);
 
-            'department_id' => 'required',
-        ]);
+        $validated = $this->validate(rules: [
+            'name' => ['required', Rule::unique(Partition::class, 'name')->ignore($this->id)],
+            'department_id' => ['required', Rule::exists(Department::class, 'name')],
+            'branch_id' => ['nullable', 'array'],
+            'branch_id.*' => ['required', 'numeric'],
+        ], attributes: [
+            'name' => 'nome',
+            'department_id' => 'departamento',
+            'branch_id.*' => 'extensão', ]
+        );
 
         $validated['department_id'] = Department::where('name', $validated['department_id'])->value('id');
 
         if ($this->id) {
             $query = Partition::findOrFail($this->id);
-            $query->update($validated);
+            $query->update(
+                [
+                    'name' => $validated['name'],
+                    'department_id' => $validated['department_id'],
+                ]
+            );
 
             $query->branches()->detach();
 
