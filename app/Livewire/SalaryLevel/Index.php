@@ -3,13 +3,15 @@
 namespace App\Livewire\SalaryLevel;
 
 use App\Models\SalaryLevel;
-use Livewire\Attributes\Rule;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
 
 class Index extends Component
 {
     use Interactions;
+
+    public $showForm = false;
 
     public $id;
 
@@ -24,18 +26,20 @@ class Index extends Component
     // #[Rule('required', as: '"Nome"')]
     public $level;
 
-    protected function rules()
+    public function create()
     {
-        $rules = [
-            'level' => 'required|unique:salary_levels,level,'.$this->id,
-        ];
+        $this->reset();
+        $this->showForm = true;
 
-        return $rules;
     }
 
     public function store()
     {
-        $validated = $this->validate();
+        $validated = $this->validate(rules: [
+            'level' => ['required', 'numeric', Rule::unique(SalaryLevel::class, 'level')],
+        ], attributes: [
+            'level' => 'nível salarial',
+        ]);
         SalaryLevel::create($validated);
         $this->reset();
         $this->resetValidation();
@@ -48,11 +52,16 @@ class Index extends Component
         $query = SalaryLevel::findOrFail($id);
         $this->id = $id;
         $this->level = $query->level;
+        $this->showForm = true;
     }
 
     public function update()
     {
-        $validated = $this->validate();
+        $validated = $this->validate(rules: [
+            'level' => ['required', 'numeric', Rule::unique(SalaryLevel::class, 'level')->ignore($this->id)],
+        ], attributes: [
+            'level' => 'nível salarial',
+        ]);
         if ($this->id) {
             $query = SalaryLevel::findOrFail($this->id);
             $query->update($validated);
@@ -65,19 +74,11 @@ class Index extends Component
     public function deleteConfirm($id)
     {
         $this->id = $id;
-        $this->dialog()->confirm('Atenção!', 'Tem certeza que deseja eliminar?', [
-            'confirm' => [
-                'text' => 'Confirmar',
-                'method' => 'delete',
-                // 'params' => 'Confirmed Successfully' // Can be a string or array
-            ],
-            /* Cancel is optional */
-            'cancel' => [
-                'text' => 'Cancelar',
-                'method' => 'cancel',
-                // 'params' => 'Cancelled Successfully' // Can be a string or array
-            ],
-        ]);
+        $this->dialog()
+            ->question('Atenção!', 'Tem certeza que deseja eliminar?')
+            ->confirm('Confirmar', 'delete')
+            ->cancel('Cancelar', 'cancel')
+            ->send();
     }
 
     public function delete()
@@ -86,7 +87,7 @@ class Index extends Component
         $query->delete();
         $this->reset();
         $this->resetValidation();
-        $this->dialog()->success('Successo', 'Eliminado com Sucesso.');
+        $this->dialog()->success('Successo', 'Eliminado com Sucesso.')->send();
     }
 
     public function cancel()
