@@ -28,7 +28,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido.'
         required: true
-        example: orn.abelardo@example.com
+        example: gerhold.kenyon@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -38,7 +38,7 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: mollitia
+        example: iste
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -48,16 +48,16 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: ejjjavomttsvxdyomliu
+        example: fmrclfqtaeehcwst
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: orn.abelardo@example.com
-      password: mollitia
-      device_name: ejjjavomttsvxdyomliu
+      email: gerhold.kenyon@example.com
+      password: iste
+      device_name: fmrclfqtaeehcwst
     fileParameters: []
     responses:
       -
@@ -141,7 +141,7 @@ endpoints:
         name: name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: kxdftnadj
+        example: serehzuvisejybisglwumu
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -151,7 +151,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres.'
         required: true
-        example: madelyn.paucek@example.net
+        example: qnader@example.net
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -161,7 +161,7 @@ endpoints:
         name: password
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: '/@?u,T7toJ[~Gz'
+        example: ';0#uHuzI%gT{|.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -171,22 +171,22 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: xvjqaesqbyhcwmipajkfh
+        example: klnysjwkbmnyitrzkydodqpqz
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: kxdftnadj
-      email: madelyn.paucek@example.net
-      password: '/@?u,T7toJ[~Gz'
-      device_name: xvjqaesqbyhcwmipajkfh
+      name: serehzuvisejybisglwumu
+      email: qnader@example.net
+      password: ';0#uHuzI%gT{|.'
+      device_name: klnysjwkbmnyitrzkydodqpqz
     fileParameters: []
     responses:
       -
         status: 201
-        content: '{"user":{"name":"kxdftnadj","email":"madelyn.paucek@example.net"},"token":"5|OD0BZkUTy2wlZVNfjVTSJrZnIku8f54Lr9Y4q5DM76a4ebd6"}'
+        content: '{"user":{"name":"serehzuvisejybisglwumu","email":"qnader@example.net"},"token":"6|mnASAxZ5WkSupTfLyiqWKcsCpGVL4KQCLvu9uwzq10e73dda"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -304,7 +304,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: 'y'
+        example: fsxlupanu
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -314,15 +314,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: nmptntwxyggelflgrcowkbgt
+        example: dxjhmzmahyqdb
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: 'y'
-      address: nmptntwxyggelflgrcowkbgt
+      name: fsxlupanu
+      address: dxjhmzmahyqdb
     fileParameters: []
     responses: []
     responseFields: []
@@ -418,7 +418,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: bwybbg
+        example: rvsy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -428,15 +428,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: ifvwndmuwnzabhtthfoo
+        example: zmhvbchyp
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: bwybbg
-      address: ifvwndmuwnzabhtthfoo
+      name: rvsy
+      address: zmhvbchyp
     fileParameters: []
     responses: []
     responseFields: []
@@ -550,7 +550,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: nksnxkxzl
+        example: mdcqgugwtkcdoxufjhrnhnu
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -561,16 +561,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 367063.4665
+          - 216.46295244
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: nksnxkxzl
+      name: mdcqgugwtkcdoxufjhrnhnu
       branches:
-        - 367063.4665
+        - 216.46295244
     fileParameters: []
     responses: []
     responseFields: []
@@ -666,7 +666,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: zkidkzmcmjo
+        example: dwgciymvpdcacjewfkllqhw
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -677,16 +677,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 1739.9
+          - 0.2028383
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: zkidkzmcmjo
+      name: dwgciymvpdcacjewfkllqhw
       branches:
-        - 1739.9
+        - 0.2028383
     fileParameters: []
     responses: []
     responseFields: []
