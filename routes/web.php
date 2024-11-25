@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+// Route::view('/docs', 'scribe.index')->name('scribe');
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', LogoutController::class)->name('logout');
 
