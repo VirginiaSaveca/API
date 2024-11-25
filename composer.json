@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
+        "opcodesio/log-viewer": "^3.12",
         "tallstackui/tallstackui": "^1.4"
     },
     "require-dev": {

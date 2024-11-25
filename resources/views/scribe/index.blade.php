@@ -163,9 +163,9 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gerhold.kenyon@example.com\",
-    \"password\": \"iste\",
-    \"device_name\": \"fmrclfqtaeehcwst\"
+    \"email\": \"emard.ignacio@example.org\",
+    \"password\": \"aliquam\",
+    \"device_name\": \"vlccamiuskvz\"
 }"
 </code></pre></div>
 
@@ -181,9 +181,9 @@ const headers = {
 };
 
 let body = {
-    "email": "gerhold.kenyon@example.com",
-    "password": "iste",
-    "device_name": "fmrclfqtaeehcwst"
+    "email": "emard.ignacio@example.org",
+    "password": "aliquam",
+    "device_name": "vlccamiuskvz"
 };
 
 fetch(url, {
@@ -295,10 +295,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="GETapi-login"
-               value="gerhold.kenyon@example.com"
+               value="emard.ignacio@example.org"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. Example: <code>gerhold.kenyon@example.com</code></p>
+<p>O campo value não contém um endereço de e-mail válido. Example: <code>emard.ignacio@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -306,10 +306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="GETapi-login"
-               value="iste"
+               value="aliquam"
                data-component="body">
     <br>
-<p>Example: <code>iste</code></p>
+<p>Example: <code>aliquam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
@@ -317,10 +317,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="device_name"                data-endpoint="GETapi-login"
-               value="fmrclfqtaeehcwst"
+               value="vlccamiuskvz"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>fmrclfqtaeehcwst</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>vlccamiuskvz</code></p>
         </div>
         </form>
 
@@ -465,10 +465,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"serehzuvisejybisglwumu\",
-    \"email\": \"qnader@example.net\",
-    \"password\": \";0#uHuzI%gT{|.\",
-    \"device_name\": \"klnysjwkbmnyitrzkydodqpqz\"
+    \"name\": \"mpmzdfopsmfjkwavccuej\",
+    \"email\": \"maggie28@example.net\",
+    \"password\": \"d6L&gt;ecN\",
+    \"device_name\": \"ufaeqnonrztthejedmvi\"
 }"
 </code></pre></div>
 
@@ -484,10 +484,10 @@ const headers = {
 };
 
 let body = {
-    "name": "serehzuvisejybisglwumu",
-    "email": "qnader@example.net",
-    "password": ";0#uHuzI%gT{|.",
-    "device_name": "klnysjwkbmnyitrzkydodqpqz"
+    "name": "mpmzdfopsmfjkwavccuej",
+    "email": "maggie28@example.net",
+    "password": "d6L&gt;ecN",
+    "device_name": "ufaeqnonrztthejedmvi"
 };
 
 fetch(url, {
@@ -515,10 +515,10 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;user&quot;: {
-        &quot;name&quot;: &quot;serehzuvisejybisglwumu&quot;,
-        &quot;email&quot;: &quot;qnader@example.net&quot;
+        &quot;name&quot;: &quot;mpmzdfopsmfjkwavccuej&quot;,
+        &quot;email&quot;: &quot;maggie28@example.net&quot;
     },
-    &quot;token&quot;: &quot;6|mnASAxZ5WkSupTfLyiqWKcsCpGVL4KQCLvu9uwzq10e73dda&quot;
+    &quot;token&quot;: &quot;8|BRhWiQfwZn3Igfub7DV5J6TVti7yP8dRiRH5naQu18b1a38c&quot;
 }</code>
  </pre>
     </span>
@@ -598,10 +598,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="GETapi-register"
-               value="serehzuvisejybisglwumu"
+               value="mpmzdfopsmfjkwavccuej"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>serehzuvisejybisglwumu</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>mpmzdfopsmfjkwavccuej</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -609,10 +609,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="GETapi-register"
-               value="qnader@example.net"
+               value="maggie28@example.net"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres. Example: <code>qnader@example.net</code></p>
+<p>O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres. Example: <code>maggie28@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -620,10 +620,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="GETapi-register"
-               value=";0#uHuzI%gT{|."
+               value="d6L>ecN"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>;0#uHuzI%gT{|.</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>d6L&gt;ecN</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
@@ -631,10 +631,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="device_name"                data-endpoint="GETapi-register"
-               value="klnysjwkbmnyitrzkydodqpqz"
+               value="ufaeqnonrztthejedmvi"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>klnysjwkbmnyitrzkydodqpqz</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>ufaeqnonrztthejedmvi</code></p>
         </div>
         </form>
 
@@ -903,8 +903,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"fsxlupanu\",
-    \"address\": \"dxjhmzmahyqdb\"
+    \"name\": \"krelbetm\",
+    \"address\": \"mzoezkttpvjaeuyegpfrqq\"
 }"
 </code></pre></div>
 
@@ -920,8 +920,8 @@ const headers = {
 };
 
 let body = {
-    "name": "fsxlupanu",
-    "address": "dxjhmzmahyqdb"
+    "name": "krelbetm",
+    "address": "mzoezkttpvjaeuyegpfrqq"
 };
 
 fetch(url, {
@@ -1010,10 +1010,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-branches"
-               value="fsxlupanu"
+               value="krelbetm"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>fsxlupanu</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>krelbetm</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1021,10 +1021,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTapi-branches"
-               value="dxjhmzmahyqdb"
+               value="mzoezkttpvjaeuyegpfrqq"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>dxjhmzmahyqdb</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>mzoezkttpvjaeuyegpfrqq</code></p>
         </div>
         </form>
 
@@ -1181,8 +1181,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"rvsy\",
-    \"address\": \"zmhvbchyp\"
+    \"name\": \"infojbobcjkkwfqupephzkb\",
+    \"address\": \"pzahzq\"
 }"
 </code></pre></div>
 
@@ -1198,8 +1198,8 @@ const headers = {
 };
 
 let body = {
-    "name": "rvsy",
-    "address": "zmhvbchyp"
+    "name": "infojbobcjkkwfqupephzkb",
+    "address": "pzahzq"
 };
 
 fetch(url, {
@@ -1304,10 +1304,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-branches--id-"
-               value="rvsy"
+               value="infojbobcjkkwfqupephzkb"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>rvsy</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>infojbobcjkkwfqupephzkb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1315,10 +1315,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="PUTapi-branches--id-"
-               value="zmhvbchyp"
+               value="pzahzq"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>zmhvbchyp</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>pzahzq</code></p>
         </div>
         </form>
 
@@ -1583,9 +1583,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"mdcqgugwtkcdoxufjhrnhnu\",
+    \"name\": \"vopppslirq\",
     \"branches\": [
-        216.46295244
+        2.849
     ]
 }"
 </code></pre></div>
@@ -1602,9 +1602,9 @@ const headers = {
 };
 
 let body = {
-    "name": "mdcqgugwtkcdoxufjhrnhnu",
+    "name": "vopppslirq",
     "branches": [
-        216.46295244
+        2.849
     ]
 };
 
@@ -1694,10 +1694,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-organic_units"
-               value="mdcqgugwtkcdoxufjhrnhnu"
+               value="vopppslirq"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>mdcqgugwtkcdoxufjhrnhnu</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>vopppslirq</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
@@ -1867,9 +1867,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dwgciymvpdcacjewfkllqhw\",
+    \"name\": \"poowrnpx\",
     \"branches\": [
-        0.2028383
+        426.4268
     ]
 }"
 </code></pre></div>
@@ -1886,9 +1886,9 @@ const headers = {
 };
 
 let body = {
-    "name": "dwgciymvpdcacjewfkllqhw",
+    "name": "poowrnpx",
     "branches": [
-        0.2028383
+        426.4268
     ]
 };
 
@@ -1994,10 +1994,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-organic_units--id-"
-               value="dwgciymvpdcacjewfkllqhw"
+               value="poowrnpx"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>dwgciymvpdcacjewfkllqhw</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>poowrnpx</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
