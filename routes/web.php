@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::view('profile', 'profile')
         ->name('profile');
 
+    Route::view('tokens', 'tokens')
+        ->name('tokens');
+
     Route::get('/branch', Branch\Index::class)->name('branch');
     Route::get('/organic_unit', OrganicUnit\Index::class)->name('oragnic_unit');
     Route::get('/department', Department\Index::class)->name('department');
