@@ -6,6 +6,8 @@ use App\Models\Branch;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use TallStackUi\Traits\Interactions;
+use Illuminate\Support\Facades\DB;
+
 
 class Index extends Component
 {
@@ -38,23 +40,33 @@ class Index extends Component
 
     public function store()
     {
-        $validated = $this->validate(
-            rules: [
-                'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)],
-                'address' => ['required', 'string', 'max:255'],
-            ],
-            attributes: [
-                'name' => 'Nome',
-                'address' => 'Endereço',
+        DB::beginTransaction();
+        try {
+            $validated = $this->validate(
+                rules: [
+                    'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)],
+                    'address' => ['required', 'string', 'max:255'],
+                ],
+                attributes: [
+                    'name' => 'Nome',
+                    'address' => 'Endereço',
+                ]
+            );
+    
+            Branch::create([
+                'name' => $validated['name'],
+                'address' => $validated['address'],
             ]);
-        Branch::create([
-            'name' => $validated['name'],
-            'address' => $validated['address'],
-        ]);
-        $this->reset();
-        $this->resetValidation();
-        $this->dialog()->success('Successo', 'Adicionado com Sucesso.')->send();
-        $this->showForm = false;
+    
+            DB::commit(); // Confirma a transação
+            $this->reset();
+            $this->resetValidation();
+            $this->dialog()->success('Sucesso', 'Adicionado com Sucesso.')->send();
+            $this->showForm = false;
+        } catch (\Exception $e) {
+            DB::rollback(); // Reverte a transação em caso de erro
+            $this->dialog()->error('Erro', 'Ocorreu um erro ao adicionar: ' . $e->getMessage())->send();
+        }
     }
 
     public function edit($id)
@@ -69,26 +81,37 @@ class Index extends Component
 
     public function update()
     {
-        $validated = $this->validate(
-            rules: [
-                'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)->ignore($this->id)],
-                'address' => ['required', 'string', 'max:255'],
-            ],
-            attributes: [
-                'name' => 'Nome',
-                'address' => 'Endereço',
-            ]);
-        if ($this->id) {
-            $query = Branch::findOrFail($this->id);
-            $query->update([
-                'name' => $validated['name'],
-                'address' => $validated['address'],
-            ]);
-            $this->reset();
-            $this->resetValidation();
-            $this->dialog()->success('Successo', 'Editado com Sucesso.');
+        DB::beginTransaction();
+        try {
+            $validated = $this->validate(
+                rules: [
+                    'name' => ['required', 'string', 'max:255', Rule::unique(Branch::class)->ignore($this->id)],
+                    'address' => ['required', 'string', 'max:255'],
+                ],
+                attributes: [
+                    'name' => 'Nome',
+                    'address' => 'Endereço',
+                ]
+            );
+    
+            if ($this->id) {
+                $query = Branch::findOrFail($this->id);
+                $query->update([
+                    'name' => $validated['name'],
+                    'address' => $validated['address'],
+                ]);
+    
+                DB::commit(); // Confirma a transação
+                $this->reset();
+                $this->resetValidation();
+                $this->dialog()->success('Sucesso', 'Editado com Sucesso.');
+            }
+    
+            $this->showForm = false;
+        } catch (\Exception $e) {
+            DB::rollback(); // Reverte a transação em caso de erro
+            $this->dialog()->error('Erro', 'Ocorreu um erro ao editar: ' . $e->getMessage())->send();
         }
-        $this->showForm = false;
     }
 
     public function deleteConfirm($id)
@@ -103,23 +126,34 @@ class Index extends Component
 
     public function delete()
     {
-        $query = Branch::where('id', $this->id)->first();
-        $query->delete();
-        $this->reset();
-        $this->resetValidation();
-        $this->dialog()->success('Successo', 'Eliminado com Sucesso.');
-    }
-
+        DB::beginTransaction();
+        try {
+            $query = Branch::where('id', $this->id)->first();
+    
+            if ($query) {
+                $query->delete();
+            }
+    
+            DB::commit(); // Confirma a transação
+            $this->reset();
+            $this->resetValidation();
+            $this->dialog()->success('Sucesso', 'Eliminado com Sucesso.');
+        } catch (\Exception $e) {
+            DB::rollback(); // Reverte a transação em caso de erro
+            $this->dialog()->error('Erro', 'Ocorreu um erro ao eliminar: ' . $e->getMessage())->send();
+        }
+    } // Fechamento correto do método delete
+    
     public function cancel()
     {
         $this->reset();
         $this->resetValidation();
     }
-
+    
     public function render()
     {
         $query = Branch::all();
-
+    
         return view('livewire.branch.index', compact('query'));
     }
 }

@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://127.0.0.1:8000";
+        var tryItOutBaseUrl = "http://localhost";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -71,26 +71,8 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-login">
-                                <a href="#endpoints-GETapi-login">Handle the incoming request.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-logout">
-                                <a href="#endpoints-GETapi-logout">Handle the incoming request.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-register">
-                                <a href="#endpoints-GETapi-register">Handle the incoming request.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
-                                <a href="#endpoints-GETapi-user">GET api/user</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-branches">
-                                <a href="#endpoints-GETapi-branches">Display a listing of the resource.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-branches">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-branches">
                                 <a href="#endpoints-POSTapi-branches">Store a newly created resource in storage.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-branches--id-">
-                                <a href="#endpoints-GETapi-branches--id-">Display the specified resource.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-branches--id-">
                                 <a href="#endpoints-PUTapi-branches--id-">Update the specified resource in storage.</a>
@@ -98,14 +80,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-branches--id-">
                                 <a href="#endpoints-DELETEapi-branches--id-">Remove the specified resource from storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-organic_units">
-                                <a href="#endpoints-GETapi-organic_units">Display a listing of the resource.</a>
-                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-organic_units">
                                 <a href="#endpoints-POSTapi-organic_units">Store a newly created resource in storage.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-organic_units--id-">
-                                <a href="#endpoints-GETapi-organic_units--id-">Display the specified resource.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-organic_units--id-">
                                 <a href="#endpoints-PUTapi-organic_units--id-">Update the specified resource in storage.</a>
@@ -124,7 +100,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 25, 2024</li>
+        <li>Last updated: November 26, 2024</li>
     </ul>
 </div>
 
@@ -133,7 +109,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
+    <strong>Base URL</strong>: <code>http://localhost</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -146,747 +122,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-                                <h2 id="endpoints-GETapi-login">Handle the incoming request.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"email\": \"emard.ignacio@example.org\",
-    \"password\": \"aliquam\",
-    \"device_name\": \"vlccamiuskvz\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "email": "emard.ignacio@example.org",
-    "password": "aliquam",
-    "device_name": "vlccamiuskvz"
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-login">
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;The provided credentials are incorrect.&quot;,
-    &quot;errors&quot;: {
-        &quot;email&quot;: [
-            &quot;The provided credentials are incorrect.&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-login"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-login">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-login" data-method="GET"
-      data-path="api/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-login"
-                    onclick="tryItOut('GETapi-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-login"
-                    onclick="cancelTryOut('GETapi-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-login"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/login</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-login"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-login"
-               value="emard.ignacio@example.org"
-               data-component="body">
-    <br>
-<p>O campo value não contém um endereço de e-mail válido. Example: <code>emard.ignacio@example.org</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="GETapi-login"
-               value="aliquam"
-               data-component="body">
-    <br>
-<p>Example: <code>aliquam</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_name"                data-endpoint="GETapi-login"
-               value="vlccamiuskvz"
-               data-component="body">
-    <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>vlccamiuskvz</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-GETapi-logout">Handle the incoming request.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-logout">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/logout" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/logout"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-logout">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-logout" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-logout"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-logout"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-logout" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-logout">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-logout" data-method="GET"
-      data-path="api/logout"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-logout', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-logout"
-                    onclick="tryItOut('GETapi-logout');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-logout"
-                    onclick="cancelTryOut('GETapi-logout');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-logout"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/logout</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-logout"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-logout"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-register">Handle the incoming request.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-register">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/register" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"mpmzdfopsmfjkwavccuej\",
-    \"email\": \"maggie28@example.net\",
-    \"password\": \"d6L&gt;ecN\",
-    \"device_name\": \"ufaeqnonrztthejedmvi\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/register"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "mpmzdfopsmfjkwavccuej",
-    "email": "maggie28@example.net",
-    "password": "d6L&gt;ecN",
-    "device_name": "ufaeqnonrztthejedmvi"
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-register">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;user&quot;: {
-        &quot;name&quot;: &quot;mpmzdfopsmfjkwavccuej&quot;,
-        &quot;email&quot;: &quot;maggie28@example.net&quot;
-    },
-    &quot;token&quot;: &quot;8|BRhWiQfwZn3Igfub7DV5J6TVti7yP8dRiRH5naQu18b1a38c&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-register" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-register"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-register"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-register" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-register">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-register" data-method="GET"
-      data-path="api/register"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-register', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-register"
-                    onclick="tryItOut('GETapi-register');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-register"
-                    onclick="cancelTryOut('GETapi-register');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-register"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/register</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-register"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-register"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETapi-register"
-               value="mpmzdfopsmfjkwavccuej"
-               data-component="body">
-    <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>mpmzdfopsmfjkwavccuej</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-register"
-               value="maggie28@example.net"
-               data-component="body">
-    <br>
-<p>O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres. Example: <code>maggie28@example.net</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="GETapi-register"
-               value="d6L>ecN"
-               data-component="body">
-    <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>d6L&gt;ecN</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_name"                data-endpoint="GETapi-register"
-               value="ufaeqnonrztthejedmvi"
-               data-component="body">
-    <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>ufaeqnonrztthejedmvi</code></p>
-        </div>
-        </form>
-
-                    <h2 id="endpoints-GETapi-user">GET api/user</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-user">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/user" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/user"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-user">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-user" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-user"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-user"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-user" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-user">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-user" data-method="GET"
-      data-path="api/user"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-user"
-                    onclick="tryItOut('GETapi-user');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-user"
-                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-user"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/user</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-user"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-user"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-branches">Display a listing of the resource.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-branches">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/branches" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/branches"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-branches">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-branches" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-branches"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-branches"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-branches" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-branches">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-branches" data-method="GET"
-      data-path="api/branches"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-branches', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-branches"
-                    onclick="tryItOut('GETapi-branches');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-branches"
-                    onclick="cancelTryOut('GETapi-branches');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-branches"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/branches</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-branches"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-branches"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-POSTapi-branches">Store a newly created resource in storage.</h2>
+                                <h2 id="endpoints-POSTapi-branches">Store a newly created resource in storage.</h2>
 
 <p>
 </p>
@@ -899,19 +135,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/branches" \
+    "http://localhost/api/branches" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"krelbetm\",
-    \"address\": \"mzoezkttpvjaeuyegpfrqq\"
+    \"name\": \"ktucoxgbpzxhjt\",
+    \"address\": \"yusnmfdila\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/branches"
+    "http://localhost/api/branches"
 );
 
 const headers = {
@@ -920,8 +156,8 @@ const headers = {
 };
 
 let body = {
-    "name": "krelbetm",
-    "address": "mzoezkttpvjaeuyegpfrqq"
+    "name": "ktucoxgbpzxhjt",
+    "address": "yusnmfdila"
 };
 
 fetch(url, {
@@ -1010,10 +246,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-branches"
-               value="krelbetm"
+               value="ktucoxgbpzxhjt"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>krelbetm</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>ktucoxgbpzxhjt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1021,148 +257,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTapi-branches"
-               value="mzoezkttpvjaeuyegpfrqq"
+               value="yusnmfdila"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>mzoezkttpvjaeuyegpfrqq</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>yusnmfdila</code></p>
         </div>
         </form>
-
-                    <h2 id="endpoints-GETapi-branches--id-">Display the specified resource.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-branches--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/branches/2" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/branches/2"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-branches--id-">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-branches--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-branches--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-branches--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-branches--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-branches--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-branches--id-" data-method="GET"
-      data-path="api/branches/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-branches--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-branches--id-"
-                    onclick="tryItOut('GETapi-branches--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-branches--id-"
-                    onclick="cancelTryOut('GETapi-branches--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-branches--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/branches/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-branches--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-branches--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-branches--id-"
-               value="2"
-               data-component="url">
-    <br>
-<p>The ID of the branch. Example: <code>2</code></p>
-            </div>
-                    </form>
 
                     <h2 id="endpoints-PUTapi-branches--id-">Update the specified resource in storage.</h2>
 
@@ -1177,19 +277,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://127.0.0.1:8000/api/branches/2" \
+    "http://localhost/api/branches/20" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"infojbobcjkkwfqupephzkb\",
-    \"address\": \"pzahzq\"
+    \"name\": \"fjjgwhiioge\",
+    \"address\": \"aglxtnrlbmadj\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/branches/2"
+    "http://localhost/api/branches/20"
 );
 
 const headers = {
@@ -1198,8 +298,8 @@ const headers = {
 };
 
 let body = {
-    "name": "infojbobcjkkwfqupephzkb",
-    "address": "pzahzq"
+    "name": "fjjgwhiioge",
+    "address": "aglxtnrlbmadj"
 };
 
 fetch(url, {
@@ -1292,10 +392,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-branches--id-"
-               value="2"
+               value="20"
                data-component="url">
     <br>
-<p>The ID of the branch. Example: <code>2</code></p>
+<p>The ID of the branch. Example: <code>20</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1304,10 +404,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-branches--id-"
-               value="infojbobcjkkwfqupephzkb"
+               value="fjjgwhiioge"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>infojbobcjkkwfqupephzkb</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>fjjgwhiioge</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1315,10 +415,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="PUTapi-branches--id-"
-               value="pzahzq"
+               value="aglxtnrlbmadj"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>pzahzq</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>aglxtnrlbmadj</code></p>
         </div>
         </form>
 
@@ -1335,14 +435,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://127.0.0.1:8000/api/branches/2" \
+    "http://localhost/api/branches/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/branches/2"
+    "http://localhost/api/branches/16"
 );
 
 const headers = {
@@ -1435,136 +535,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-branches--id-"
-               value="2"
+               value="16"
                data-component="url">
     <br>
-<p>The ID of the branch. Example: <code>2</code></p>
+<p>The ID of the branch. Example: <code>16</code></p>
             </div>
                     </form>
-
-                    <h2 id="endpoints-GETapi-organic_units">Display a listing of the resource.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-organic_units">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/organic_units" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/organic_units"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-organic_units">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-organic_units" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-organic_units"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-organic_units"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-organic_units" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-organic_units">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-organic_units" data-method="GET"
-      data-path="api/organic_units"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-organic_units', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-organic_units"
-                    onclick="tryItOut('GETapi-organic_units');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-organic_units"
-                    onclick="cancelTryOut('GETapi-organic_units');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-organic_units"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/organic_units</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-organic_units"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-organic_units"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
 
                     <h2 id="endpoints-POSTapi-organic_units">Store a newly created resource in storage.</h2>
 
@@ -1579,13 +555,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/organic_units" \
+    "http://localhost/api/organic_units" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"vopppslirq\",
+    \"name\": \"xzzhcyxtkpsaxprugnzgnebmx\",
     \"branches\": [
-        2.849
+        69105.182
     ]
 }"
 </code></pre></div>
@@ -1593,7 +569,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/organic_units"
+    "http://localhost/api/organic_units"
 );
 
 const headers = {
@@ -1602,9 +578,9 @@ const headers = {
 };
 
 let body = {
-    "name": "vopppslirq",
+    "name": "xzzhcyxtkpsaxprugnzgnebmx",
     "branches": [
-        2.849
+        69105.182
     ]
 };
 
@@ -1694,10 +670,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-organic_units"
-               value="vopppslirq"
+               value="xzzhcyxtkpsaxprugnzgnebmx"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>vopppslirq</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>xzzhcyxtkpsaxprugnzgnebmx</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
@@ -1714,142 +690,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-organic_units--id-">Display the specified resource.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-organic_units--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/organic_units/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/organic_units/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-organic_units--id-">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-organic_units--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-organic_units--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-organic_units--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-organic_units--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-organic_units--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-organic_units--id-" data-method="GET"
-      data-path="api/organic_units/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-organic_units--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-organic_units--id-"
-                    onclick="tryItOut('GETapi-organic_units--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-organic_units--id-"
-                    onclick="cancelTryOut('GETapi-organic_units--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-organic_units--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/organic_units/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-organic_units--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-organic_units--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-organic_units--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the organic unit. Example: <code>1</code></p>
-            </div>
-                    </form>
-
                     <h2 id="endpoints-PUTapi-organic_units--id-">Update the specified resource in storage.</h2>
 
 <p>
@@ -1863,13 +703,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://127.0.0.1:8000/api/organic_units/1" \
+    "http://localhost/api/organic_units/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"poowrnpx\",
+    \"name\": \"edw\",
     \"branches\": [
-        426.4268
+        81013.229
     ]
 }"
 </code></pre></div>
@@ -1877,7 +717,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/organic_units/1"
+    "http://localhost/api/organic_units/5"
 );
 
 const headers = {
@@ -1886,9 +726,9 @@ const headers = {
 };
 
 let body = {
-    "name": "poowrnpx",
+    "name": "edw",
     "branches": [
-        426.4268
+        81013.229
     ]
 };
 
@@ -1982,10 +822,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-organic_units--id-"
-               value="1"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the organic unit. Example: <code>1</code></p>
+<p>The ID of the organic unit. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1994,10 +834,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-organic_units--id-"
-               value="poowrnpx"
+               value="edw"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>poowrnpx</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>edw</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
@@ -2027,14 +867,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://127.0.0.1:8000/api/organic_units/1" \
+    "http://localhost/api/organic_units/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/organic_units/1"
+    "http://localhost/api/organic_units/4"
 );
 
 const headers = {
@@ -2127,10 +967,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-organic_units--id-"
-               value="1"
+               value="4"
                data-component="url">
     <br>
-<p>The ID of the organic unit. Example: <code>1</code></p>
+<p>The ID of the organic unit. Example: <code>4</code></p>
             </div>
                     </form>
 

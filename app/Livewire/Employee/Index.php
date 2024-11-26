@@ -105,6 +105,9 @@ class Index extends Component
 
     public function store()
     {
+        DB::beginTransaction();  // Inicia a transação
+
+    try {
         $validated = $this->validate();
         $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
@@ -115,11 +118,19 @@ class Index extends Component
         $validated['level_id'] = Level::where('name', $validated['level_id'])->value('id');
         $validated['salary_level_id'] = SalaryLevel::where('level', $validated['salary_level_id'])->value('id');
 
-        $query = Employee::create($validated);
+        // Criação do novo funcionário
+        Employee::create($validated);
+
+        DB::commit();  // Confirma a transação
 
         $this->reset();
         $this->resetValidation();
         $this->dialog()->success('Successo', 'Adicionado com Sucesso.')->send();
+    } catch (\Exception $e) {
+        DB::rollback();  // Desfaz a transação em caso de erro
+        $this->dialog()->error('Erro', 'Ocorreu um erro.')->send();
+        throw $e;  // Lança novamente a exceção para rastreamento
+    }
     }
 
     public function edit($id)
@@ -154,6 +165,9 @@ class Index extends Component
 
     public function update()
     {
+        DB::beginTransaction();  // Inicia a transação
+
+    try {
         $validated = $this->validate();
         $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
@@ -167,11 +181,18 @@ class Index extends Component
         if ($this->id) {
             $query = Employee::findOrFail($this->id);
             $query->update($validated);
-
-            $this->reset();
-            $this->resetValidation();
-            $this->dialog()->success('Successo', 'Editado com Sucesso.')->send();
         }
+
+        DB::commit();  // Confirma a transação
+
+        $this->reset();
+        $this->resetValidation();
+        $this->dialog()->success('Successo', 'Editado com Sucesso.')->send();
+    } catch (\Exception $e) {
+        DB::rollback();  // Desfaz a transação em caso de erro
+        $this->dialog()->error('Erro', 'Ocorreu um erro.')->send();
+        throw $e;  // Lança novamente a exceção para rastreamento
+    }
     }
 
     public function deleteConfirm($id)
@@ -184,17 +205,28 @@ class Index extends Component
             ->send();
     }
 
-    public function delete()
-    {
+    public function delete(){
+   DB::beginTransaction();  // Inicia a transação
+
+    try {
         $query = Employee::where('id', $this->id)->first();
-        //if ($query && $query->branches()->exists()) {
-        //   return $this->dialog()->error('Erro ao Eliminar', 'Não pode ser eliminado pois está associado a outro registo.')->send();
-        //}
-        $query->delete();
+
+        if ($query) {
+            $query->delete();
+        }
+
+        DB::commit();  // Confirma a transação
+
         $this->reset();
         $this->resetValidation();
         $this->dialog()->success('Successo', 'Eliminado com Sucesso.')->send();
+    } catch (\Exception $e) {
+        DB::rollback();  // Desfaz a transação em caso de erro
+        $this->dialog()->error('Erro', 'Ocorreu um erro ao eliminar.')->send();
+        throw $e;  // Lança novamente a exceção para rastreamento
     }
+}
+
 
     public function cancel()
     {
