@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\DashboardController;
 use App\Livewire\AdministrativeAct;
 use App\Livewire\Branch;
 use App\Livewire\Career;
@@ -23,7 +24,7 @@ Route::view('/', 'welcome');
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', LogoutController::class)->name('logout');
 
-    Route::view('dashboard', 'dashboard')
+    Route::get('dashboard', DashboardController::class)
         ->name('dashboard');
 
     Route::view('profile', 'profile')

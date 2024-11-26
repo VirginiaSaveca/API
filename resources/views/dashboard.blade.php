@@ -13,9 +13,26 @@
         </ul>
     </x-slot>
 
-    <div class="bg-white shadow-sm  sm:rounded-lg">
-        <div class="p-6 text-gray-900">
-            {{ __("You're logged in!") }}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Cartão de Funcionários -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Funcionários</h2>
+            <p class="text-3xl font-bold text-blue-600">{{ $employees_count }}</p>
+            <p class="text-sm text-gray-500 mt-1">Total de funcionários</p>
+        </div>
+
+        <!-- Cartão de Filiais -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Extensões</h2>
+            <p class="text-3xl font-bold text-green-600">{{ $branches_count }}</p>
+            <p class="text-sm text-gray-500 mt-1">Número de extensões</p>
+        </div>
+
+        <!-- Cartão de Utilizadores -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Utilizadores</h2>
+            <p class="text-3xl font-bold text-purple-600">{{ $users_count }}</p>
+            <p class="text-sm text-gray-500 mt-1">Utilizadores registados</p>
         </div>
     </div>
 </x-app-layout>
