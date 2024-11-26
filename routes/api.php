@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BranchController;
+use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\OrganicUnitController;
@@ -31,4 +32,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('branches', BranchController::class);
     Route::apiResource('organic_units', OrganicUnitController::class);
+    Route::apiResource('employees', EmployeeController::class);
 });

@@ -28,7 +28,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido.'
         required: true
-        example: friesen.vilma@example.net
+        example: feeney.ottilie@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -38,7 +38,7 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: nam
+        example: voluptas
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -48,16 +48,16 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: rcauprihqbnsqqtlvfkzq
+        example: jpxtonxnygzugzhjcuwoms
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: friesen.vilma@example.net
-      password: nam
-      device_name: rcauprihqbnsqqtlvfkzq
+      email: feeney.ottilie@example.com
+      password: voluptas
+      device_name: jpxtonxnygzugzhjcuwoms
     fileParameters: []
     responses:
       -
@@ -141,7 +141,7 @@ endpoints:
         name: name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: pwgnljymrhcmhvqouh
+        example: qmoyguf
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -151,7 +151,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres.'
         required: true
-        example: jasmin.langosh@example.net
+        example: chase.emard@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -161,7 +161,7 @@ endpoints:
         name: password
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: "`@2P/RCQ{6P5'"
+        example: e(t-<yz)4WGGy1Hx|v
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -171,22 +171,22 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: sgtibgdigepggggtahlhhc
+        example: whgctagqwyiqpaa
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: pwgnljymrhcmhvqouh
-      email: jasmin.langosh@example.net
-      password: "`@2P/RCQ{6P5'"
-      device_name: sgtibgdigepggggtahlhhc
+      name: qmoyguf
+      email: chase.emard@example.com
+      password: e(t-<yz)4WGGy1Hx|v
+      device_name: whgctagqwyiqpaa
     fileParameters: []
     responses:
       -
         status: 201
-        content: '{"user":{"name":"pwgnljymrhcmhvqouh","email":"jasmin.langosh@example.net"},"token":"13|6k4xn6eLivVVjFYVVQ4iA7W2cR8U9uxrkdLgwRrBb113d332"}'
+        content: '{"user":{"name":"qmoyguf","email":"chase.emard@example.com"},"token":"19|OsXDOSnQ70gMYVmKWUDJ1APdsvVHmSGOwkDyep4E0b7b16d7"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -304,7 +304,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: kk
+        example: 'n'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -314,15 +314,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: mecuxrofgjbokxkcemhxwy
+        example: sorybrvug
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: kk
-      address: mecuxrofgjbokxkcemhxwy
+      name: 'n'
+      address: sorybrvug
     fileParameters: []
     responses: []
     responseFields: []
@@ -418,7 +418,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: kqsanxdpazqnuxyamglvvr
+        example: nxtbfpgrjjqos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -428,15 +428,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: zrppslrvmchaq
+        example: bgajdsmnjnkrwlvlv
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: kqsanxdpazqnuxyamglvvr
-      address: zrppslrvmchaq
+      name: nxtbfpgrjjqos
+      address: bgajdsmnjnkrwlvlv
     fileParameters: []
     responses: []
     responseFields: []
@@ -550,7 +550,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: uwuv
+        example: lgnegfonchursasmxmszvtfa
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -561,16 +561,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 111.324657177
+          - 7294724.5823315
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: uwuv
+      name: lgnegfonchursasmxmszvtfa
       branches:
-        - 111.324657177
+        - 7294724.5823315
     fileParameters: []
     responses: []
     responseFields: []
@@ -666,7 +666,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: gsweycxvghawpbbcsbdccbcd
+        example: lctnpiqdvhbvjnfcz
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -677,16 +677,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 240.93777
+          - 93.8
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: gsweycxvghawpbbcsbdccbcd
+      name: lctnpiqdvhbvjnfcz
       branches:
-        - 240.93777
+        - 93.8
     fileParameters: []
     responses: []
     responseFields: []
@@ -715,6 +715,626 @@ endpoints:
       id:
         name: id
         description: 'The ID of the organic unit.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/employees
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/employees
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      branch_id:
+        name: branch_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      organic_unit_id:
+        name: organic_unit_id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      department_id:
+        name: department_id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      partition_id:
+        name: partition_id
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      career_id:
+        name: career_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      level_id:
+        name: level_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      salary_level_id:
+        name: salary_level_id
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: nisi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      birthdate:
+        name: birthdate
+        description: 'O campo value não contém uma data válida.'
+        required: true
+        example: '2024-11-26T12:15:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      contact:
+        name: contact
+        description: ''
+        required: true
+        example: 15540448.103
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nationality:
+        name: nationality
+        description: ''
+        required: true
+        example: explicabo
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      naturality:
+        name: naturality
+        description: ''
+        required: true
+        example: qui
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'O campo value não contém um endereço de e-mail válido.'
+        required: true
+        example: genevieve04@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      father_name:
+        name: father_name
+        description: ''
+        required: true
+        example: dicta
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      mother_name:
+        name: mother_name
+        description: ''
+        required: true
+        example: deleniti
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      bi_nr:
+        name: bi_nr
+        description: ''
+        required: true
+        example: sint
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      bi_validate:
+        name: bi_validate
+        description: 'O campo value não contém uma data válida.'
+        required: true
+        example: '2024-11-26T12:15:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nuit:
+        name: nuit
+        description: ''
+        required: true
+        example: 10537540.784393
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      branch_id: 9
+      organic_unit_id: 6
+      department_id: 18
+      partition_id: 17
+      career_id: 9
+      category_id: 12
+      level_id: 16
+      salary_level_id: 2
+      name: nisi
+      birthdate: '2024-11-26T12:15:00'
+      contact: 15540448.103
+      nationality: explicabo
+      naturality: qui
+      email: genevieve04@example.com
+      father_name: dicta
+      mother_name: deleniti
+      bi_nr: sint
+      bi_validate: '2024-11-26T12:15:00'
+      nuit: 10537540.784393
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/employees/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/employees/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      branch_id:
+        name: branch_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      organic_unit_id:
+        name: organic_unit_id
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      department_id:
+        name: department_id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      partition_id:
+        name: partition_id
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      career_id:
+        name: career_id
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      level_id:
+        name: level_id
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      salary_level_id:
+        name: salary_level_id
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: nostrum
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      birthdate:
+        name: birthdate
+        description: 'O campo value não contém uma data válida.'
+        required: true
+        example: '2024-11-26T12:15:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      contact:
+        name: contact
+        description: ''
+        required: true
+        example: 230137.5115927
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nationality:
+        name: nationality
+        description: ''
+        required: true
+        example: voluptatem
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      naturality:
+        name: naturality
+        description: ''
+        required: true
+        example: sit
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'O campo value não contém um endereço de e-mail válido.'
+        required: true
+        example: estrosin@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      father_name:
+        name: father_name
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      mother_name:
+        name: mother_name
+        description: ''
+        required: true
+        example: quos
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      bi_nr:
+        name: bi_nr
+        description: ''
+        required: true
+        example: vero
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      bi_validate:
+        name: bi_validate
+        description: 'O campo value não contém uma data válida.'
+        required: true
+        example: '2024-11-26T12:15:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      nuit:
+        name: nuit
+        description: ''
+        required: true
+        example: 19.7185833
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      branch_id: 9
+      organic_unit_id: 17
+      department_id: 18
+      partition_id: 2
+      career_id: 11
+      category_id: 18
+      level_id: 20
+      salary_level_id: 17
+      name: nostrum
+      birthdate: '2024-11-26T12:15:00'
+      contact: 230137.5115927
+      nationality: voluptatem
+      naturality: sit
+      email: estrosin@example.com
+      father_name: voluptas
+      mother_name: quos
+      bi_nr: vero
+      bi_validate: '2024-11-26T12:15:00'
+      nuit: 19.7185833
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/employees/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the employee.'
         required: true
         example: 1
         type: integer
