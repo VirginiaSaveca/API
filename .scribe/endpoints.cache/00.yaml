@@ -5,7 +5,7 @@ description: ''
 endpoints:
   -
     httpMethods:
-      - GET
+      - POST
     uri: api/login
     metadata:
       groupName: Endpoints
@@ -28,7 +28,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido.'
         required: true
-        example: michaela.kohler@example.net
+        example: erin.bartoletti@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -38,7 +38,7 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: nam
+        example: corrupti
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -48,29 +48,18 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: hnvgshxwrgysuzobpet
+        example: pbftblfpblxqvnwxumh
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: michaela.kohler@example.net
-      password: nam
-      device_name: hnvgshxwrgysuzobpet
+      email: erin.bartoletti@example.org
+      password: corrupti
+      device_name: pbftblfpblxqvnwxumh
     fileParameters: []
-    responses:
-      -
-        status: 422
-        content: '{"message":"The provided credentials are incorrect.","errors":{"email":["The provided credentials are incorrect."]}}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
-          vary: Origin
-        description: null
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -79,7 +68,7 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
+      - POST
     uri: api/logout
     metadata:
       groupName: Endpoints
@@ -100,16 +89,7 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          vary: Origin
-        description: null
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -118,7 +98,7 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
+      - POST
     uri: api/register
     metadata:
       groupName: Endpoints
@@ -141,7 +121,7 @@ endpoints:
         name: name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: nifmdnxlnuvodmk
+        example: oaddvpvbsws
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -151,7 +131,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres.'
         required: true
-        example: huels.leatha@example.org
+        example: max36@example.net
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -161,7 +141,7 @@ endpoints:
         name: password
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: 'Bs0?KFe|-LFg7fm'
+        example: 'P\0r;ed?q:'''
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -171,30 +151,19 @@ endpoints:
         name: device_name
         description: 'O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: qwihcxhdr
+        example: ozqgmrrjffqwgq
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: nifmdnxlnuvodmk
-      email: huels.leatha@example.org
-      password: 'Bs0?KFe|-LFg7fm'
-      device_name: qwihcxhdr
+      name: oaddvpvbsws
+      email: max36@example.net
+      password: 'P\0r;ed?q:'''
+      device_name: ozqgmrrjffqwgq
     fileParameters: []
-    responses:
-      -
-        status: 201
-        content: '{"user":{"name":"nifmdnxlnuvodmk","email":"huels.leatha@example.org"},"token":"29|qQrOTwmFSbmFHvMLRybcmSqF477b10zEeowmfZeA6b5f2f9a"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '58'
-          vary: Origin
-        description: null
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -304,7 +273,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: tcnxa
+        example: usruwgjqvfllmmhvdlutvzvjt
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -314,15 +283,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: np
+        example: lmbzffvxwlabrcsqbluc
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: tcnxa
-      address: np
+      name: usruwgjqvfllmmhvdlutvzvjt
+      address: lmbzffvxwlabrcsqbluc
     fileParameters: []
     responses: []
     responseFields: []
@@ -418,7 +387,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: qmzaehyuhwsausnbnu
+        example: joesjmlxhboxvobyyr
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -428,15 +397,15 @@ endpoints:
         name: address
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: tzbcuhlmopikmtvvpd
+        example: atflnbogjvgtpgqrvbgtvki
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: qmzaehyuhwsausnbnu
-      address: tzbcuhlmopikmtvvpd
+      name: joesjmlxhboxvobyyr
+      address: atflnbogjvgtpgqrvbgtvki
     fileParameters: []
     responses: []
     responseFields: []
@@ -550,7 +519,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: otbidwz
+        example: hrbml
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -561,16 +530,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 1265424.9
+          - 2564288.71102
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: otbidwz
+      name: hrbml
       branches:
-        - 1265424.9
+        - 2564288.71102
     fileParameters: []
     responses: []
     responseFields: []
@@ -666,7 +635,7 @@ endpoints:
         name: name
         description: 'O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres.'
         required: true
-        example: tmyhyhxvqouduqwb
+        example: wkhkflrkcdliaayeewvjb
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -677,16 +646,16 @@ endpoints:
         description: ''
         required: false
         example:
-          - 4696546.3219
+          - 6159224.4176372
         type: 'number[]'
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: tmyhyhxvqouduqwb
+      name: wkhkflrkcdliaayeewvjb
       branches:
-        - 4696546.3219
+        - 6159224.4176372
     fileParameters: []
     responses: []
     responseFields: []
@@ -800,7 +769,7 @@ endpoints:
         name: branch_id
         description: ''
         required: true
-        example: 6
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -810,7 +779,7 @@ endpoints:
         name: organic_unit_id
         description: ''
         required: true
-        example: 1
+        example: 6
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -820,7 +789,7 @@ endpoints:
         name: department_id
         description: ''
         required: true
-        example: 12
+        example: 6
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -830,7 +799,7 @@ endpoints:
         name: partition_id
         description: ''
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -840,7 +809,7 @@ endpoints:
         name: career_id
         description: ''
         required: true
-        example: 3
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -850,7 +819,7 @@ endpoints:
         name: category_id
         description: ''
         required: true
-        example: 4
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -860,7 +829,7 @@ endpoints:
         name: level_id
         description: ''
         required: true
-        example: 1
+        example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -870,7 +839,7 @@ endpoints:
         name: salary_level_id
         description: ''
         required: true
-        example: 11
+        example: 19
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -890,7 +859,7 @@ endpoints:
         name: birthdate
         description: 'O campo value não contém uma data válida.'
         required: true
-        example: '2024-11-28T04:47:31'
+        example: '2024-11-28T20:33:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -900,7 +869,7 @@ endpoints:
         name: contact
         description: ''
         required: true
-        example: 7.1358617
+        example: 0.57009
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -910,7 +879,7 @@ endpoints:
         name: nationality
         description: ''
         required: true
-        example: repudiandae
+        example: cumque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -920,7 +889,7 @@ endpoints:
         name: naturality
         description: ''
         required: true
-        example: doloribus
+        example: voluptates
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -930,7 +899,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido.'
         required: true
-        example: lorna.fadel@example.org
+        example: harber.reggie@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -940,7 +909,7 @@ endpoints:
         name: father_name
         description: ''
         required: true
-        example: fugit
+        example: odio
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -950,7 +919,7 @@ endpoints:
         name: mother_name
         description: ''
         required: true
-        example: quisquam
+        example: repellendus
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -960,7 +929,7 @@ endpoints:
         name: bi_nr
         description: ''
         required: true
-        example: at
+        example: eaque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -970,7 +939,7 @@ endpoints:
         name: bi_validate
         description: 'O campo value não contém uma data válida.'
         required: true
-        example: '2024-11-28T04:47:31'
+        example: '2024-11-28T20:33:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -980,32 +949,32 @@ endpoints:
         name: nuit
         description: ''
         required: true
-        example: 28553.0
+        example: 20389506.88396
         type: number
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      branch_id: 6
-      organic_unit_id: 1
-      department_id: 12
-      partition_id: 1
-      career_id: 3
-      category_id: 4
-      level_id: 1
-      salary_level_id: 11
+      branch_id: 10
+      organic_unit_id: 6
+      department_id: 6
+      partition_id: 16
+      career_id: 7
+      category_id: 3
+      level_id: 2
+      salary_level_id: 19
       name: minus
-      birthdate: '2024-11-28T04:47:31'
-      contact: 7.1358617
-      nationality: repudiandae
-      naturality: doloribus
-      email: lorna.fadel@example.org
-      father_name: fugit
-      mother_name: quisquam
-      bi_nr: at
-      bi_validate: '2024-11-28T04:47:31'
-      nuit: 28553.0
+      birthdate: '2024-11-28T20:33:34'
+      contact: 0.57009
+      nationality: cumque
+      naturality: voluptates
+      email: harber.reggie@example.org
+      father_name: odio
+      mother_name: repellendus
+      bi_nr: eaque
+      bi_validate: '2024-11-28T20:33:34'
+      nuit: 20389506.88396
     fileParameters: []
     responses: []
     responseFields: []
@@ -1101,7 +1070,7 @@ endpoints:
         name: branch_id
         description: ''
         required: true
-        example: 15
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1111,7 +1080,7 @@ endpoints:
         name: organic_unit_id
         description: ''
         required: true
-        example: 12
+        example: 11
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1121,7 +1090,7 @@ endpoints:
         name: department_id
         description: ''
         required: true
-        example: 19
+        example: 20
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1131,7 +1100,7 @@ endpoints:
         name: partition_id
         description: ''
         required: true
-        example: 2
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1141,7 +1110,7 @@ endpoints:
         name: career_id
         description: ''
         required: true
-        example: 18
+        example: 6
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1151,7 +1120,7 @@ endpoints:
         name: category_id
         description: ''
         required: true
-        example: 1
+        example: 14
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1161,7 +1130,7 @@ endpoints:
         name: level_id
         description: ''
         required: true
-        example: 2
+        example: 11
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1171,7 +1140,7 @@ endpoints:
         name: salary_level_id
         description: ''
         required: true
-        example: 14
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1181,7 +1150,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: nemo
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1191,7 +1160,7 @@ endpoints:
         name: birthdate
         description: 'O campo value não contém uma data válida.'
         required: true
-        example: '2024-11-28T04:47:31'
+        example: '2024-11-28T20:33:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1201,7 +1170,7 @@ endpoints:
         name: contact
         description: ''
         required: true
-        example: 18.0
+        example: 8.35742
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -1211,7 +1180,7 @@ endpoints:
         name: nationality
         description: ''
         required: true
-        example: dolorum
+        example: est
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1221,7 +1190,7 @@ endpoints:
         name: naturality
         description: ''
         required: true
-        example: ab
+        example: atque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1231,7 +1200,7 @@ endpoints:
         name: email
         description: 'O campo value não contém um endereço de e-mail válido.'
         required: true
-        example: bahringer.ewald@example.org
+        example: gterry@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1251,7 +1220,7 @@ endpoints:
         name: mother_name
         description: ''
         required: true
-        example: cupiditate
+        example: at
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1261,7 +1230,7 @@ endpoints:
         name: bi_nr
         description: ''
         required: true
-        example: consequatur
+        example: eaque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1271,7 +1240,7 @@ endpoints:
         name: bi_validate
         description: 'O campo value não contém uma data válida.'
         required: true
-        example: '2024-11-28T04:47:31'
+        example: '2024-11-28T20:33:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1281,32 +1250,32 @@ endpoints:
         name: nuit
         description: ''
         required: true
-        example: 439126434.605
+        example: 113615.55245
         type: number
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      branch_id: 15
-      organic_unit_id: 12
-      department_id: 19
-      partition_id: 2
-      career_id: 18
-      category_id: 1
-      level_id: 2
-      salary_level_id: 14
-      name: nemo
-      birthdate: '2024-11-28T04:47:31'
-      contact: 18.0
-      nationality: dolorum
-      naturality: ab
-      email: bahringer.ewald@example.org
+      branch_id: 10
+      organic_unit_id: 11
+      department_id: 20
+      partition_id: 16
+      career_id: 6
+      category_id: 14
+      level_id: 11
+      salary_level_id: 10
+      name: voluptatem
+      birthdate: '2024-11-28T20:33:34'
+      contact: 8.35742
+      nationality: est
+      naturality: atque
+      email: gterry@example.org
       father_name: ut
-      mother_name: cupiditate
-      bi_nr: consequatur
-      bi_validate: '2024-11-28T04:47:31'
-      nuit: 439126434.605
+      mother_name: at
+      bi_nr: eaque
+      bi_validate: '2024-11-28T20:33:34'
+      nuit: 113615.55245
     fileParameters: []
     responses: []
     responseFields: []

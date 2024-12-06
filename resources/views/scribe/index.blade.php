@@ -71,14 +71,14 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-login">
-                                <a href="#endpoints-GETapi-login">Handle the incoming request.</a>
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
+                                <a href="#endpoints-POSTapi-login">Handle the incoming request.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-logout">
-                                <a href="#endpoints-GETapi-logout">Handle the incoming request.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
+                                <a href="#endpoints-POSTapi-logout">Handle the incoming request.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-register">
-                                <a href="#endpoints-GETapi-register">Handle the incoming request.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
+                                <a href="#endpoints-POSTapi-register">Handle the incoming request.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
@@ -161,26 +161,26 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-                                <h2 id="endpoints-GETapi-login">Handle the incoming request.</h2>
+                                <h2 id="endpoints-POSTapi-login">Handle the incoming request.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-login">
+<span id="example-requests-POSTapi-login">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/login" \
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"michaela.kohler@example.net\",
-    \"password\": \"nam\",
-    \"device_name\": \"hnvgshxwrgysuzobpet\"
+    \"email\": \"erin.bartoletti@example.org\",
+    \"password\": \"corrupti\",
+    \"device_name\": \"pbftblfpblxqvnwxumh\"
 }"
 </code></pre></div>
 
@@ -196,88 +196,65 @@ const headers = {
 };
 
 let body = {
-    "email": "michaela.kohler@example.net",
-    "password": "nam",
-    "device_name": "hnvgshxwrgysuzobpet"
+    "email": "erin.bartoletti@example.org",
+    "password": "corrupti",
+    "device_name": "pbftblfpblxqvnwxumh"
 };
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-login">
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-vary: Origin
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;The provided credentials are incorrect.&quot;,
-    &quot;errors&quot;: {
-        &quot;email&quot;: [
-            &quot;The provided credentials are incorrect.&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-login" hidden>
+<span id="example-responses-POSTapi-login">
+</span>
+<span id="execution-results-POSTapi-login" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-login"></span>:
+                id="execution-response-status-POSTapi-login"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-login"
+    <pre class="json"><code id="execution-response-content-POSTapi-login"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-login" hidden>
+<span id="execution-error-POSTapi-login" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-login">
+    <pre><code id="execution-error-message-POSTapi-login">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-login" data-method="GET"
+<form id="form-POSTapi-login" data-method="POST"
       data-path="api/login"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-login', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-login"
-                    onclick="tryItOut('GETapi-login');">Try it out ⚡
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-login"
-                    onclick="cancelTryOut('GETapi-login');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-login"
+                    id="btn-executetryout-POSTapi-login"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-green">GET</small>
+            <small class="badge badge-black">POST</small>
             <b><code>api/login</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
@@ -286,7 +263,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-login"
+                              name="Content-Type"                data-endpoint="POSTapi-login"
                value="application/json"
                data-component="header">
     <br>
@@ -297,7 +274,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-login"
+                              name="Accept"                data-endpoint="POSTapi-login"
                value="application/json"
                data-component="header">
     <br>
@@ -309,50 +286,50 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-login"
-               value="michaela.kohler@example.net"
+                              name="email"                data-endpoint="POSTapi-login"
+               value="erin.bartoletti@example.org"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. Example: <code>michaela.kohler@example.net</code></p>
+<p>O campo value não contém um endereço de e-mail válido. Example: <code>erin.bartoletti@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password"                data-endpoint="GETapi-login"
-               value="nam"
+                              name="password"                data-endpoint="POSTapi-login"
+               value="corrupti"
                data-component="body">
     <br>
-<p>Example: <code>nam</code></p>
+<p>Example: <code>corrupti</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="device_name"                data-endpoint="GETapi-login"
-               value="hnvgshxwrgysuzobpet"
+                              name="device_name"                data-endpoint="POSTapi-login"
+               value="pbftblfpblxqvnwxumh"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>hnvgshxwrgysuzobpet</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>pbftblfpblxqvnwxumh</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-logout">Handle the incoming request.</h2>
+                    <h2 id="endpoints-POSTapi-logout">Handle the incoming request.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-logout">
+<span id="example-requests-POSTapi-logout">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/logout" \
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -368,74 +345,58 @@ const headers = {
 };
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-logout">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-vary: Origin
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-logout" hidden>
+<span id="example-responses-POSTapi-logout">
+</span>
+<span id="execution-results-POSTapi-logout" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-logout"></span>:
+                id="execution-response-status-POSTapi-logout"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-logout"
+    <pre class="json"><code id="execution-response-content-POSTapi-logout"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-logout" hidden>
+<span id="execution-error-POSTapi-logout" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-logout">
+    <pre><code id="execution-error-message-POSTapi-logout">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-logout" data-method="GET"
+<form id="form-POSTapi-logout" data-method="POST"
       data-path="api/logout"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-logout', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-logout', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-logout"
-                    onclick="tryItOut('GETapi-logout');">Try it out ⚡
+                    id="btn-tryout-POSTapi-logout"
+                    onclick="tryItOut('POSTapi-logout');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-logout"
-                    onclick="cancelTryOut('GETapi-logout');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-logout"
+                    onclick="cancelTryOut('POSTapi-logout');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-logout"
+                    id="btn-executetryout-POSTapi-logout"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-green">GET</small>
+            <small class="badge badge-black">POST</small>
             <b><code>api/logout</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
@@ -444,7 +405,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-logout"
+                              name="Content-Type"                data-endpoint="POSTapi-logout"
                value="application/json"
                data-component="header">
     <br>
@@ -455,7 +416,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-logout"
+                              name="Accept"                data-endpoint="POSTapi-logout"
                value="application/json"
                data-component="header">
     <br>
@@ -463,27 +424,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-register">Handle the incoming request.</h2>
+                    <h2 id="endpoints-POSTapi-register">Handle the incoming request.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-register">
+<span id="example-requests-POSTapi-register">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/register" \
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"nifmdnxlnuvodmk\",
-    \"email\": \"huels.leatha@example.org\",
-    \"password\": \"Bs0?KFe|-LFg7fm\",
-    \"device_name\": \"qwihcxhdr\"
+    \"name\": \"oaddvpvbsws\",
+    \"email\": \"max36@example.net\",
+    \"password\": \"P\\\\0r;ed?q:\'\",
+    \"device_name\": \"ozqgmrrjffqwgq\"
 }"
 </code></pre></div>
 
@@ -499,88 +460,66 @@ const headers = {
 };
 
 let body = {
-    "name": "nifmdnxlnuvodmk",
-    "email": "huels.leatha@example.org",
-    "password": "Bs0?KFe|-LFg7fm",
-    "device_name": "qwihcxhdr"
+    "name": "oaddvpvbsws",
+    "email": "max36@example.net",
+    "password": "P\\0r;ed?q:'",
+    "device_name": "ozqgmrrjffqwgq"
 };
 
 fetch(url, {
-    method: "GET",
+    method: "POST",
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-register">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
-vary: Origin
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;user&quot;: {
-        &quot;name&quot;: &quot;nifmdnxlnuvodmk&quot;,
-        &quot;email&quot;: &quot;huels.leatha@example.org&quot;
-    },
-    &quot;token&quot;: &quot;29|qQrOTwmFSbmFHvMLRybcmSqF477b10zEeowmfZeA6b5f2f9a&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-register" hidden>
+<span id="example-responses-POSTapi-register">
+</span>
+<span id="execution-results-POSTapi-register" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-register"></span>:
+                id="execution-response-status-POSTapi-register"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-register"
+    <pre class="json"><code id="execution-response-content-POSTapi-register"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-register" hidden>
+<span id="execution-error-POSTapi-register" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-register">
+    <pre><code id="execution-error-message-POSTapi-register">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-register" data-method="GET"
+<form id="form-POSTapi-register" data-method="POST"
       data-path="api/register"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-register"
-                    onclick="tryItOut('GETapi-register');">Try it out ⚡
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-register"
-                    onclick="cancelTryOut('GETapi-register');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-register"
+                    id="btn-executetryout-POSTapi-register"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-green">GET</small>
+            <small class="badge badge-black">POST</small>
             <b><code>api/register</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
@@ -589,7 +528,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-register"
+                              name="Content-Type"                data-endpoint="POSTapi-register"
                value="application/json"
                data-component="header">
     <br>
@@ -600,7 +539,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-register"
+                              name="Accept"                data-endpoint="POSTapi-register"
                value="application/json"
                data-component="header">
     <br>
@@ -612,44 +551,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETapi-register"
-               value="nifmdnxlnuvodmk"
+                              name="name"                data-endpoint="POSTapi-register"
+               value="oaddvpvbsws"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>nifmdnxlnuvodmk</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>oaddvpvbsws</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-register"
-               value="huels.leatha@example.org"
+                              name="email"                data-endpoint="POSTapi-register"
+               value="max36@example.net"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres. Example: <code>huels.leatha@example.org</code></p>
+<p>O campo value não contém um endereço de e-mail válido. O campo value não deverá conter mais de 254 caracteres. Example: <code>max36@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password"                data-endpoint="GETapi-register"
-               value="Bs0?KFe|-LFg7fm"
+                              name="password"                data-endpoint="POSTapi-register"
+               value="P\0r;ed?q:'"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>Bs0?KFe|-LFg7fm</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>P\0r;ed?q:'</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>device_name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="device_name"                data-endpoint="GETapi-register"
-               value="qwihcxhdr"
+                              name="device_name"                data-endpoint="POSTapi-register"
+               value="ozqgmrrjffqwgq"
                data-component="body">
     <br>
-<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>qwihcxhdr</code></p>
+<p>O campo value não deverá conter mais de 255 caracteres. Example: <code>ozqgmrrjffqwgq</code></p>
         </div>
         </form>
 
@@ -918,8 +857,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"tcnxa\",
-    \"address\": \"np\"
+    \"name\": \"usruwgjqvfllmmhvdlutvzvjt\",
+    \"address\": \"lmbzffvxwlabrcsqbluc\"
 }"
 </code></pre></div>
 
@@ -935,8 +874,8 @@ const headers = {
 };
 
 let body = {
-    "name": "tcnxa",
-    "address": "np"
+    "name": "usruwgjqvfllmmhvdlutvzvjt",
+    "address": "lmbzffvxwlabrcsqbluc"
 };
 
 fetch(url, {
@@ -1025,10 +964,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-branches"
-               value="tcnxa"
+               value="usruwgjqvfllmmhvdlutvzvjt"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>tcnxa</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>usruwgjqvfllmmhvdlutvzvjt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1036,10 +975,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTapi-branches"
-               value="np"
+               value="lmbzffvxwlabrcsqbluc"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>np</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>lmbzffvxwlabrcsqbluc</code></p>
         </div>
         </form>
 
@@ -1196,8 +1135,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"qmzaehyuhwsausnbnu\",
-    \"address\": \"tzbcuhlmopikmtvvpd\"
+    \"name\": \"joesjmlxhboxvobyyr\",
+    \"address\": \"atflnbogjvgtpgqrvbgtvki\"
 }"
 </code></pre></div>
 
@@ -1213,8 +1152,8 @@ const headers = {
 };
 
 let body = {
-    "name": "qmzaehyuhwsausnbnu",
-    "address": "tzbcuhlmopikmtvvpd"
+    "name": "joesjmlxhboxvobyyr",
+    "address": "atflnbogjvgtpgqrvbgtvki"
 };
 
 fetch(url, {
@@ -1319,10 +1258,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-branches--id-"
-               value="qmzaehyuhwsausnbnu"
+               value="joesjmlxhboxvobyyr"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>qmzaehyuhwsausnbnu</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>joesjmlxhboxvobyyr</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -1330,10 +1269,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="PUTapi-branches--id-"
-               value="tzbcuhlmopikmtvvpd"
+               value="atflnbogjvgtpgqrvbgtvki"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>tzbcuhlmopikmtvvpd</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>atflnbogjvgtpgqrvbgtvki</code></p>
         </div>
         </form>
 
@@ -1598,9 +1537,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"otbidwz\",
+    \"name\": \"hrbml\",
     \"branches\": [
-        1265424.9
+        2564288.71102
     ]
 }"
 </code></pre></div>
@@ -1617,9 +1556,9 @@ const headers = {
 };
 
 let body = {
-    "name": "otbidwz",
+    "name": "hrbml",
     "branches": [
-        1265424.9
+        2564288.71102
     ]
 };
 
@@ -1709,10 +1648,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-organic_units"
-               value="otbidwz"
+               value="hrbml"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>otbidwz</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>hrbml</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
@@ -1882,9 +1821,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"tmyhyhxvqouduqwb\",
+    \"name\": \"wkhkflrkcdliaayeewvjb\",
     \"branches\": [
-        4696546.3219
+        6159224.417637219
     ]
 }"
 </code></pre></div>
@@ -1901,9 +1840,9 @@ const headers = {
 };
 
 let body = {
-    "name": "tmyhyhxvqouduqwb",
+    "name": "wkhkflrkcdliaayeewvjb",
     "branches": [
-        4696546.3219
+        6159224.417637219
     ]
 };
 
@@ -2009,10 +1948,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-organic_units--id-"
-               value="tmyhyhxvqouduqwb"
+               value="wkhkflrkcdliaayeewvjb"
                data-component="body">
     <br>
-<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>tmyhyhxvqouduqwb</code></p>
+<p>O campo value deverá conter no mínimo 2 caracteres. O campo value não deverá conter mais de 255 caracteres. Example: <code>wkhkflrkcdliaayeewvjb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>branches</code></b>&nbsp;&nbsp;
@@ -2290,25 +2229,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"branch_id\": 6,
-    \"organic_unit_id\": 1,
-    \"department_id\": 12,
-    \"partition_id\": 1,
-    \"career_id\": 3,
-    \"category_id\": 4,
-    \"level_id\": 1,
-    \"salary_level_id\": 11,
+    \"branch_id\": 10,
+    \"organic_unit_id\": 6,
+    \"department_id\": 6,
+    \"partition_id\": 16,
+    \"career_id\": 7,
+    \"category_id\": 3,
+    \"level_id\": 2,
+    \"salary_level_id\": 19,
     \"name\": \"minus\",
-    \"birthdate\": \"2024-11-28T04:47:31\",
-    \"contact\": 7.1358617,
-    \"nationality\": \"repudiandae\",
-    \"naturality\": \"doloribus\",
-    \"email\": \"lorna.fadel@example.org\",
-    \"father_name\": \"fugit\",
-    \"mother_name\": \"quisquam\",
-    \"bi_nr\": \"at\",
-    \"bi_validate\": \"2024-11-28T04:47:31\",
-    \"nuit\": 28553
+    \"birthdate\": \"2024-11-28T20:33:34\",
+    \"contact\": 0.57009,
+    \"nationality\": \"cumque\",
+    \"naturality\": \"voluptates\",
+    \"email\": \"harber.reggie@example.org\",
+    \"father_name\": \"odio\",
+    \"mother_name\": \"repellendus\",
+    \"bi_nr\": \"eaque\",
+    \"bi_validate\": \"2024-11-28T20:33:34\",
+    \"nuit\": 20389506.88396
 }"
 </code></pre></div>
 
@@ -2324,25 +2263,25 @@ const headers = {
 };
 
 let body = {
-    "branch_id": 6,
-    "organic_unit_id": 1,
-    "department_id": 12,
-    "partition_id": 1,
-    "career_id": 3,
-    "category_id": 4,
-    "level_id": 1,
-    "salary_level_id": 11,
+    "branch_id": 10,
+    "organic_unit_id": 6,
+    "department_id": 6,
+    "partition_id": 16,
+    "career_id": 7,
+    "category_id": 3,
+    "level_id": 2,
+    "salary_level_id": 19,
     "name": "minus",
-    "birthdate": "2024-11-28T04:47:31",
-    "contact": 7.1358617,
-    "nationality": "repudiandae",
-    "naturality": "doloribus",
-    "email": "lorna.fadel@example.org",
-    "father_name": "fugit",
-    "mother_name": "quisquam",
-    "bi_nr": "at",
-    "bi_validate": "2024-11-28T04:47:31",
-    "nuit": 28553
+    "birthdate": "2024-11-28T20:33:34",
+    "contact": 0.57009,
+    "nationality": "cumque",
+    "naturality": "voluptates",
+    "email": "harber.reggie@example.org",
+    "father_name": "odio",
+    "mother_name": "repellendus",
+    "bi_nr": "eaque",
+    "bi_validate": "2024-11-28T20:33:34",
+    "nuit": 20389506.88396
 };
 
 fetch(url, {
@@ -2431,10 +2370,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="branch_id"                data-endpoint="POSTapi-employees"
-               value="6"
+               value="10"
                data-component="body">
     <br>
-<p>Example: <code>6</code></p>
+<p>Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>organic_unit_id</code></b>&nbsp;&nbsp;
@@ -2442,10 +2381,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="organic_unit_id"                data-endpoint="POSTapi-employees"
-               value="1"
+               value="6"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>6</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
@@ -2453,10 +2392,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="department_id"                data-endpoint="POSTapi-employees"
-               value="12"
+               value="6"
                data-component="body">
     <br>
-<p>Example: <code>12</code></p>
+<p>Example: <code>6</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>partition_id</code></b>&nbsp;&nbsp;
@@ -2464,10 +2403,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="partition_id"                data-endpoint="POSTapi-employees"
-               value="1"
+               value="16"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>career_id</code></b>&nbsp;&nbsp;
@@ -2475,10 +2414,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="career_id"                data-endpoint="POSTapi-employees"
-               value="3"
+               value="7"
                data-component="body">
     <br>
-<p>Example: <code>3</code></p>
+<p>Example: <code>7</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
@@ -2486,10 +2425,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="POSTapi-employees"
-               value="4"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>4</code></p>
+<p>Example: <code>3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>level_id</code></b>&nbsp;&nbsp;
@@ -2497,10 +2436,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="level_id"                data-endpoint="POSTapi-employees"
-               value="1"
+               value="2"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>2</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>salary_level_id</code></b>&nbsp;&nbsp;
@@ -2508,10 +2447,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="salary_level_id"                data-endpoint="POSTapi-employees"
-               value="11"
+               value="19"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -2530,10 +2469,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="birthdate"                data-endpoint="POSTapi-employees"
-               value="2024-11-28T04:47:31"
+               value="2024-11-28T20:33:34"
                data-component="body">
     <br>
-<p>O campo value não contém uma data válida. Example: <code>2024-11-28T04:47:31</code></p>
+<p>O campo value não contém uma data válida. Example: <code>2024-11-28T20:33:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact</code></b>&nbsp;&nbsp;
@@ -2541,10 +2480,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="contact"                data-endpoint="POSTapi-employees"
-               value="7.1358617"
+               value="0.57009"
                data-component="body">
     <br>
-<p>Example: <code>7.1358617</code></p>
+<p>Example: <code>0.57009</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>nationality</code></b>&nbsp;&nbsp;
@@ -2552,10 +2491,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="nationality"                data-endpoint="POSTapi-employees"
-               value="repudiandae"
+               value="cumque"
                data-component="body">
     <br>
-<p>Example: <code>repudiandae</code></p>
+<p>Example: <code>cumque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>naturality</code></b>&nbsp;&nbsp;
@@ -2563,10 +2502,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="naturality"                data-endpoint="POSTapi-employees"
-               value="doloribus"
+               value="voluptates"
                data-component="body">
     <br>
-<p>Example: <code>doloribus</code></p>
+<p>Example: <code>voluptates</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -2574,10 +2513,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-employees"
-               value="lorna.fadel@example.org"
+               value="harber.reggie@example.org"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. Example: <code>lorna.fadel@example.org</code></p>
+<p>O campo value não contém um endereço de e-mail válido. Example: <code>harber.reggie@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>father_name</code></b>&nbsp;&nbsp;
@@ -2585,10 +2524,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="father_name"                data-endpoint="POSTapi-employees"
-               value="fugit"
+               value="odio"
                data-component="body">
     <br>
-<p>Example: <code>fugit</code></p>
+<p>Example: <code>odio</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>mother_name</code></b>&nbsp;&nbsp;
@@ -2596,10 +2535,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="mother_name"                data-endpoint="POSTapi-employees"
-               value="quisquam"
+               value="repellendus"
                data-component="body">
     <br>
-<p>Example: <code>quisquam</code></p>
+<p>Example: <code>repellendus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>bi_nr</code></b>&nbsp;&nbsp;
@@ -2607,10 +2546,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="bi_nr"                data-endpoint="POSTapi-employees"
-               value="at"
+               value="eaque"
                data-component="body">
     <br>
-<p>Example: <code>at</code></p>
+<p>Example: <code>eaque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>bi_validate</code></b>&nbsp;&nbsp;
@@ -2618,10 +2557,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="bi_validate"                data-endpoint="POSTapi-employees"
-               value="2024-11-28T04:47:31"
+               value="2024-11-28T20:33:34"
                data-component="body">
     <br>
-<p>O campo value não contém uma data válida. Example: <code>2024-11-28T04:47:31</code></p>
+<p>O campo value não contém uma data válida. Example: <code>2024-11-28T20:33:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>nuit</code></b>&nbsp;&nbsp;
@@ -2629,10 +2568,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="nuit"                data-endpoint="POSTapi-employees"
-               value="28553"
+               value="20389506.88396"
                data-component="body">
     <br>
-<p>Example: <code>28553</code></p>
+<p>Example: <code>20389506.88396</code></p>
         </div>
         </form>
 
@@ -2789,25 +2728,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"branch_id\": 15,
-    \"organic_unit_id\": 12,
-    \"department_id\": 19,
-    \"partition_id\": 2,
-    \"career_id\": 18,
-    \"category_id\": 1,
-    \"level_id\": 2,
-    \"salary_level_id\": 14,
-    \"name\": \"nemo\",
-    \"birthdate\": \"2024-11-28T04:47:31\",
-    \"contact\": 18,
-    \"nationality\": \"dolorum\",
-    \"naturality\": \"ab\",
-    \"email\": \"bahringer.ewald@example.org\",
+    \"branch_id\": 10,
+    \"organic_unit_id\": 11,
+    \"department_id\": 20,
+    \"partition_id\": 16,
+    \"career_id\": 6,
+    \"category_id\": 14,
+    \"level_id\": 11,
+    \"salary_level_id\": 10,
+    \"name\": \"voluptatem\",
+    \"birthdate\": \"2024-11-28T20:33:34\",
+    \"contact\": 8.35742,
+    \"nationality\": \"est\",
+    \"naturality\": \"atque\",
+    \"email\": \"gterry@example.org\",
     \"father_name\": \"ut\",
-    \"mother_name\": \"cupiditate\",
-    \"bi_nr\": \"consequatur\",
-    \"bi_validate\": \"2024-11-28T04:47:31\",
-    \"nuit\": 439126434.605
+    \"mother_name\": \"at\",
+    \"bi_nr\": \"eaque\",
+    \"bi_validate\": \"2024-11-28T20:33:34\",
+    \"nuit\": 113615.55245
 }"
 </code></pre></div>
 
@@ -2823,25 +2762,25 @@ const headers = {
 };
 
 let body = {
-    "branch_id": 15,
-    "organic_unit_id": 12,
-    "department_id": 19,
-    "partition_id": 2,
-    "career_id": 18,
-    "category_id": 1,
-    "level_id": 2,
-    "salary_level_id": 14,
-    "name": "nemo",
-    "birthdate": "2024-11-28T04:47:31",
-    "contact": 18,
-    "nationality": "dolorum",
-    "naturality": "ab",
-    "email": "bahringer.ewald@example.org",
+    "branch_id": 10,
+    "organic_unit_id": 11,
+    "department_id": 20,
+    "partition_id": 16,
+    "career_id": 6,
+    "category_id": 14,
+    "level_id": 11,
+    "salary_level_id": 10,
+    "name": "voluptatem",
+    "birthdate": "2024-11-28T20:33:34",
+    "contact": 8.35742,
+    "nationality": "est",
+    "naturality": "atque",
+    "email": "gterry@example.org",
     "father_name": "ut",
-    "mother_name": "cupiditate",
-    "bi_nr": "consequatur",
-    "bi_validate": "2024-11-28T04:47:31",
-    "nuit": 439126434.605
+    "mother_name": "at",
+    "bi_nr": "eaque",
+    "bi_validate": "2024-11-28T20:33:34",
+    "nuit": 113615.55245
 };
 
 fetch(url, {
@@ -2946,10 +2885,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="branch_id"                data-endpoint="PUTapi-employees--id-"
-               value="15"
+               value="10"
                data-component="body">
     <br>
-<p>Example: <code>15</code></p>
+<p>Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>organic_unit_id</code></b>&nbsp;&nbsp;
@@ -2957,10 +2896,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="organic_unit_id"                data-endpoint="PUTapi-employees--id-"
-               value="12"
+               value="11"
                data-component="body">
     <br>
-<p>Example: <code>12</code></p>
+<p>Example: <code>11</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
@@ -2968,10 +2907,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="department_id"                data-endpoint="PUTapi-employees--id-"
-               value="19"
+               value="20"
                data-component="body">
     <br>
-<p>Example: <code>19</code></p>
+<p>Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>partition_id</code></b>&nbsp;&nbsp;
@@ -2979,10 +2918,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="partition_id"                data-endpoint="PUTapi-employees--id-"
-               value="2"
+               value="16"
                data-component="body">
     <br>
-<p>Example: <code>2</code></p>
+<p>Example: <code>16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>career_id</code></b>&nbsp;&nbsp;
@@ -2990,10 +2929,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="career_id"                data-endpoint="PUTapi-employees--id-"
-               value="18"
+               value="6"
                data-component="body">
     <br>
-<p>Example: <code>18</code></p>
+<p>Example: <code>6</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
@@ -3001,10 +2940,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-employees--id-"
-               value="1"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>level_id</code></b>&nbsp;&nbsp;
@@ -3012,10 +2951,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="level_id"                data-endpoint="PUTapi-employees--id-"
-               value="2"
+               value="11"
                data-component="body">
     <br>
-<p>Example: <code>2</code></p>
+<p>Example: <code>11</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>salary_level_id</code></b>&nbsp;&nbsp;
@@ -3023,10 +2962,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="salary_level_id"                data-endpoint="PUTapi-employees--id-"
-               value="14"
+               value="10"
                data-component="body">
     <br>
-<p>Example: <code>14</code></p>
+<p>Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -3034,10 +2973,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-employees--id-"
-               value="nemo"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>nemo</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>birthdate</code></b>&nbsp;&nbsp;
@@ -3045,10 +2984,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="birthdate"                data-endpoint="PUTapi-employees--id-"
-               value="2024-11-28T04:47:31"
+               value="2024-11-28T20:33:34"
                data-component="body">
     <br>
-<p>O campo value não contém uma data válida. Example: <code>2024-11-28T04:47:31</code></p>
+<p>O campo value não contém uma data válida. Example: <code>2024-11-28T20:33:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>contact</code></b>&nbsp;&nbsp;
@@ -3056,10 +2995,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="contact"                data-endpoint="PUTapi-employees--id-"
-               value="18"
+               value="8.35742"
                data-component="body">
     <br>
-<p>Example: <code>18</code></p>
+<p>Example: <code>8.35742</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>nationality</code></b>&nbsp;&nbsp;
@@ -3067,10 +3006,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="nationality"                data-endpoint="PUTapi-employees--id-"
-               value="dolorum"
+               value="est"
                data-component="body">
     <br>
-<p>Example: <code>dolorum</code></p>
+<p>Example: <code>est</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>naturality</code></b>&nbsp;&nbsp;
@@ -3078,10 +3017,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="naturality"                data-endpoint="PUTapi-employees--id-"
-               value="ab"
+               value="atque"
                data-component="body">
     <br>
-<p>Example: <code>ab</code></p>
+<p>Example: <code>atque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -3089,10 +3028,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="PUTapi-employees--id-"
-               value="bahringer.ewald@example.org"
+               value="gterry@example.org"
                data-component="body">
     <br>
-<p>O campo value não contém um endereço de e-mail válido. Example: <code>bahringer.ewald@example.org</code></p>
+<p>O campo value não contém um endereço de e-mail válido. Example: <code>gterry@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>father_name</code></b>&nbsp;&nbsp;
@@ -3111,10 +3050,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="mother_name"                data-endpoint="PUTapi-employees--id-"
-               value="cupiditate"
+               value="at"
                data-component="body">
     <br>
-<p>Example: <code>cupiditate</code></p>
+<p>Example: <code>at</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>bi_nr</code></b>&nbsp;&nbsp;
@@ -3122,10 +3061,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="bi_nr"                data-endpoint="PUTapi-employees--id-"
-               value="consequatur"
+               value="eaque"
                data-component="body">
     <br>
-<p>Example: <code>consequatur</code></p>
+<p>Example: <code>eaque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>bi_validate</code></b>&nbsp;&nbsp;
@@ -3133,10 +3072,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="bi_validate"                data-endpoint="PUTapi-employees--id-"
-               value="2024-11-28T04:47:31"
+               value="2024-11-28T20:33:34"
                data-component="body">
     <br>
-<p>O campo value não contém uma data válida. Example: <code>2024-11-28T04:47:31</code></p>
+<p>O campo value não contém uma data válida. Example: <code>2024-11-28T20:33:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>nuit</code></b>&nbsp;&nbsp;
@@ -3144,10 +3083,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="nuit"                data-endpoint="PUTapi-employees--id-"
-               value="439126434.605"
+               value="113615.55245"
                data-component="body">
     <br>
-<p>Example: <code>439126434.605</code></p>
+<p>Example: <code>113615.55245</code></p>
         </div>
         </form>
 

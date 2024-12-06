@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\EmployeeController;
+use App\Http\Controllers\Api\EmployeeSelectController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\OrganicUnitController;
+use App\Http\Controllers\Api\OverviewController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -30,7 +32,10 @@ Route::middleware('auth:sanctum')->group(function () {
         return UserResource::make($request->user());
     });
 
+    Route::get('/overview', OverviewController::class);
+
     Route::apiResource('branches', BranchController::class);
     Route::apiResource('organic_units', OrganicUnitController::class);
+    Route::get('/employees/select', EmployeeSelectController::class);
     Route::apiResource('employees', EmployeeController::class);
 });

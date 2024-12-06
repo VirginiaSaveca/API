@@ -105,9 +105,7 @@ class Index extends Component
 
     public function store()
     {
-        DB::beginTransaction();  // Inicia a transação
 
-    try {
         $validated = $this->validate();
         $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
@@ -121,16 +119,10 @@ class Index extends Component
         // Criação do novo funcionário
         Employee::create($validated);
 
-        DB::commit();  // Confirma a transação
-
         $this->reset();
         $this->resetValidation();
         $this->dialog()->success('Successo', 'Adicionado com Sucesso.')->send();
-    } catch (\Exception $e) {
-        DB::rollback();  // Desfaz a transação em caso de erro
-        $this->dialog()->error('Erro', 'Ocorreu um erro.')->send();
-        throw $e;  // Lança novamente a exceção para rastreamento
-    }
+
     }
 
     public function edit($id)
@@ -165,9 +157,7 @@ class Index extends Component
 
     public function update()
     {
-        DB::beginTransaction();  // Inicia a transação
 
-    try {
         $validated = $this->validate();
         $validated['branch_id'] = Branch::where('name', $validated['branch_id'])->value('id');
         $validated['organic_unit_id'] = OrganicUnit::where('name', $validated['organic_unit_id'])->value('id');
@@ -183,16 +173,10 @@ class Index extends Component
             $query->update($validated);
         }
 
-        DB::commit();  // Confirma a transação
-
         $this->reset();
         $this->resetValidation();
         $this->dialog()->success('Successo', 'Editado com Sucesso.')->send();
-    } catch (\Exception $e) {
-        DB::rollback();  // Desfaz a transação em caso de erro
-        $this->dialog()->error('Erro', 'Ocorreu um erro.')->send();
-        throw $e;  // Lança novamente a exceção para rastreamento
-    }
+
     }
 
     public function deleteConfirm($id)
@@ -205,28 +189,18 @@ class Index extends Component
             ->send();
     }
 
-    public function delete(){
-   DB::beginTransaction();  // Inicia a transação
-
-    try {
+    public function delete()
+    {
         $query = Employee::where('id', $this->id)->first();
 
         if ($query) {
             $query->delete();
         }
 
-        DB::commit();  // Confirma a transação
-
         $this->reset();
         $this->resetValidation();
         $this->dialog()->success('Successo', 'Eliminado com Sucesso.')->send();
-    } catch (\Exception $e) {
-        DB::rollback();  // Desfaz a transação em caso de erro
-        $this->dialog()->error('Erro', 'Ocorreu um erro ao eliminar.')->send();
-        throw $e;  // Lança novamente a exceção para rastreamento
     }
-}
-
 
     public function cancel()
     {
